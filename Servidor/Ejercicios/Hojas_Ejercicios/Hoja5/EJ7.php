@@ -2,6 +2,7 @@
 /*Realiza un script que mediante un formulario permita introducir una fecha de 
 nacimiento y te felicite si es tu cumpleaños.*/
 
+
 if( $_POST["fecha_nacimiento"]){
     $fechaNacimiento = $_POST["fecha_nacimiento"];
     $fechaActual = date("Y-m-d");
@@ -12,7 +13,6 @@ if( $_POST["fecha_nacimiento"]){
             echo "<p>No es tu cumpleaños todavía. Esperamos que tengas un gran día cuando llegue.</p>";
         }
     }
-
 ?>
 
 <html>
