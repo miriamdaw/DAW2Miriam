@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}	
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -66,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <h4>Multiple:</h4>
             <label for="ciudades">Ciudades:</label>
-            <select multiple name="ciudades" id="ciudades">
+            <select name="ciudades" id="ciudades" multiple>
             <option value="Gerona" <?php if(isset($ciudades) && $ciudades === "Gerona") echo "selected"; ?>>Gerona</option>
             <option value="Madrid" <?php if(isset($ciudades) && $ciudades === "Madrid") echo "selected"; ?>>Madrid</option>
             <option value="Zaragoza" <?php if(isset($ciudades) && $ciudades === "Zaragoza") echo "selected"; ?>>Zaragoza</option>
