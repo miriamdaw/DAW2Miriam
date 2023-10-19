@@ -9,9 +9,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $error = "Recuerda rellenar el nombre ";
     }
 
+    if(!isset($_POST["email"])){
+        $error = $error . " ,el campo de email es obligatorio ";
+    }else if(!filter_var($_POST["email"],FILTER_VALIDATE_EMAIL)){
+    $error = " el formato del email es invalido ";
+    }
+
+
     if(!isset($_POST["color"])){
     $error = $error . " y selecciona un color ";
     }
+
+    if(!isset($_POST["publicidad"])){
+        $error = $error . " y seleccionar si quiere publicidad ";
+        }
 
     if(!isset($_POST["anio"])){
     $error = $error . "y debe seleccionar un año ";
@@ -27,13 +38,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $publicidad = $_POST["publicidad"];
         $anio = $_POST["anio"];
         $ciu = $_POST["ciudades"];
+        $email = $_POST["email"];
         echo $error;
 
     }else{
-        header("Location: parametrosFormulario.php");
-    }
+        include("validacionNombre.php");
+        if(validarNombre($_POST["nombre"]) == true){
+            header("Location: parametrosFormulario.php");
+        }else{
+            echo "No se ha podido validar correctamente el nombre.";
+        }     
+    } 
 }
-
 ?>
 
 
@@ -86,8 +102,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h3>CAMPOS DE TEXTO:</h3>
             <label for = "nombre">Nombre:</label> 
 			<input value = "<?php if(isset($nombre))echo $nombre;?>"
-			id = "nombre" name = "nombre" type = "text">				
-			
+			id = "nombre" name = "nombre" type = "text">		
+            
+            <label for = "email">Email:</label> 
+			<input value = "<?php if(isset($email))echo $email;?>"
+			id = "email" name = "email" type = "email" pattern=".+@gmail\.com" size="30" required />
             <br><br>
 
             <h3>RADIO:</h3>
@@ -101,12 +120,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<input type="radio" id="colorRojo" name="color" value="verde" <?php if(isset($color) && $color === "verde") echo "checked"; ?>>
 
             <br><br>
-			<input type = "submit">
 
             <h3>CHECKBOX:</h3>
             <label for="publicidad">Quiero recibir publicidad</label>
             <input type="checkbox" id="publicidad" name="publicidad" <?php if(isset($publicidad)) echo "checked"; ?>>
-                                                                    
+                                                      
             <h3>SELECT:</h3>
 
             <h4>Simple:</h4>
@@ -125,6 +143,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <option value="Madrid" <?php if(isset($ciudades) && in_array("Madrid", $ciudades)) echo "selected"; ?>>Madrid</option>
             <option value="Zaragoza" <?php if(isset($ciudades) && in_array("Zaragoza", $ciudades)) echo "selected"; ?>>Zaragoza</option>
         </select>
+
+        <input type = "submit">
 		</form>
 	</body>
 </html>
+//validar direccion ip
