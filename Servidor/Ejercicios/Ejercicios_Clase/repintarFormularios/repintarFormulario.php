@@ -22,8 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$usuario=$_POST["usuario"];
 		$colorRadio=$_POST["color"];
 		$err = true;
-	    
-	}	
+	}
+
+	
 ?>
 <!DOCTYPE html>
 <html>
