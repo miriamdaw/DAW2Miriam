@@ -1,54 +1,64 @@
 <?php
 /* si va bien redirige a parametrosFormulario.php si va mal, mensaje de error */
 $ciudades = array();
-$error = "";
+$errors = array();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {  
+if ($_SERVER["REQUEST_METHOD"] == "POST") { 
 
 	if($_POST["nombre"]==""){
-    $error = "Recuerda rellenar el nombre ";
+    $errors[] = "Recuerda rellenar el nombre.";
     }
+
+    if($_POST["apellido"]==""){
+        $errors[] = "Recuerda rellenar el apellido.";
+        }
 
     if(!isset($_POST["email"])){
-        $error = $error . " ,el campo de email es obligatorio ";
-    }else if(!filter_var($_POST["email"],FILTER_VALIDATE_EMAIL)){
-    $error = " el formato del email es invalido ";
+        $errors[] = "Debe rellenar el email.";
+    } else if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "El formato del email es inválido.";
     }
 
-
     if(!isset($_POST["color"])){
-    $error = $error . " y selecciona un color ";
+    $errors[] = "Debe seleccionar un color.";
     }
 
     if(!isset($_POST["publicidad"])){
-        $error = $error . " y seleccionar si quiere publicidad ";
-        }
+        $errors[] = "Debe marcar si quiere recibir publicidad.";
+    }
 
     if(!isset($_POST["anio"])){
-    $error = $error . "y debe seleccionar un año ";
+    $errors[] = "Debe seleccionar un año.";
     }
 
     if(!isset($_POST["ciudades"])){
-    $error = $error . " y debe seleccionar una ciudad";
+    $errors[] = "Debe seleccionar una ciudad.";
     }
 
-    if (isset($error)) {
+    if (!empty($errors)) {
         $nombre = $_POST["nombre"];
+        $apellido = $_POST["apellido"];
         $color = $_POST["color"];
         $publicidad = $_POST["publicidad"];
         $anio = $_POST["anio"];
         $ciu = $_POST["ciudades"];
-        $email = $_POST["email"];
-        echo $error;
+        foreach($errors as $error){
+            echo $error . "<br>";
+        }
 
-    }else{
+    } else {
         include("validacionNombre.php");
-        if(validarNombre($_POST["nombre"]) == true){
+        $validar = "/^[A-Za-z\- ]+$/";
+        if(validarNombre($_POST["nombre"], $_POST["apellido"], $validar) == true){
             header("Location: parametrosFormulario.php");
-        }else{
-            echo "No se ha podido validar correctamente el nombre.";
-        }     
+            exit();
+        } else {
+           $errors[] = "No se ha podido validar correctamente.";
+           foreach($errors as $error){
+            echo $error . "<br>";
+        } 
     } 
+}
 }
 ?>
 
@@ -102,7 +112,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h3>CAMPOS DE TEXTO:</h3>
             <label for = "nombre">Nombre:</label> 
 			<input value = "<?php if(isset($nombre))echo $nombre;?>"
-			id = "nombre" name = "nombre" type = "text">		
+			id = "nombre" name = "nombre" type = "text">	
+            
+            <label for = "nombre">Apellido:</label> 
+			<input value = "<?php if(isset($apellido))echo $apellido;?>"
+			id = "apellido" name = "apellido" type = "text">	
             
             <label for = "email">Email:</label> 
 			<input value = "<?php if(isset($email))echo $email;?>"
@@ -148,4 +162,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		</form>
 	</body>
 </html>
-//validar direccion ip
