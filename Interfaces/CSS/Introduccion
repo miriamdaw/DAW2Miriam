@@ -2,8 +2,5 @@
 
     - Cuatro areas distintas: contenido, relleno, borde, margen
     - Cuatro segmentos: top, bottom, left, right
+    - El relleno y el margen son transparentes
 
-    > El relleno y el margen son transparentes
-
-
-    

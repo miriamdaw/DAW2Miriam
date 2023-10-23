@@ -35,30 +35,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors[] = "Debe seleccionar una ciudad.";
     }
 
+    if (empty($_POST["telefono"])) {
+        $errors[] = "Introduzca su teléfono.";
+
+    } elseif (!preg_match("/^\d{9}$/", $_POST["telefono"])) {
+        $errors[] = "El formato del teléfono es inválido. Debe contener 9 dígitos.";
+    }
+
+/*
+    if(isset($_POST["ciudades"])){
+        $ciudades = $_POST["ciudades"];
+        }
+*/
+
     if (!empty($errors)) {
         $nombre = $_POST["nombre"];
         $apellido = $_POST["apellido"];
         $color = $_POST["color"];
         $publicidad = $_POST["publicidad"];
         $anio = $_POST["anio"];
-        $ciu = $_POST["ciudades"];
+        $ciudades = $_POST["ciudades"];
+        $telefono = $_POST["telefono"];
         foreach($errors as $error){
             echo $error . "<br>";
         }
 
     } else {
-        include("validacionNombre.php");
+        include("validar.php");
         $validar = "/^[A-Za-z\- ]+$/";
-        if(validarNombre($_POST["nombre"], $_POST["apellido"], $validar) == true){
-            header("Location: parametrosFormulario.php");
+        if (validar($_POST["nombre"], $_POST["apellido"], $validar) == true) {
+            header("Location: si_sale_bien.php");
             exit();
         } else {
-           $errors[] = "No se ha podido validar correctamente.";
-           foreach($errors as $error){
-            echo $error . "<br>";
+            $errors[] = "No se ha podido validar correctamente.";
+            foreach ($errors as $error) {
+                echo $error . "<br>";
         } 
     } 
-}
+    }
 }
 ?>
 
@@ -69,39 +83,62 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<title>Repintar formulario</title>		
 		<meta charset = "UTF-8">
         <style>
+
         form {
-            background-color: #f9f9f9;
+            background-color: #ffe6ea;
         }
+        
         label {
             display: block;
             margin-top: 10px;
         }
+
         input[type="text"], select {
-            width: 100%;
+            width: 90%;
             padding: 5px;
             margin-top: 5px;
-            border: 1px solid #ccc;
+            border: 1px solid #7a1527;
             border-radius: 3px;
+            outline-color: #7a1527;
+
         }
+
         input[type="radio"] {
             margin-right: 5px;
         }
+
         input[type="submit"] {
-            background-color: #0074D9;
-            color: #fff;
+            background-color: #7a1527;
+            color: #ffbdc9;
             padding: 10px 20px;
             border: none;
             border-radius: 3px;
             cursor: pointer;
+            display: block;
+            margin: 0 auto;
         }
+        
         input[type="checkbox"] {
             margin-right: 5px;
         }
+
         p {
             color: red;
             font-weight: bold;
             margin-top: 10px;
         }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #7a1527;
+        }
+
+        h3 {
+            color: #c46073;
+        }
+
+
     </style>
 	</head>
 	<body>			
@@ -111,16 +148,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h1>Recibe parámetros y repinta el formulario</h1>
             <h3>CAMPOS DE TEXTO:</h3>
             <label for = "nombre">Nombre:</label> 
-			<input value = "<?php if(isset($nombre))echo $nombre;?>"
+			<input value = "<?php if(isset($_POST["nombre"])) echo $_POST["nombre"];?>"
 			id = "nombre" name = "nombre" type = "text">	
             
             <label for = "nombre">Apellido:</label> 
-			<input value = "<?php if(isset($apellido))echo $apellido;?>"
+			<input value = "<?php if(isset($_POST["apellido"])) echo $_POST["apellido"];?>"
 			id = "apellido" name = "apellido" type = "text">	
             
             <label for = "email">Email:</label> 
 			<input value = "<?php if(isset($email))echo $email;?>"
 			id = "email" name = "email" type = "email" pattern=".+@gmail\.com" size="30" required />
+
+            <label for = "telefono">Telefono:</label> 
+			<input value = "<?php if(isset($telefono))echo $telefono;?>"
+			id = "telefono" name = "telefono" type = "text"/>
             <br><br>
 
             <h3>RADIO:</h3>
@@ -150,15 +191,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <option value="2020" <?php if(isset($anio) && $anio === "2020") echo "selected"; ?>>2020</option>
         </select>
 
-            <h4>Multiple:</h4>
+             <h4>Multiple:</h4>
             <label for="ciudades">Ciudades:</label>
             <select id="ciudades" name="ciudades[]" size="4" multiple>
             <option value="Gerona" <?php if(isset($ciudades) && in_array("Gerona", $ciudades)) echo "selected"; ?>>Gerona</option>
             <option value="Madrid" <?php if(isset($ciudades) && in_array("Madrid", $ciudades)) echo "selected"; ?>>Madrid</option>
             <option value="Zaragoza" <?php if(isset($ciudades) && in_array("Zaragoza", $ciudades)) echo "selected"; ?>>Zaragoza</option>
         </select>
-
-        <input type = "submit">
+        <br><br>
+        <center><input type = "submit"></center>
 		</form>
 	</body>
 </html>
