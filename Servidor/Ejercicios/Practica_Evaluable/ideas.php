@@ -11,20 +11,17 @@ fotos de nuestras mascotas
 
 -- Reglas de negocio
 
-!> Titulo debe ser una cadena de
-   caracteres entre 15 y 25
+!> Nombre del dueño debe ser una cadena de
+   caracteres de hasta 20 caracteres, empezar en mayusculas
    -> espacios, guiones, exclamaciones
 
-!> Texto debe contener al menos 50 caracteres
+!> Descripcion debe contener al menos 50 caracteres
 
 !> Categorias son: perros, gatos,
    tortugas, conejos, pajaros,
    peces
 
 
-
-
-
-
+ 
 */
 ?>
