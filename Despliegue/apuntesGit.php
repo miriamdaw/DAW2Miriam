@@ -23,11 +23,12 @@
 
 * Comandos nuevos:
 
-    ? git rebase -> reorganizar
+    * git rebase -> reorganizar
     Haces un nuevo commit, excatamencte igual a otro commit, pero vas a hacer una reorganización, coge el ancestro
     común, reorganiza, y los cambios que tiene en un commit los suma a otro, aparece como una sola línea del tiempo
 
 
+    * git reset -> 
 
 
 
