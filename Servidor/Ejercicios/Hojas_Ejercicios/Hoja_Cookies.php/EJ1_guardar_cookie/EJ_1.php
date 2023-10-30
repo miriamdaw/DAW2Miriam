@@ -5,20 +5,29 @@ Se trata de que la primera vez se nos pregunte por nuestro nombre (que escribire
 el valor introducido se guarde en una cookie y en las siguientes ocasiones la cookie establecida nos recuerde. 
 El “action” del formulario nos enviará a otra pagina PHP que será quien establezca la cookie.
 */
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hoja Cookies: Ejercicio 1</title>
 </head>
+
 <body>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-    <label for="nombre"> Introduzca su nombre: </label>
-    <input value="<?php if (isset($_POST["nombre"])) echo $_POST["nombre"]; ?>" id="nombre" name="nombre" type="text">
+    <?php
+    if (isset($_COOKIE['nombre'])) {
+        $nombre_cookie = $_COOKIE['nombre'];
+        echo "Hola $nombre_cookie";
+    }
+    ?>
+    <form action="EJ1_cookie.php" method="POST">
+        <label for="nombre">Introduzca su nombre:</label>
+        <input type="text" id="nombre" name="nombre" required value="<?php if (isset($_COOKIE['nombre'])) echo $_COOKIE['nombre']; ?>">
+        <button type="submit">Submit</button>
     </form>
 </body>
+
 </html>
