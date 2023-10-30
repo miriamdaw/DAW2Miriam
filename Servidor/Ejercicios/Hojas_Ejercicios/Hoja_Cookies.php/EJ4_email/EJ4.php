@@ -17,7 +17,7 @@ para recordar el email del usuario o eliminará la cookie utilizando una fecha a
     <h1>Ingresa tu correo electrónico</h1>
     <form action="cookie_email.php" method="post">
         <label for="email">Correo Electrónico:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" value="<?php if (isset($_COOKIE['email'])) echo $_COOKIE['email']; ?>" required>
         <br><br>
         <label>¿Deseas recordar tu email?</label>
         <input type="radio" name="recordar" value="si" id="recordar-si">
@@ -29,4 +29,7 @@ para recordar el email del usuario o eliminará la cookie utilizando una fecha a
     </form>
 </body>
 </html>
+
+
+
 

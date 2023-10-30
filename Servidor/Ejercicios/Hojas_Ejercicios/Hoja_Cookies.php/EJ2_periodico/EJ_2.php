@@ -8,6 +8,19 @@ Mediante tres botones de tipo radio, permitir seleccionar que titular debe mostr
 Almacenar en una cookie el tipo de titular que desea ver el cliente. 
 La primera vez que visita el sitio deben aparecer los tres titulares.
 */
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['titular'])) {
+    $titular = $_POST['titular'];
+    setcookie('titular', $titular, time() + 60);
+
+    if ($titular === 'politica') {
+        header('Location: noticia_politica.php');
+    } elseif ($titular === 'economica') {
+        header('Location: noticia_economica.php');
+    } elseif ($titular === 'deportiva') {
+        header('Location: noticia_deportiva.php');
+    }
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,25 +44,5 @@ La primera vez que visita el sitio deben aparecer los tres titulares.
         <button type="submit"> Enviar </button>
     </form>
 
-    <?php
-    if (isset($_COOKIE['titular'])) {
-        $titular = $_COOKIE['titular'];
-
-        if ($titular === 'politica') {
-            echo "<h2>Titular de Noticia Política</h2>";
-            echo "<p>El partido DAWISTA ha ganado las elecciones de delegación de Segundo de DAW.</p>";
-        } elseif ($titular === 'economica') {
-            echo "<h2>Titular de Noticia Económica</h2>";
-            echo "<p>La economía de DAW está mejorando gracias al partido DAWISTA.</p>";
-        } elseif ($titular === 'deportiva') {
-            echo "<h2>Titular de Noticia Deportiva</h2>";
-            echo "<p>El equipo DAWISTA de rugby ha ganado por 5 vez el partido contra el equipo DAMISTA.</p>";
-        }
-        
-    } else {
-        echo "<h2>Elija el tipo de noticia al que quiere acceder.</h2>";
-    }
-    ?>
 </body>
-
 </html>
