@@ -48,6 +48,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 //required
+/*
+
+https://colorpalette.imageonline.co/es/
+https://www.jotform.com/build/233032800000331#preview
+        .formcontainer {
+        text-align: left;
+        margin: 24px 50px 12px;
+         }
+
+        .container {
+        padding: 16px 0;
+        text-align:left;
+        }
+        */
 ?>
 
 <!DOCTYPE html>
@@ -59,22 +73,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>MascoDAW</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #CBDDB5;
+            font-family: Arial;
+            background-color: #fff;
             margin: 0;
             padding: 0;
+        }
+
+        form {
+            margin-bottom: 100px;
+            margin-left: 620px;
+            margin-right: 620px;
+            border-radius: 24px;
+            background-color:#7048C7;
+            padding: 8px;
+
+        }
+
+        img {
+            margin-top: 50px;
+            margin-bottom: 5px;
+            width: 20%;
+
         }
 
         center {
             text-align: center;
         }
 
-        h1 {
-            color: #608334;
-        }
 
         h3 {
-            color: #97B770;
+            color: #998ee4;
+            font-size: 170%;
+            font-weight: bold;
         }
 
         p {
@@ -85,11 +115,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             display: block;
             font-weight: bold;
             margin-top: 10px;
-            color: #608334;
+            color: #5534ad;
         }
 
         input[type="text"] {
-            width: 100%;
+            width: 20%;
             padding: 10px;
             margin: 5px 0;
             border: 1px solid #A8CA7E;
@@ -100,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         select {
-            width: 100%;
+            width: 80%;
             padding: 10px;
             margin: 5px 0;
             border: 1px solid #A8CA7E;
@@ -147,13 +177,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+    <center><img src="IconoLetras.png" /></center>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
         <center>
-            <h1> ¡Bienvenido a MascoDAW! </h1>
-            <p> Aquí podrás compartir con tus compañeros de DAW fotos de tus mascotas. </p>
-            <br>
-
-            <h3> Información sobre ti: </h3>
+            <h3> Centro de Sugerencias para CyberThrone </h3>
             <label for="duenio"> ¿Cómo te llamas? </label>
             <input value="<?php if (isset($_POST["duenio"])) echo $_POST["duenio"]; ?>" id="duenio" name="duenio" type="text">
             <span class="error"><?php echo $duenioError; ?></span>
