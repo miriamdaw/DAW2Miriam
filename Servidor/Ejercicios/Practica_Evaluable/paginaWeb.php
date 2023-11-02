@@ -48,6 +48,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 //required
+//paleta de colores:
+#F2CEEC
+#7048C8
+#F479AD
+#9C8AE0
+#783DAC
 /*
 
 https://colorpalette.imageonline.co/es/
@@ -70,29 +76,36 @@ https://www.jotform.com/build/233032800000331#preview
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MascoDAW</title>
+    <title>Sugerencias cyberthrone: Sillas Gaming 3000</title>
     <style>
+        
+        @font-face {
+            font-family: 'MavenPro';
+            src: url('http://localhost/DAW2/Servidor/Ejercicios/Practica_Evaluable/MavenPro-VariableFont_wght.ttf') format('truetype');
+        }
+
         body {
-            font-family: Arial;
-            background-color: #7048C7;
+            font-family: 'MavenPro', sans-serif;
+            background: linear-gradient(to left, #7048C7, #783DAC);
             margin: 0;
             padding: 0;
         }
 
         form {
-            margin-bottom: 100px;
+            margin-bottom: 50px;
             margin-left: 620px;
             margin-right: 620px;
             border-radius: 24px;
             background-color:#fff;
             padding: 8px;
-
+            box-shadow: 0 0 20px rgba(244, 121, 173, 1);
+            
         }
 
         img {
-            margin-top: 50px;
+            margin-top: 30px;
             margin-bottom: 5px;
-            width: 20%;
+            width: 23%;
 
         }
 
@@ -102,7 +115,7 @@ https://www.jotform.com/build/233032800000331#preview
 
 
         h3 {
-            color: #998ee4;
+            color: #F479AD;
             font-size: 170%;
             font-weight: bold;
         }
