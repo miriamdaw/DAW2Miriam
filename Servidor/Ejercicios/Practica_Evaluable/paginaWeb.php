@@ -74,7 +74,7 @@ https://www.jotform.com/build/233032800000331#preview
     <style>
         body {
             font-family: Arial;
-            background-color: #fff;
+            background-color: #7048C7;
             margin: 0;
             padding: 0;
         }
@@ -84,7 +84,7 @@ https://www.jotform.com/build/233032800000331#preview
             margin-left: 620px;
             margin-right: 620px;
             border-radius: 24px;
-            background-color:#7048C7;
+            background-color:#fff;
             padding: 8px;
 
         }
@@ -177,7 +177,7 @@ https://www.jotform.com/build/233032800000331#preview
 </head>
 
 <body>
-    <center><img src="IconoLetras.png" /></center>
+    <center><img src="IconoLetrasBorde.png" /></center>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
         <center>
             <h3> Centro de Sugerencias para CyberThrone </h3>

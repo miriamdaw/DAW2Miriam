@@ -1,15 +1,31 @@
 <?php
 /*
 Deberes para casa: https://www.mclibre.org/consultar/php/ejercicios/sesiones/sesiones-1/index.html
+--> El enunciado está en el aula virtual:
 
+//////////////////////////////////////////////////////////////////////////////////////////////////
+A partir de los códigos del ejercicio 14 de la página:  https://www.mclibre.org/consultar/php/ejercicios/sesiones/sesiones-1/index.html
+
+Modificar el código del programa de votaciones siguiendo los siguientes requisitos:
+
+- Contextualizar el proceso de votación, por ejemplo, votar entre varias fechas, entre varios planes de vacaciones, etc.
+- Mejorar la interfaz gráfica
+- Incluir al menos tres opciones
+- Mostrar los resultados de la votación finalizado un tiempo dado
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 Escriba un programa de dos páginas que muestre gráficamente los votos recogidos por dos opciones.
-
 La primera página contiene un formulario con tres botones de tipo submit con el mismo atributo name.
 Dos botones permiten votar a una u otra opción
 El tercer botón pone a cero los contadores de votos
 La segunda página recibe el dato, modifica la variable de sesión que contiene el número de votos de la opción elegida (o ambas) y redirige a la primera página.
 Los dos números se guardan en dos variables de sesión. Si las variables de sesión no están definidas, se les dará el valor 0.
 Las franjas correspondientes a los votos se alargan de 10px en 10px y no tienen límite de tamaño.
+
+Solución: https://www.mclibre.org/consultar/php/ejercicios/sesiones/sesiones-1/soluciones.html
+/////////////////////////////////////////////////////////////////////////////////////////////////
 */
 ?>
 
