@@ -1,9 +1,9 @@
 <?php
 
-function validar($duenio, $descripcion) {
+function validar($nombre, $descripcion) {
     $errores = array();
 
-    if (!ctype_upper($duenio[0]) || strlen($duenio) > 20) {
+    if (!ctype_upper($nombre[0]) || strlen($nombre) > 20) {
         $errores[] = "El nombre del dueño debe comenzar con una letra mayúscula y tener una longitud de hasta 20 caracteres.";
     }
 
@@ -11,7 +11,7 @@ function validar($duenio, $descripcion) {
         $errores[] = "La descripción debe tener al menos 50 caracteres.";
     }
 
-    if (!preg_match('/^[A-Za-z\- ]+$/', $duenio)) {
+    if (!preg_match('/^[A-Za-z\- ]+$/', $nombre)) {
         $errores[] = "El nombre del dueño contiene caracteres no válidos.";
     }
 

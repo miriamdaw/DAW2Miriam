@@ -1,38 +1,40 @@
 <?php
 include("validar.php");
-$duenioError = $nombreMascotaError = $descripcionError = $tipoMascotaError = "";
+$nombreError = $edadError = $descripcionError = $telefonoError = $comunidadAutonomaError = "";
 error_reporting(E_ERROR | E_PARSE);
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if (empty($_POST["duenio"])) {
+    if (empty($_POST["nombre"])) {
         $duenioError = "¡Indica tu nombre!";
     }
 
-    if (empty($_POST["nombreMascota"])) {
-        $nombreMascotaError = "¡Indica el nombre de tu mascota!";
+    if (empty($_POST["edad"])) {
+        $edadError = "¡Indica tu edad!";
+    }
+
+    if (empty($_POST["email"])) {
+        $emailError = "¡Indica tu email!";
     }
 
     if (empty($_POST["descripcion"])) {
         $descripcionError = "Escribe una descripción sobre tu mascota: cómo llegó a tu vida, alguna anécdota, por qué le pusiste ese nombre...";
     }
 
-    if (!isset($_POST["tipoMascota"])) {
-        $tipoMascotaError = "Debes indicar qué tipo de animal es tu mascota.";
+    if (!isset($_POST["comunidadAutonoma"])) {
+        $tipoMascotaError = "Debes indicar tu comunidadAutonoma.";
     }
 
-    $duenio = $_POST["duenio"];
+    $nombre = $_POST["nombre"];
     $descripcion = $_POST["descripcion"];
-    $validando = validar($duenio, $descripcion);
+    $validando = validar($nombre, $descripcion);
 
     if (!empty($errors)) {
         $nombre = $_POST["nombre"];
         $apellido = $_POST["apellido"];
-        $color = $_POST["color"];
-        $publicidad = $_POST["publicidad"];
-        $anio = $_POST["anio"];
-        $ciudades = $_POST["ciudades"];
+        $email = $_POST["email"];
+        $comunidadAutonoma = $_POST["comunidadAutonoma"];
         $telefono = $_POST["telefono"];
 
     } else {
@@ -110,25 +112,47 @@ https://www.jotform.com/build/233032800000331#preview
 
         }
 
+        .silla {
+            float: left;
+            margin-top: 20px;
+            margin-left: 20px;
+            width: 30%;
+        }
+
         .linea {
             border-top: 1px solid #F479AD;
             height: 2px;
             width: 90%;
             padding: 0;
             margin: 20px auto 0 auto;
+            margin-bottom: 10px;
+            opacity: 50%;
 
         }
+
+        .espacio {
+            height: 250px;
+        }
+
 
         center {
             text-align: center;
         }
-
 
         h3 {
             color: #F479AD;
             font-size: 180%;
             font-weight: bold;
         }
+
+        h2 {
+            color: #F479AD;
+            font-size: 150%;
+            font-weight: bold;
+            float: left;
+            margin-left: 35px;
+        }
+
 
         p {
             color: #608334;
@@ -180,8 +204,6 @@ https://www.jotform.com/build/233032800000331#preview
             cursor: pointer;
         }
 
-
-
         select:hover {
             background-color: #ECEBC9;
         }
@@ -205,66 +227,108 @@ https://www.jotform.com/build/233032800000331#preview
     <center><img src="IconoLetrasBorde.png" /></center>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
         <center>
-            <h3> Centro de Sugerencias para CyberThrone </h3>
+            <h3> Sugerencias para CyberThrone </h3>
 
-            <img src="silla.png" class="silla" alt="silla">
-
-
-
+            <img src="silla (1).png" class="silla" alt="imagen_silla">
+            <div class="espacio"></div>
             <div class="linea"></div>
 
 
-            <label for="duenio"> ¿Cómo te llamas? </label>
-            <input value="<?php if (isset($_POST["duenio"]))
-                echo $_POST["duenio"]; ?>" id="duenio" name="duenio" type="text">
-            <span class="error">
-                <?php echo $duenioError; ?>
-            </span>
+            <h2> Formulario </h3>
 
-            <label for="nombreMascota"> ¿Cómo se llama tu mascota? </label>
-            <input value="<?php if (isset($_POST["nombreMascota"]))
-                echo $_POST["nombreMascota"]; ?>" id="nombreMascota" name="nombreMascota" type="text">
-            <span class="error">
-                <?php echo $nombreMascotaError; ?>
-            </span>
+                <div class="elementos">
+                    <label for="nombre" class="nombre"> Tu nombre </label>
+                    <input value="<?php if (isset($_POST["nombre"]))
+                        echo $_POST["nombre"]; ?>" id="nombre" name="nombre" type="text">
+                    <span class="error">
+                        <?php echo $nombreError; ?>
+                    </span>
 
-            <h3> Tu mascota: </h3>
-            <label for="descripcion"> ¡Cuéntanos algo sobre tu mascota! </label>
-            <input value="<?php if (isset($_POST["descripcion"]))
-                echo $_POST["descripcion"]; ?>" id="descripcion" name="descripcion" type="text">
-            <span class="error">
-                <?php echo $descripcionError; ?>
-            </span>
+                    <label for="edad" class="edad"> Edad </label>
+                    <input value="<?php if (isset($_POST["edad"]))
+                        echo $_POST["edad"]; ?>" id="edad" name="edad" type="text">
+                    <span class="error">
+                        <?php echo $edadError; ?>
+                    </span>
 
-            <label for="tipoMascota"> Indica qué tipo de animal es tu mascota: </label>
-            <select name="tipoMascota" id="tipoMascota" size="7">
-                <option value="Gato" <?php if (isset($tipoMascota) && $tipoMascota === "Gato")
-                    echo "selected"; ?>>Gato
-                </option>
-                <option value="Perro" <?php if (isset($tipoMascota) && $tipoMascota === "Perro")
-                    echo "selected"; ?>>Perro
-                </option>
-                <option value="Tortuga" <?php if (isset($tipoMascota) && $tipoMascota === "Tortuga")
-                    echo "selected"; ?>>
-                    Tortuga</option>
-                <option value="Pajaro" <?php if (isset($tipoMascota) && $tipoMascota === "Pajaro")
-                    echo "selected"; ?>>
-                    Pajaro</option>
-                <option value="Conejo" <?php if (isset($tipoMascota) && $tipoMascota === "Conejo")
-                    echo "selected"; ?>>
-                    Conejo</option>
-                <option value="Pez" <?php if (isset($tipoMascota) && $tipoMascota === "Pez")
-                    echo "selected"; ?>>Pez
-                </option>
-            </select>
-            <span class="error">
-                <?php echo $tipoMascotaError; ?>
-            </span>
+                    <label for="telefono" class="telefono"> Teléfono </label>
+                    <input value="<?php if (isset($_POST["telefono"]))
+                        echo $_POST["telefono"]; ?>" id="telefono" name="telefono" type="text">
+                    <span class="telefono">
+                        <?php echo $telefonoError; ?>
+                    </span>
 
-            <input type="file" name="fichero" accept=".jpg, .jpeg, .png" />
+                    <label for="email" class="email"> Email </label>
+                    <input value="<?php if (isset($_POST["email"]))
+                        echo $_POST["email"]; ?>" id="email" name="email" type="text">
+                    <span class="error">
+                        <?php echo $emailError; ?>
+                    </span>
 
-            <center><input type="submit"></center>
+                    <label for="comunidadAutonoma" class="comunidad"> Indica tu comunidad autónoma </label>
+                    <select name="comunidadAutonoma" id="comunidadAutonoma" size="18">
+                        <option value="Andalucía" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Andalucía")
+                            echo "selected"; ?>>Andalucía
+                        </option>
+                        <option value="Aragón" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Aragón")
+                            echo "selected"; ?>>Aragón
+                        </option>
+                        <option value="Asturias" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Asturias")
+                            echo "selected"; ?>>Asturias
+                        </option>
+                        <option value="Canarias" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Canarias")
+                            echo "selected"; ?>>Canarias
+                        </option>
+                        <option value="Cantabria" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Cantabria")
+                            echo "selected"; ?>>Cantabria
+                        </option>
+                        <option value="Castilla y León" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Castilla y León")
+                            echo "selected"; ?>>Castilla y León
+                        </option>
+                        <option value="Castilla-La Mancha" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Castilla-La Mancha")
+                            echo "selected"; ?>>Castilla-La Mancha
+                        </option>
+                        <option value="Cataluña" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Cataluña")
+                            echo "selected"; ?>>Cataluña
+                        </option>
+                        <option value="Comunidad de Madrid" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Comunidad de Madrid")
+                            echo "selected"; ?>>Comunidad de Madrid
+                        </option>
+                        <option value="Comunidad Foral de Navarra" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Comunidad Foral de Navarra")
+                            echo "selected"; ?>>Comunidad Foral de
+                            Navarra
+                        </option>
+                        <option value="Comunidad Valenciana" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Comunidad Valenciana")
+                            echo "selected"; ?>>Comunidad Valenciana
+                        </option>
+                        <option value="Extremadura" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Extremadura")
+                            echo "selected"; ?>>Extremadura
+                        </option>
+                        <option value="Galicia" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Galicia")
+                            echo "selected"; ?>>Galicia
+                        </option>
+                        <option value="Islas Baleares" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Islas Baleares")
+                            echo "selected"; ?>>Islas Baleares
+                        </option>
+                        <option value="La Rioja" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "La Rioja")
+                            echo "selected"; ?>>La Rioja
+                        </option>
+                        <option value="Murcia" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Murcia")
+                            echo "selected"; ?>>Murcia
+                        </option>
+                        <option value="País Vasco" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "País Vasco")
+                            echo "selected"; ?>>País Vasco
+                        </option>
+                    </select>
+                    <span class="error">
+                        <?php echo $comunidadAutonomaError; ?>
+                    </span>
 
+
+                    <input type="file" name="fichero" accept=".jpg, .jpeg, .png" />
+
+                    <center><input type="submit"></center>
+                </div>
         </center>
     </form>
 </body>
