@@ -61,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 #783DAC
 /*
 
+<link href="directorio_bootstrap" rel="stylesheet" media="screen">
 https://colorpalette.imageonline.co/es/
 https://www.jotform.com/build/233032800000331#preview
         .formcontainer {
@@ -139,7 +140,7 @@ https://www.jotform.com/build/233032800000331#preview
 
         .titulos {
             margin-top: 120px;
-            margin-right: 610px;
+            margin-right: 598px;
             font-size: 90%;
             color: #743CAC;
         }
@@ -175,38 +176,40 @@ https://www.jotform.com/build/233032800000331#preview
         }
 
         input[type="text"] {
+            font-family: 'MavenPro', sans-serif;
+            font-weight: bold;
             width: 20%;
             padding: 10px;
             margin: 5px 0;
-            border: 1px solid #A8CA7E;
+            border: 2px solid #743cac;
             border-radius: 5px;
-            outline-color: #608334;
-            background-color: #F6F6DB;
-            color: #608334;
+            outline-color: #f479ad;
+            background-color: #fadef7;
+            color: #f479ad;
         }
 
         select {
             width: 80%;
             padding: 10px;
             margin: 5px 0;
-            border: 1px solid #A8CA7E;
+            border: 2px solid #743cac;
             border-radius: 5px;
-            background-color: #F6F6DB;
-            outline-color: #608334;
-            color: #608334;
+            background-color: #fadef7;
+            outline-color: #f479ad;
+            color: #f479ad;
             cursor: pointer;
         }
 
         input[type="file"] {
             width: 100%;
             margin: 10px 0;
-            color: #608334;
+            color: #7048c7;
 
         }
 
         input[type="submit"] {
-            background-color: #F6F6DB;
-            color: #608334;
+            background-color: #fadef7;
+            color: #f479ad;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
@@ -214,19 +217,19 @@ https://www.jotform.com/build/233032800000331#preview
         }
 
         select:hover {
-            background-color: #ECEBC9;
+            background-color: #f3ceed;
         }
 
         select option {
-            color: #A7D489;
+            color: #9d8ce0;
         }
 
         select option:hover {
-            background-color: #608334;
+            background-color: #f479ad;
         }
 
         input[type="submit"]:hover {
-            background-color: #A7D489;
+            background-color: #f479ad;
         }
     </style>
 
@@ -248,28 +251,28 @@ https://www.jotform.com/build/233032800000331#preview
 
                 <label for="nombre" class="titulos"> Tu nombre </label>
                 <input value="<?php if (isset($_POST["nombre"]))
-                                    echo $_POST["nombre"]; ?>" id="nombre" name="nombre" type="text">
+                    echo $_POST["nombre"]; ?>" id="nombre" name="nombre" type="text">
                 <span class="error">
                     <?php echo $nombreError; ?>
                 </span>
 
                 <label for="edad" class="titulos"> Edad </label>
                 <input value="<?php if (isset($_POST["edad"]))
-                                    echo $_POST["edad"]; ?>" id="edad" name="edad" type="text">
+                    echo $_POST["edad"]; ?>" id="edad" name="edad" type="text">
                 <span class="error">
                     <?php echo $edadError; ?>
                 </span>
 
                 <label for="telefono" class="titulos"> Teléfono </label>
                 <input value="<?php if (isset($_POST["telefono"]))
-                                    echo $_POST["telefono"]; ?>" id="telefono" name="telefono" type="text">
+                    echo $_POST["telefono"]; ?>" id="telefono" name="telefono" type="text">
                 <span class="telefono">
                     <?php echo $telefonoError; ?>
                 </span>
 
                 <label for="email" class="titulos"> Email </label>
                 <input value="<?php if (isset($_POST["email"]))
-                                    echo $_POST["email"]; ?>" id="email" name="email" type="text">
+                    echo $_POST["email"]; ?>" id="email" name="email" type="text">
                 <span class="error">
                     <?php echo $emailError; ?>
                 </span>
@@ -277,56 +280,56 @@ https://www.jotform.com/build/233032800000331#preview
                 <label for="comunidadAutonoma" class="titulos"> Indica tu comunidad autónoma </label>
                 <select name="comunidadAutonoma" id="comunidadAutonoma" size="18">
                     <option value="Andalucía" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Andalucía")
-                                                    echo "selected"; ?>>Andalucía
+                        echo "selected"; ?>>Andalucía
                     </option>
                     <option value="Aragón" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Aragón")
-                                                echo "selected"; ?>>Aragón
+                        echo "selected"; ?>>Aragón
                     </option>
                     <option value="Asturias" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Asturias")
-                                                    echo "selected"; ?>>Asturias
+                        echo "selected"; ?>>Asturias
                     </option>
                     <option value="Canarias" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Canarias")
-                                                    echo "selected"; ?>>Canarias
+                        echo "selected"; ?>>Canarias
                     </option>
                     <option value="Cantabria" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Cantabria")
-                                                    echo "selected"; ?>>Cantabria
+                        echo "selected"; ?>>Cantabria
                     </option>
                     <option value="Castilla y León" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Castilla y León")
-                                                        echo "selected"; ?>>Castilla y León
+                        echo "selected"; ?>>Castilla y León
                     </option>
                     <option value="Castilla-La Mancha" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Castilla-La Mancha")
-                                                            echo "selected"; ?>>Castilla-La Mancha
+                        echo "selected"; ?>>Castilla-La Mancha
                     </option>
                     <option value="Cataluña" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Cataluña")
-                                                    echo "selected"; ?>>Cataluña
+                        echo "selected"; ?>>Cataluña
                     </option>
                     <option value="Comunidad de Madrid" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Comunidad de Madrid")
-                                                            echo "selected"; ?>>Comunidad de Madrid
+                        echo "selected"; ?>>Comunidad de Madrid
                     </option>
                     <option value="Comunidad Foral de Navarra" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Comunidad Foral de Navarra")
-                                                                    echo "selected"; ?>>Comunidad Foral de
+                        echo "selected"; ?>>Comunidad Foral de
                         Navarra
                     </option>
                     <option value="Comunidad Valenciana" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Comunidad Valenciana")
-                                                                echo "selected"; ?>>Comunidad Valenciana
+                        echo "selected"; ?>>Comunidad Valenciana
                     </option>
                     <option value="Extremadura" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Extremadura")
-                                                    echo "selected"; ?>>Extremadura
+                        echo "selected"; ?>>Extremadura
                     </option>
                     <option value="Galicia" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Galicia")
-                                                echo "selected"; ?>>Galicia
+                        echo "selected"; ?>>Galicia
                     </option>
                     <option value="Islas Baleares" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Islas Baleares")
-                                                        echo "selected"; ?>>Islas Baleares
+                        echo "selected"; ?>>Islas Baleares
                     </option>
                     <option value="La Rioja" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "La Rioja")
-                                                    echo "selected"; ?>>La Rioja
+                        echo "selected"; ?>>La Rioja
                     </option>
                     <option value="Murcia" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Murcia")
-                                                echo "selected"; ?>>Murcia
+                        echo "selected"; ?>>Murcia
                     </option>
                     <option value="País Vasco" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "País Vasco")
-                                                    echo "selected"; ?>>País Vasco
+                        echo "selected"; ?>>País Vasco
                     </option>
                 </select>
                 <span class="error">
