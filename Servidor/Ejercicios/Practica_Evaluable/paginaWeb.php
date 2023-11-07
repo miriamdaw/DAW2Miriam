@@ -347,8 +347,6 @@ https://www.jotform.com/build/233032800000331#preview
                 <?php echo $comunidadAutonomaError; ?>
             </span>
 
-
-            </div>
             <input type="file" name="fichero" accept=".jpg, .jpeg, .png" />
 
             <center><input type="submit"></center>
