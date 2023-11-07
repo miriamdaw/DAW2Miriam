@@ -1,0 +1,5 @@
+<?php
+/*
+ligero, dominio público
+*/
+?>

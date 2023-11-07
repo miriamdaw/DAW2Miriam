@@ -1,0 +1,19 @@
+------------- Protocolos Capa 4 (Transporte) -------------
+
+>UDP -> User Datagram Protocol
+
+* ¿Qué es puerto? -> Puerta lógica del ordenador, vía de entrada o salida a una aplicación de red. A algo que esté en la web.
+
+
+>TCP -> Transport Control Protocol
+    >Orientado a conexión TTL -> Time to Live
+    >Transmisión fiable de datos -> RTT -> Rapid Trip Time
+
+    Emisor                Receptor
+    1      <------------>  Ordena paquetes
+    2      <------------>  ACK -> Acknowlegment (de que llega el paquete)
+    3      <------------>
+    4      <------------>
+    5      <------------>
+    
+* ¿Dónde se usa? -> correo electrónico
