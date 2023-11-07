@@ -160,18 +160,6 @@ https://www.jotform.com/build/233032800000331#preview
             /* Espacio entre cada grupo */
         }
 
-        .recuadros {
-            font-family: 'MavenPro', sans-serif;
-            font-weight: bold;
-            width: 75%;
-            padding: 10px;
-            border: 2px solid #743cac;
-            border-radius: 5px;
-            outline-color: #f479ad;
-            background-color: #fadef7;
-            color: #f479ad;
-        }
-
         center {
             text-align: center;
         }
@@ -272,47 +260,33 @@ https://www.jotform.com/build/233032800000331#preview
             <div class="espacio"></div>
             <div class="linea"></div>
 
+            <label for="nombre" class="titulos"> Tu nombre </label>
+            <input value="<?php if (isset($_POST["nombre"]))
+                echo $_POST["nombre"]; ?>" id="nombre" name="nombre" type="text" class="recuadros">
+            <span class="error">
+                <?php echo $nombreError; ?>
+            </span>
 
-        
+            <label for="edad" class="titulos"> Edad </label>
+            <input value="<?php if (isset($_POST["edad"]))
+                echo $_POST["edad"]; ?>" id="edad" name="edad" type="text" class="recuadros">
+            <span class="error">
+                <?php echo $edadError; ?>
+            </span>
 
+            <label for="telefono" class="titulos"> Teléfono </label>
+            <input value="<?php if (isset($_POST["telefono"]))
+                echo $_POST["telefono"]; ?>" id="telefono" name="telefono" type="text" class="recuadros">
+            <span class="telefono">
+                <?php echo $telefonoError; ?>
+            </span>
 
-            <div class="formulario-container">
-                <div class="form-group">
-                    <label for="nombre" class="titulos"> Tu nombre </label>
-                    <input value="<?php if (isset($_POST["nombre"]))
-                        echo $_POST["nombre"]; ?>" id="nombre"
-                        name="nombre" type="text" class="recuadros">
-                    <span class="error">
-                        <?php echo $nombreError; ?>
-                    </span>
-                </div>
-
-                <div class="form-group">
-                    <label for="edad" class="titulos"> Edad </label>
-                    <input value="<?php if (isset($_POST["edad"]))
-                        echo $_POST["edad"]; ?>" id="edad" name="edad"
-                        type="text" class="recuadros">
-                    <span class="error">
-                        <?php echo $edadError; ?>
-                    </span>
-                </div>
-
-                <div class="form-group">
-                    <label for="telefono" class="titulos"> Teléfono </label>
-                    <input value="<?php if (isset($_POST["telefono"]))
-                        echo $_POST["telefono"]; ?>" id="telefono" name="telefono" type="text" class="recuadros">
-                    <span class="telefono">
-                        <?php echo $telefonoError; ?>
-                    </span>
-                </div>
-
-                <label for="email" class="titulos"> Email </label>
-                <input value="<?php if (isset($_POST["email"]))
-                    echo $_POST["email"]; ?>" id="email" name="email" type="text" class="recuadros">
-                <span class="error">
-                    <?php echo $emailError; ?>
-                </span>
-            </div>
+            <label for="email" class="titulos"> Email </label>
+            <input value="<?php if (isset($_POST["email"]))
+                echo $_POST["email"]; ?>" id="email" name="email" type="text" class="recuadros">
+            <span class="error">
+                <?php echo $emailError; ?>
+            </span>
 
             <label for="comunidadAutonoma" class="titulos"> Indica tu comunidad autónoma </label>
             <select name="comunidadAutonoma" id="comunidadAutonoma" size="18">
