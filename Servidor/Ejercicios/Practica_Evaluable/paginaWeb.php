@@ -64,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <link href="directorio_bootstrap" rel="stylesheet" media="screen">
 https://colorpalette.imageonline.co/es/
 https://www.jotform.com/build/233032800000331#preview
+https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1699444962&_gl=1*qjc1se*_ga*MTM5NDYzNzMyMi4xNjk5NDQ0OTYy*_ga_SG6DRL7MCG*MTY5OTQ0NDk2MS4xLjAuMTY5OTQ0NDk2MS4wLjAuMA..
         .formcontainer {
         text-align: left;
         margin: 24px 50px 12px;
@@ -184,7 +185,6 @@ https://www.jotform.com/build/233032800000331#preview
         }
 
         label {
-            display: block;
             font-weight: bold;
             margin-top: 10px;
             color: #5534ad;

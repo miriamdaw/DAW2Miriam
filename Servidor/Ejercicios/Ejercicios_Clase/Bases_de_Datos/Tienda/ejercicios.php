@@ -20,7 +20,6 @@ JOIN productos p ON pe.producto_id = p.id;
 
 
 
-
 /*
 Definir una función que liste todos los pedidos de un cliente dado por su nombre
 */
