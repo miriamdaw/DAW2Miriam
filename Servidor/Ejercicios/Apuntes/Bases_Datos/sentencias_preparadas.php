@@ -40,9 +40,7 @@ try {
         $stmt = $db->prepare('INSERT INTO usuarios (nombre, clave, rol) VALUES
         (:nom, :clave, :rol)');
 
-        $stmt->bindParam(':nom', $nombre);
-        $stmt->bindParam(':clave',$clave);
-        $stmt->bindParam(':rol', $rol);
+        $stmt->bindParam("ssi, $nombre, $clave, $rol");
 
 
         if (!$sentencia = $mysqli ->prepare('INSERT INTO usuarios(nombre, clave, rol) 
