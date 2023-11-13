@@ -1,6 +1,6 @@
 <?php
 include("validar.php");
-$nombreError = $edadError = $descripcionError = $telefonoError = $comunidadAutonomaError = "";
+$nombreError = $apellidoError = $edadError = $descripcionError = $telefonoError = $comunidadAutonomaError = "";
 error_reporting(E_ERROR | E_PARSE);
 
 
@@ -8,6 +8,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($_POST["nombre"])) {
         $nombreError = "Indique su nombre.";
+    }
+
+    if (empty($_POST["apellido"])) {
+        $nombreError = "Indique su apellido.";
     }
 
     if (empty($_POST["edad"])) {
@@ -139,28 +143,6 @@ https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1
             height: 250px;
         }
 
-        .titulos {
-            font-size: 90%;
-            color: #743CAC;
-            margin-top: 5px;
-            /* Ajusta el margen superior */
-            display: inline-block;
-            /* Para que los títulos estén en línea con los campos de entrada */
-            width: 25%;
-            /* Ancho del título, puedes ajustarlo según tus preferencias */
-        }
-
-        .formulario-container {
-            margin-top: 20px;
-            text-align: left;
-            /* Espacio entre el título "Formulario" y los campos */
-        }
-
-        .form-group {
-            margin-bottom: 10px;
-            /* Espacio entre cada grupo */
-        }
-
         center {
             text-align: center;
         }
@@ -179,7 +161,6 @@ https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1
             margin-left: 35px;
         }
 
-
         p {
             color: #608334;
         }
@@ -189,6 +170,33 @@ https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1
             margin-top: 10px;
             color: #5534ad;
         }
+
+        .labelContainer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .recuadroLabel {
+            flex: 1;
+            margin-right: 10px;
+            text-align: right;
+        }
+
+        .recuadroInput {
+            flex: 2;
+            width: 60%;
+            /* Ajusta el ancho según sea necesario */
+            padding: 10px;
+            border: 2px solid #743cac;
+            border-radius: 5px;
+            outline-color: #f479ad;
+            background-color: #fadef7;
+            color: #f479ad;
+        }
+
+
 
         input[type="text"] {
             font-family: 'MavenPro', sans-serif;
@@ -260,33 +268,49 @@ https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1
             <div class="espacio"></div>
             <div class="linea"></div>
 
-            <label for="nombre" class="titulos"> Tu nombre </label>
-            <input value="<?php if (isset($_POST["nombre"]))
-                echo $_POST["nombre"]; ?>" id="nombre" name="nombre" type="text" class="recuadros">
-            <span class="error">
-                <?php echo $nombreError; ?>
-            </span>
+            <div class="labelContainer">
+                <label for="nombre" class="recuadroLabel"> Tu nombre </label>
+                <input value="<?php if (isset($_POST["nombre"]))
+                    echo $_POST["nombre"]; ?>" id="nombre" name="nombre"
+                    type="text" class="recuadroInput">
+                <span class="error">
+                    <?php echo $nombreError; ?>
+                </span>
 
-            <label for="edad" class="titulos"> Edad </label>
-            <input value="<?php if (isset($_POST["edad"]))
-                echo $_POST["edad"]; ?>" id="edad" name="edad" type="text" class="recuadros">
-            <span class="error">
-                <?php echo $edadError; ?>
-            </span>
+                <input value="<?php if (isset($_POST["apellido"]))
+                    echo $_POST["apellido"]; ?>" id="apellido"
+                    name="apellido" type="text" class="recuadroInput">
+                <span class="error">
+                    <?php echo $apellidoError; ?>
+                </span>
+            </div>
 
-            <label for="telefono" class="titulos"> Teléfono </label>
-            <input value="<?php if (isset($_POST["telefono"]))
-                echo $_POST["telefono"]; ?>" id="telefono" name="telefono" type="text" class="recuadros">
-            <span class="telefono">
-                <?php echo $telefonoError; ?>
-            </span>
+            <div class="labelContainer">
+                <label for="edad" class="recuadroLabel"> Edad </label>
+                <input value="<?php if (isset($_POST["edad"]))
+                    echo $_POST["edad"]; ?>" id="edad" name="edad" type="text" class="recuadroInput">
+                <span class="error">
+                    <?php echo $edadError; ?>
+                </span>
+            </div>
 
-            <label for="email" class="titulos"> Email </label>
-            <input value="<?php if (isset($_POST["email"]))
-                echo $_POST["email"]; ?>" id="email" name="email" type="text" class="recuadros">
-            <span class="error">
-                <?php echo $emailError; ?>
-            </span>
+            <div class="labelContainer">
+                <label for="telefono" class="recuadroLabel"> Teléfono </label>
+                <input value="<?php if (isset($_POST["telefono"]))
+                    echo $_POST["telefono"]; ?>" id="telefono" name="telefono" type="text" class="recuadroInput">
+                <span class="telefono">
+                    <?php echo $telefonoError; ?>
+                </span>
+            </div>
+
+            <div class="labelContainer">
+                <label for="email" class="recuadroLabel"> Email </label>
+                <input value="<?php if (isset($_POST["email"]))
+                    echo $_POST["email"]; ?>" id="email" name="email" type="text" class="recuadroInput">
+                <span class="error">
+                    <?php echo $emailError; ?>
+                </span>
+            </div>
 
             <label for="comunidadAutonoma" class="titulos"> Indica tu comunidad autónoma </label>
             <select name="comunidadAutonoma" id="comunidadAutonoma" size="18">
