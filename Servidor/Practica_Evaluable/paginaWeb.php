@@ -134,7 +134,7 @@ https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1
             width: 90%;
             padding: 0;
             margin: 24px auto 0 auto;
-            margin-bottom: 13px;
+            margin-bottom: 35px;
             opacity: 50%;
 
         }
@@ -157,8 +157,9 @@ https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1
             color: #F479AD;
             font-size: 150%;
             font-weight: bold;
-            float: left;
-            margin-left: 35px;
+            text-align: left;
+            margin-left: 39px;
+            margin-bottom: 68px;
         }
 
         p {
@@ -180,14 +181,21 @@ https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1
 
         .recuadroLabel {
             flex: 1;
-            margin-right: 10px;
-            text-align: right;
+            margin-left: 46px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .recuadroComunidad {
+            flex: 1;
+            margin-left: 46px;
+            margin-bottom: 15px;
+            text-align: left;
         }
 
         .recuadroInput {
             flex: 2;
-            width: 60%;
-            /* Ajusta el ancho según sea necesario */
+            width: 80%;
             padding: 10px;
             border: 2px solid #743cac;
             border-radius: 5px;
@@ -196,7 +204,9 @@ https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1
             color: #f479ad;
         }
 
-
+        .recuadroSelect {
+            
+        }
 
         input[type="text"] {
             font-family: 'MavenPro', sans-serif;
@@ -268,20 +278,14 @@ https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1
             <div class="espacio"></div>
             <div class="linea"></div>
 
+            <h2> Información del cliente </h2>
+
             <div class="labelContainer">
                 <label for="nombre" class="recuadroLabel"> Tu nombre </label>
                 <input value="<?php if (isset($_POST["nombre"]))
-                    echo $_POST["nombre"]; ?>" id="nombre" name="nombre"
-                    type="text" class="recuadroInput">
+                    echo $_POST["nombre"]; ?>" id="nombre" name="nombre" type="text" class="recuadroInput">
                 <span class="error">
                     <?php echo $nombreError; ?>
-                </span>
-
-                <input value="<?php if (isset($_POST["apellido"]))
-                    echo $_POST["apellido"]; ?>" id="apellido"
-                    name="apellido" type="text" class="recuadroInput">
-                <span class="error">
-                    <?php echo $apellidoError; ?>
                 </span>
             </div>
 
@@ -312,64 +316,66 @@ https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1
                 </span>
             </div>
 
-            <label for="comunidadAutonoma" class="titulos"> Indica tu comunidad autónoma </label>
-            <select name="comunidadAutonoma" id="comunidadAutonoma" size="18">
-                <option value="Andalucía" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Andalucía")
-                    echo "selected"; ?>>Andalucía
-                </option>
-                <option value="Aragón" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Aragón")
-                    echo "selected"; ?>>Aragón
-                </option>
-                <option value="Asturias" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Asturias")
-                    echo "selected"; ?>>Asturias
-                </option>
-                <option value="Canarias" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Canarias")
-                    echo "selected"; ?>>Canarias
-                </option>
-                <option value="Cantabria" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Cantabria")
-                    echo "selected"; ?>>Cantabria
-                </option>
-                <option value="Castilla y León" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Castilla y León")
-                    echo "selected"; ?>>Castilla y León
-                </option>
-                <option value="Castilla-La Mancha" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Castilla-La Mancha")
-                    echo "selected"; ?>>Castilla-La Mancha
-                </option>
-                <option value="Cataluña" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Cataluña")
-                    echo "selected"; ?>>Cataluña
-                </option>
-                <option value="Comunidad de Madrid" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Comunidad de Madrid")
-                    echo "selected"; ?>>Comunidad de Madrid
-                </option>
-                <option value="Comunidad Foral de Navarra" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Comunidad Foral de Navarra")
-                    echo "selected"; ?>>Comunidad Foral de
-                    Navarra
-                </option>
-                <option value="Comunidad Valenciana" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Comunidad Valenciana")
-                    echo "selected"; ?>>Comunidad Valenciana
-                </option>
-                <option value="Extremadura" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Extremadura")
-                    echo "selected"; ?>>Extremadura
-                </option>
-                <option value="Galicia" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Galicia")
-                    echo "selected"; ?>>Galicia
-                </option>
-                <option value="Islas Baleares" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Islas Baleares")
-                    echo "selected"; ?>>Islas Baleares
-                </option>
-                <option value="La Rioja" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "La Rioja")
-                    echo "selected"; ?>>La Rioja
-                </option>
-                <option value="Murcia" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Murcia")
-                    echo "selected"; ?>>Murcia
-                </option>
-                <option value="País Vasco" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "País Vasco")
-                    echo "selected"; ?>>País Vasco
-                </option>
-            </select>
-            <span class="error">
-                <?php echo $comunidadAutonomaError; ?>
-            </span>
+            <div class="labelContainer">
+                <label for="comunidadAutonoma" class="recuadroComunidad"> Indica tu comunidad autónoma </label>
+                <select name="comunidadAutonoma" id="comunidadAutonoma" size="18" class="recuadroSelect">
+                    <option value="Andalucía" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Andalucía")
+                        echo "selected"; ?>>Andalucía
+                    </option>
+                    <option value="Aragón" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Aragón")
+                        echo "selected"; ?>>Aragón
+                    </option>
+                    <option value="Asturias" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Asturias")
+                        echo "selected"; ?>>Asturias
+                    </option>
+                    <option value="Canarias" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Canarias")
+                        echo "selected"; ?>>Canarias
+                    </option>
+                    <option value="Cantabria" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Cantabria")
+                        echo "selected"; ?>>Cantabria
+                    </option>
+                    <option value="Castilla y León" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Castilla y León")
+                        echo "selected"; ?>>Castilla y León
+                    </option>
+                    <option value="Castilla-La Mancha" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Castilla-La Mancha")
+                        echo "selected"; ?>>Castilla-La Mancha
+                    </option>
+                    <option value="Cataluña" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Cataluña")
+                        echo "selected"; ?>>Cataluña
+                    </option>
+                    <option value="Comunidad de Madrid" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Comunidad de Madrid")
+                        echo "selected"; ?>>Comunidad de Madrid
+                    </option>
+                    <option value="Comunidad Foral de Navarra" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Comunidad Foral de Navarra")
+                        echo "selected"; ?>>Comunidad Foral de
+                        Navarra
+                    </option>
+                    <option value="Comunidad Valenciana" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Comunidad Valenciana")
+                        echo "selected"; ?>>Comunidad Valenciana
+                    </option>
+                    <option value="Extremadura" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Extremadura")
+                        echo "selected"; ?>>Extremadura
+                    </option>
+                    <option value="Galicia" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Galicia")
+                        echo "selected"; ?>>Galicia
+                    </option>
+                    <option value="Islas Baleares" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Islas Baleares")
+                        echo "selected"; ?>>Islas Baleares
+                    </option>
+                    <option value="La Rioja" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "La Rioja")
+                        echo "selected"; ?>>La Rioja
+                    </option>
+                    <option value="Murcia" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Murcia")
+                        echo "selected"; ?>>Murcia
+                    </option>
+                    <option value="País Vasco" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "País Vasco")
+                        echo "selected"; ?>>País Vasco
+                    </option>
+                </select>
+                <span class="error">
+                    <?php echo $comunidadAutonomaError; ?>
+                </span>
+            </div>
 
             <input type="file" name="fichero" accept=".jpg, .jpeg, .png" />
 
