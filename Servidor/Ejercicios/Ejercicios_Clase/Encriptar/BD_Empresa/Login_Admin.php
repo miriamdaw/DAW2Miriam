@@ -7,29 +7,31 @@
  * encriptar claves
  * rol
  * script de registro de personas --> enlace a otro php
- * formulario de registro y que se guarde en la base de datos, dos o tres usuarios encriptando     
+ * formulario de registro y que se guarde en la base de datos, dos o tres usuarios encriptando   
+ * en el login eres el admin, estas entrando, en el registro vas a ir metiendo los clientes  
  */
 
 ////////////////////// Conectar Base Datos Empresa
-$cadena_conexion = 'mysql:dbname=empresa;
-host=127.0.0.1';
-$usuario = 'root';
-$clave = '';
 try {
-    $bd = new PDO($cadena_conexion, $usuario, $clave);
+    $bd = new PDO('mysql:dbname=empresa;host=127.0.0.1', 'root', '');
     echo "Conexión realizada con éxito<br>";
 
 } catch (PDOException $e) {
     echo 'Error con la base de datos: ' . $e->getMessage();
 }
 
-
-////////////////////// Verificar y enviar a nueva página
+////////////////////// Verificar credenciales
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if ($_POST['usuario'] === "usuario" and $_POST["clave"] === "1234") {
-        header("Location: principal.php");
+    if ($_POST['usuario'] === "Miriam" and $_POST["contraseña"] === "1234") {
+        // Credenciales de ejemplo
+        $usuario = $_POST['usuario'];
+        $clave = $_POST['contraseña'];
+
+        //Redirigir a formulario de registro de clientes
+        header("Location: Registro_Clientes.php");
+        exit;
     } else {
-        $err = true;
+        $err = "Usuario o contraseña incorrectos";
     }
 }
 ?>
@@ -52,13 +54,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input value="<?php if (isset($usuario))
             echo $usuario; ?>" id="usuario" name="usuario" type="text">
 
-        <label for="clave">Clave</label>
-        <input id="clave" name="clave" type="password">
+        <label for="contraseña">Contraseña</label>
+        <input id="contraseña" name="contraseña" type="password">
 
         <input type="submit">
     </form>
 </body>
 
 </html>
-
-
