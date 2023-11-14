@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+
+    <!-- Creo un div (contenedor) que tendrá dentro el mensaje de bienvenida -->
+    <div id="saludo"></div>
+
+
+    <!-- Creo tres botones con el atributo "onclick", que es un evento 
+        que te permite ejecutar una función cuando se le da click a un elemento.
+        En este caso, yo he creado una función "saludar" que toma como parámetros 
+        cada idioma correspondiente -->
+    <button onclick="saludar('es')">Español</button>
+    <button onclick="saludar('ru')">Ruso</button>
+    <button onclick="saludar('en')">Inglés</button>
+
+
+    <!-- Empiezo el script y defino la función "saludar" que me permitirá
+         mostrar un mensaje cuando pulse el botón del idioma correspondiente -->
+    <script>
+        function saludar(idioma) {
+
+
+            /* Defino una variable mensaje, que será de tipo string, pues le iremos 
+               asignando como valor un mensaje en el idioma que corresponda */
+            var mensaje;
+
+
+            /* Voy a utilizar un método switch para definir cada caso diferente; 
+               si pulsas el botón de español se dispara el caso "es", si pulsas
+               el botón de ruso se dispara el caso "ru", y así sucesivamente.
+               Al final de cada caso voy a escribir un "break" para que el switch 
+               no siga funcionando */
+            switch (idioma) {
+                case 'es':
+                    mensaje = '¡Hola!';
+                    break;
+                case 'ru':
+                    mensaje = 'Привет!';
+                    break;
+                case 'en':
+                    mensaje = 'Hello!';
+                    break;
+            }
+
+            
+            /* Para mostrar el mensaje por pantalla, escribo el objeto de HTML "document"
+               y llamo al método "getElementById", que me buscará un atributo de tipo "id"
+               que además sea igual a saludo.
+               En este caso, definimos al principio del ejercicio un atributo de tipo id 
+               que es "saludo". 
+               "innerText" es una propiedad que representa el contenido de texto de un elemento.
+               Le vamos a asignar el valor que tenga la variable mensaje, que como hemos visto 
+               en el método switch, irá cambiando según el idioma elegido. */
+            document.getElementById('saludo').innerText = mensaje;
+        }
+    </script>
+</body>
+
+</html>

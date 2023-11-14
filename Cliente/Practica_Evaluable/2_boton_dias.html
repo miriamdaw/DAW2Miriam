@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Días de la Semana</title>
+</head>
+
+<body>
+
+    <p>Pulsa en el botón para ver los días de la semana</p>
+
+    <!-- Creo un div (contenedor) que tendrá dentro el mensaje de bienvenida -->  
+    <button onclick="mostrarDias()">Días de la Semana</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function mostrarDias() {
+            // Un array con los días de la semana
+            var diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+
+            // Obtén la referencia al área donde mostrar los días
+            var resultado = document.getElementById('resultado');
+
+            // Crea un texto con los días y actualiza el contenido del área
+            resultado.textContent = diasSemana.join(', ');
+        }
+    </script>
+
+</body>
+
+</html>
