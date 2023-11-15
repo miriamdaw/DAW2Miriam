@@ -9,21 +9,24 @@ try {
 
 // Registrar Nuevo Usuario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $cliente = $_POST['cliente'];
+    $nombre = $_POST['nombre'];
     $clave = $_POST['clave'];
+    $rol = $_POST['rol'];
 
     // Encriptar la nueva contraseña antes de almacenarla en la base de datos
     $clave_hash = password_hash($clave, PASSWORD_DEFAULT);
 
     // Mostrar credenciales antes de insertar
     echo "Credenciales antes de insertar en la base de datos:<br>";
-    echo "Cliente: " . htmlspecialchars($cliente) . "<br>";
+    echo "Cliente: " . htmlspecialchars($nombre) . "<br>";
     echo "Clave: " . htmlspecialchars($clave) . "<br>";
+    echo "Rol: " . htmlspecialchars($rol) . "<br>";
 
     // Realizar la consulta preparada para insertar un nuevo usuario
-    $stmt = $bd->prepare("INSERT INTO usuarios (cliente, clave) VALUES (?, ?)");
-    $stmt->bindParam(1, $cliente);
+    $stmt = $bd->prepare("INSERT INTO usuarios (nombre, clave, rol) VALUES (?, ?, ?)");
+    $stmt->bindParam(1, $nombre);
     $stmt->bindParam(2, $clave_hash);
+    $stmt->bindParam(3, $rol);
 
     // Manejar errores de ejecución
     try {
@@ -34,15 +37,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Obtener todos los datos del cliente
-    $stmt = $bd->prepare("SELECT cliente, clave FROM usuarios");
+    $stmt = $bd->prepare("SELECT nombre, clave, rol FROM usuarios");
     $stmt->execute();
-    $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Mostrar clientes
     echo "Clientes ingresados en la base de datos:<br>";
-    foreach ($clientes as $cliente) {
-        echo "Cliente: " . htmlspecialchars($cliente['cliente']) . ", Clave: " . htmlspecialchars($cliente['clave']) . "<br>";
+    foreach ($usuarios as $usuario) {
+        echo "Cliente: " . htmlspecialchars($usuario['nombre']) . ",
+          Clave: " . htmlspecialchars($usuario['clave']) . ",
+          Rol: " . htmlspecialchars($usuario['rol']) . "<br>";
     }
+
 }
 ?>
 
@@ -58,12 +64,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <h3>Inserte clientes para guardar en base de datos</h3>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-        <label for="cliente">Cliente</label>
-        <input value="<?php if (isset($cliente))
-            echo htmlspecialchars($cliente); ?>" id="cliente" name="cliente" type="text">
+        <label for="nombre">Nombre</label>
+        <input value="<?php if (isset($nombre))
+            echo htmlspecialchars($nombre); ?>" id="nombre" name="nombre" type="text">
 
         <label for="clave">Clave</label>
         <input id="clave" name="clave" type="password">
+
+        <label for="rol">Rol</label>
+        <input id="rol" name="rol" type="number">
 
         <input type="submit">
     </form>
