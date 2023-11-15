@@ -18,13 +18,14 @@
 
     <script>
         function mostrarDias() {
-            // Un array con los días de la semana
+            //Creo un array que contiene los días de la semana
             var diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
 
-            // Obtén la referencia al área donde mostrar los días
+            /* Creo una variable que va a guardar el array de los días de la semana y
+            Obtengo el área donde debo mostrar el resultado, en este caso, el div antes de entrar en el script */
             var resultado = document.getElementById('resultado');
 
-            // Crea un texto con los días y actualiza el contenido del área
+            // Resultado pasa a ser una cadena con los días de la semana, separados por comas
             resultado.textContent = diasSemana.join(', ');
         }
     </script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head> 
+
+<body>
+    <p>Introduzca número de elementos requeridos de la sucesión de Tribonacci</p>
+    <form>
+        <label for="numero">Número:</label>
+        <input id="numero" name="numero" type="number">
+        <button onclick="mostrarTribonacci()">Tribonacci</button>
+    </form>
+
+    <script>
+        function tribonacci(n) {
+            var tribonacciArray = [0, 0, 1];
+
+            for (var i = 3; i < n; i++) {    
+                var nuevoElemento = tribonacciArray[i - 1] + tribonacciArray[i - 2] + tribonacciArray[i - 3];
+                tribonacciArray.push(nuevoElemento);
+            }
+
+            return tribonacciArray.slice(0, n);
+        }
+
+        function mostrarTribonacci() {
+            var nElementos = document.getElementById('numero').value;
+            var resultado = tribonacci(nElementos);
+
+            alert("Los primeros " + nElementos + " elementos de la sucesión de Tribonacci son: " + resultado);
+        }
+    </script>
+</body>
+
+</html>

@@ -3,12 +3,9 @@
 
 /* si va bien redirige a principal.php si va mal, mensaje de error */
 
-/**
- * encriptar claves
- * rol
- * script de registro de personas --> enlace a otro php
- * formulario de registro y que se guarde en la base de datos, dos o tres usuarios encriptando   
- * en el login eres el admin, estas entrando, en el registro vas a ir metiendo los clientes  
+/** 
+ * 
+ * login falta hacer un codigo que lleve a crear un usuario
  */
 
 ////////////////////// Conectar Base Datos Empresa
@@ -22,13 +19,21 @@ try {
 
 ////////////////////// Verificar credenciales
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if ($_POST['usuario'] === "Miriam" and $_POST["contraseña"] === "1234") {
-        // Credenciales de ejemplo
-        $usuario = $_POST['usuario'];
-        $clave = $_POST['contraseña'];
+    $usuario = $_POST['usuario'];
+    $contraseña = $_POST['contraseña'];
 
-        //Redirigir a formulario de registro de clientes
-        header("Location: Registro_Clientes.php");
+    // Realizar consulta preparada para verificar credenciales
+    $stmt = $bd->prepare("SELECT * FROM usuarios WHERE usuario = :usuario AND contraseña = :contraseña");
+    $stmt->bindParam(':usuario', $usuario);
+    $stmt->bindParam(':contraseña', $contraseña);
+    $stmt->execute();
+
+    // Obtener el resultado de la consulta
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        // Usuario autenticado, redirigir a la página de bienvenida
+        header("Location: Bienvenido.html");
         exit;
     } else {
         $err = "Usuario o contraseña incorrectos";
@@ -58,6 +63,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input id="contraseña" name="contraseña" type="password">
 
         <input type="submit">
+        <p><a href="Registro.php">¿No tienes una cuenta?</a></p>
+
     </form>
 </body>
 

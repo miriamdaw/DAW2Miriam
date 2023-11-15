@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+
+<body>
+    <!-- Creo un botón llamado lotería, que al pulsarlo llamo a una función que 
+         va a generar una combinación de números aleatorios -->
+    <button onclick="loteria()">Lotería</button>
+
+    <script>
+        function loteria() {
+            /* Creo una variable que es de tipo array, donde en cada índice iré guardando números generados aleatoriamente */
+            var combinacionGanadora = [];
+
+            /* Inicio un bucle for, que se repetirá mientras que la variable i valga menos que 6 */
+            for (var i = 0; i < 6; i++) {
+
+                /* Creo una nueva variable que va a ir guardando el número generado aleatoriamente en cada iteración del bucle.
+                   Para ello, llamo a la función  math.floor, que redondea a un número entero el número aleatorio generado 
+                   por math.random, que genera un número decimal entre 0 y 1. Al multiplicarlo por 100, ampliamos ese rango a
+                   0 hasta 99, y sumamos 1 para ampliarlo a 0 hasta 100.
+                    */
+                var numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+
+                /* Con push, agrego el número aleatorio generado en esta iteración al array */
+                combinacionGanadora.push(numeroAleatorio);
+            }
+
+            /* Salgo del bucle, con mi array de la combinación ganadora con todos los números necesarios generados de manera
+               aleatoria. Llamo al método join para crear una cadena de caracteres de números y 
+               separar cada índice con un guión. */
+            var combinacionTexto = combinacionGanadora.join('-');
+ 
+            /* Utilizo el método alert para mostrar un mensaje y el resultado de la lotería mediante un cuadro de texto
+               en la ventana de la página */
+            alert("La combinación ganadora del próximo sorteo será: " + combinacionTexto);
+        }
+    </script>
+</body>
+
+</html>
