@@ -7,17 +7,17 @@ try {
     echo 'Error con la base de datos: ' . $e->getMessage();
 }
 
-//registrar variables
-$usuario = $contraseña = $confirmarContraseña = "";
+// Iniciar variables porque me da un aviso 
+$usuario = $contrasena = $confirmarContrasena = "";
 
 ////////////////////// Registrar nuevos usuarios
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST['usuario'];
-    $contraseña = $_POST['contraseña'];
-    $confirmarContraseña = $_POST['confirmarContraseña'];
+    $contrasena = $_POST['contrasena'];
+    $confirmarContrasena = $_POST['confirmarContrasena'];
 
     // Validar longitud de la contraseña y confirmación
-    if (strlen($contraseña) !== 3 || !ctype_digit($contraseña) || $contraseña !== $confirmarContraseña) {
+    if (strlen($contrasena) !== 3 || !ctype_digit($contrasena) || $contrasena !== $confirmarContrasena) {
         echo "Error: La contraseña debe tener longitud 3 y contener solo números. Asegúrate de que las contraseñas coincidan.<br>";
         exit;
     }
@@ -40,17 +40,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Encriptar la clave del usuario
-    $contraseña_hash = password_hash($contraseña, PASSWORD_DEFAULT);
+    $contrasena_hash = password_hash($contrasena, PASSWORD_DEFAULT);
 
     // Imprimir credenciales (solo para comprobar que se han guardado correctamente)
     echo "Credenciales antes de insertar en la base de datos:<br>";
     echo "Usuario: " . htmlspecialchars($usuario) . "<br>";
-    echo "Contraseña: " . htmlspecialchars($contraseña) . "<br>";
+    echo "Contraseña: " . htmlspecialchars($contrasena) . "<br>";
 
     /////////////////////// Consulta Preparada --> INSERTAR usuarios
-    $stmt = $bd->prepare("INSERT INTO usuarios (usuario, contraseña) VALUES (?, ?)");
+    $stmt = $bd->prepare("INSERT INTO usuarios (usuario, contrasena) VALUES (?, ?)");
     $stmt->bindParam(1, $usuario);
-    $stmt->bindParam(2, $contraseña_hash);
+    $stmt->bindParam(2, $contrasena_hash);
 
     // Manejar errores de ejecución
     try {
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     ////////////////////// Consulta Preparada --> SELECT usuarios
-    $stmt = $bd->prepare("SELECT usuario, contraseña FROM usuarios");
+    $stmt = $bd->prepare("SELECT usuario, contrasena FROM usuarios");
     $stmt->execute();
 
 }
@@ -82,11 +82,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="usuario">Ingrese su nombre de usuario:</label>
         <input value="<?php echo htmlspecialchars($usuario); ?>" id="usuario" name="usuario" type="text">
 
-        <label for="contraseña">Ingrese su contraseña:</label>
-        <input id="contraseña" name="contraseña" type="password">
+        <label for="contrasena">Ingrese su contraseña:</label>
+        <input id="contrasena" name="contrasena" type="password">
 
-        <label for="confirmarContraseña">Confirme su contraseña:</label>
-        <input id="confirmarContraseña" name="confirmarContraseña" type="password">
+        <label for="confirmarContrasena">Confirme su contraseña:</label>
+        <input id="confirmarContrasena" name="confirmarContrasena" type="password">
 
         <input type="submit">
         <p><a href="Login.php">¿Ya tienes una cuenta?</a></p>
