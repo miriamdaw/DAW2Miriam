@@ -1,0 +1,41 @@
+//////////////////// PÁGINAS WEB ////////////////////
+Diferencia entre Página y Sitio Web -> se alojan páginas web, un contenedor de páginas web
+
+
+//////////////////// URI, URL, URN //////////////////
+1 - URI
+Uniform Resource Identifier -> URI = URL + URN
+
+2 - URL
+Uniform Resource Locator
+
+
+//////////////////// HTTP ///////////////////////////
+1. Hypertext Transfer Protocol
+
+* Protocolo de la capa de Aplicación
+* Sin estado -> el servidor NO guarda información del cliente NUNCA !!! 
+* Comunicación entre navegadores (clientes) y servidores web
+* Modelo cliente-servidor
+
+
+2. Códigos de estado -> 444 not found / 501 problema servidor
+-- 2XX > Solicitud finalizada
+    - 200 --> OK (todo ok)
+
+-- 3XX > Redirección
+    - 304 --> Not modified 
+
+-- 4XX > Errores de cliente
+    - 400 --> Bad request (comando enviado incorrecto)
+    - 404 --> Not found (recurso no encontrado)
+
+- 5XX > Errores de servidor
+    - 501 
+
+
+3. Métodos básicos HTTP 
+Create => POST
+Read => GET
+Update => PUT
+Delete => DELETE
