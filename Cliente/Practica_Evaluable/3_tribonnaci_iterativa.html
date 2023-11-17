@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <p>Introduzca número de elementos requeridos de la sucesión de Tribonacci</p>
+    <form>
+        <label for="numero">Número:</label>
+        <input id="numero" name="numero" type="number">
+
+        <!-- Creo un botón llamado tribonacci, que al pulsarlo llamo a una función que 
+         me va a mostrar por pantalla la sucesión -->
+        <button onclick="mostrarTribonacci()">Tribonacci</button>
+    </form>
+
+    <script>
+
+        /**
+         * Mi script tiene dos funciones:
+         * 1 - tribonacci -> me calcula la sucesión
+         * 2 - mostrar la sucesión
+         * */
+
+        //Le paso el parámetro n, que son los números que le he pedido al usuario que quiere generar
+        function tribonacci(n) {
+            var tribonacciArray = [0, 0, 1];
+
+            //Utilizo un bucle for para calcular cada nuevo elemento sumando los tres anteriores
+            for (var i = 3; i < n; i++) {
+                var nuevoElemento = tribonacciArray[i - 1] + tribonacciArray[i - 2] + tribonacciArray[i - 3];
+
+                //Agrega el elemento creado en esta iteración del bucle al final del array
+                tribonacciArray.push(nuevoElemento);
+            }
+
+            /*El return devuelve los números generados
+            Slice es un método de arrays que devuelve una porción de un array,
+            en este caso, el trozo empezará desde el índice 0 hasta n, siendo n
+            el número que ingresó el usuario
+            */
+            return tribonacciArray.slice(0, n);
+        }
+
+
+        function mostrarTribonacci() {
+            /*creo una cadena, y obtengo el elemento referenciado a id, en este caso es numero,
+            donde el usuario ingresa cuantos numeros van a formar la sucesión tribonacci
+            Con value acceso al valor del elemento, el numero ingresado por el usuario*/
+            var nElementos = document.getElementById('numero').value;
+
+            /*llamo a la función de calcular la sucesión de tribonacci pasábdole como parámetro el 
+            número que ingresó el usuario*/
+            var resultado = tribonacci(nElementos);
+
+            //Por último muestro la sucesión
+            alert("Los primeros " + nElementos + " elementos de la sucesión de Tribonacci son: " + resultado);
+        }
+    </script>
+</body>
+
+</html>
