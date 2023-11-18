@@ -1,0 +1,6 @@
+Funcion mostrarDias (onclick)
+	diasSemana<-'Lunes,Martes,Miercoles,Jueves,Viernes,Sabado,Domingo'
+	resultado<-diasSemana
+    resultado(join(,))
+	Mostrar resultado
+Fin Funcion

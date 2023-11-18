@@ -1,0 +1,10 @@
+Funcion calcularTribonacci ( n )
+	array = [0,0,1]
+    for (mientras i sea menor a n)
+    variable = array[i - 1] + array[i - 2] + array[i - 3];
+Fin Funcion
+
+Funcion mostrarTribonacci ()
+    variable = tribonacci (n)
+    Mostrar variable
+Fin Funcion

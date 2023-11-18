@@ -1,0 +1,22 @@
+Funcion calcularTribonacci ( n )
+	Si n===0 Entonces
+		regresar []
+	Fin Si
+    Si n===1 Entonces
+		regresar [0]
+	Fin Si
+	Si n===2 Entonces
+		regresar [0,0]
+	Fin Si
+    Si n===3 Entonces
+        regresar [0,0,1]
+        variable = tribonacci (n - 1)
+        variable[n - 2] + variable[n - 3] + variable[n - 4];
+        return variable;
+    Fin Si
+Fin Funcion
+
+Funcion mostrarTribonacci ()
+    variable = tribonacci (n)
+    Mostrar variable
+Fin Funcion

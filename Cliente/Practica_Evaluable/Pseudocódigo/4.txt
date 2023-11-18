@@ -1,0 +1,6 @@
+Funcion Loteria ()
+	combinacionGanadora = []
+    for (hasta 6)
+    generar n aleatorio
+    combinacionGanadora = nAleatorio
+Fin Funcion

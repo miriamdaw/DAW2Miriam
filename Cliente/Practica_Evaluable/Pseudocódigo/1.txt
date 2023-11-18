@@ -1,0 +1,12 @@
+Funcion Saludar ( idioma )
+	Si Español Entonces
+		mensaje = '¡Hola!'
+	Fin Si
+	Si Ingles Entonces
+		mensaje = 'Hello!'
+	Fin Si
+	Si Ruso Entonces
+		mensaje = '(Hola en ruso)!'
+	Fin Si
+	Escribir mensaje
+Fin Funcion
