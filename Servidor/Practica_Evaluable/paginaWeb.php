@@ -1,53 +1,67 @@
 <?php
+session_start();
 include("validar.php");
 $nombreError = $emailError = $edadError = $mensajeError = $telefonoError = $comunidadAutonomaError = "";
+$nombre = $email = $edad = $mensaje = $telefono = $comunidadAutonoma = "";
 error_reporting(E_ERROR | E_PARSE);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
     if (empty($_POST["nombre"])) {
         $nombreError = "Indique su nombre.";
+    } else {
+        $nombre = $_POST["nombre"];
     }
 
     if (empty($_POST["edad"])) {
         $edadError = "Indique su edad.";
+    } else {
+        $edad = $_POST["edad"];
     }
 
     if (empty($_POST["telefono"])) {
         $telefonoError = "Indique su teléfono.";
+    } else {
+        $telefono = $_POST["telefono"];
     }
 
     if (empty($_POST["email"])) {
         $emailError = "Indique su email.";
+    } else {
+        $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailError = "El formato del email no es válido.";
+        }
     }
 
     if (empty($_POST["mensaje"])) {
-        $mensaje = "Indique qué busca en una silla gaming.";
+        $mensajeError = "Indique qué busca en una silla gaming.";
+    } else {
+        $mensaje = $_POST["mensaje"];
     }
 
     if (!isset($_POST["comunidadAutonoma"])) {
         $comunidadAutonomaError = "Debe indicar la comunidad autónoma en la que vive.";
+    } else {
+        $comunidadAutonoma = $_POST["comunidadAutonoma"];
     }
 
-    $nombre = $_POST["nombre"];
-    $mensaje = $_POST["mensaje"];
     $validando = validar($nombre, $mensaje);
 
-    if (!empty($errors)) {
-        $nombre = $_POST["nombre"];
-        $email = $_POST["email"];
-        $comunidadAutonoma = $_POST["comunidadAutonoma"];
-        $telefono = $_POST["telefono"];
-    } else {
-
-        if ($validando === true) {
-            header("Location: hola.php"); //pagina que devuelve una hoja con todos los registros
-            exit();
-        } else {
-            foreach ($validando as $error) {
-                echo "Error: " . $error . "<br>";
-            }
+    if (!empty($validando)) {
+        foreach ($validando as $error) {
+            echo "Error: " . $error . "<br>";
         }
+    } else {
+        $_SESSION['nombre'] = $nombre;
+        $_SESSION['email'] = $email;
+        $_SESSION['edad'] = $edad;
+        $_SESSION['telefono'] = $telefono;
+        $_SESSION['comunidadAutonoma'] = $comunidadAutonoma;
+        $_SESSION['mensaje'] = $mensaje;
+
+        header("Location: hola.php");
+        exit();
     }
 }
 ?>
@@ -60,37 +74,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sugerencias cyberthrone: Sillas Gaming 3000</title>
+    <script>
+        function onFocusInput(element) {
+            var label = element.previousElementSibling; // Obtener el elemento label anterior al input
+            label.style.top = "-14px";
+            label.style.fontSize = "12px";
+            label.style.color = "#F479AD";
+        }
 
+        function onBlurInput(element) {
+            if (element.value === "") {
+                var label = element.previousElementSibling;
+                label.style.top = "10px";
+                label.style.fontSize = "16px";
+                label.style.color = "var(--colorTextos)";
+            }
+        }
+    </script>
     <style>
+        label#mensajeLabel {
+            color: #F479AD;
+        }
+
+        textarea:focus~label#mensajeLabel {
+            color: #F479AD;
+        }
+
+        textarea {
+            font-family: 'Poppins', sans-serif;
+        }
+
         body {
-            font-family: 'MavenPro', sans-serif;
             background: linear-gradient(to left, #7048C7, #783DAC);
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        :root {
+            --colorTextos: #49454567;
+        }
+
+        *,
+        ::before,
+        ::after {
             margin: 0;
             padding: 0;
-        }
-
-        img {
-            margin-top: 30px;
-            margin-bottom: 5px;
-            width: 20%;
-
-        }
-
-        form {
-            margin-bottom: 50px;
-            margin-top: 10px;
-            margin-left: 550px;
-            margin-right: 550px;
-            border-radius: 24px;
-            background-color: #fff;
-            padding: 5px;
-            box-shadow: 0 0 20px rgba(244, 121, 173, 1);
-
+            box-sizing: border-box;
         }
 
         .silla {
             float: left;
-            margin-top: 20px;
+            margin-top: 40px;
             margin-left: 20px;
             width: 30%;
         }
@@ -100,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             height: 2px;
             width: 90%;
             padding: 0;
-            margin: 24px auto 0 auto;
+            margin: 35px auto 0 auto;
             margin-bottom: 35px;
             opacity: 50%;
 
@@ -110,14 +147,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             height: 250px;
         }
 
-        center {
-            text-align: center;
+        img {
+            margin-top: 30px;
+            margin-bottom: 5px;
+            width: 30%;
         }
 
         h3 {
+            text-align: center;
             color: #F479AD;
             font-size: 180%;
             font-weight: bold;
+            margin-top: 15px;
         }
 
         h2 {
@@ -125,109 +166,126 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-size: 150%;
             font-weight: bold;
             text-align: left;
-            margin-left: 39px;
-            margin-bottom: 68px;
+            margin-left: 35px;
+            margin-bottom: 50px;
         }
 
-        p {
-            color: #608334;
+
+        form {
+            margin-top: 20px;
+            border-radius: 24px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(244, 121, 173, 1);
+            width: 40%;
+        }
+
+        form .grupo {
+            position: relative;
+            margin: 45px;
+        }
+
+        input,
+        textarea,
+        select {
+            background: none;
+            color: #c6c6c6;
+            font-size: 18px;
+            padding: 10px 10px 10px 5px;
+            display: block;
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid var(--colorTextos);
+            resize: none;
+            padding: 10px 10px 10px 15px;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            color: rgb(94, 93, 93);
+        }
+
+        input:focus~label,
+        input:valid~label,
+        textarea:focus~label,
+        textarea:valid~label {
+            position: absolute;
+            top: -14px;
+            font-size: 12px;
+            color: #2196F3;
         }
 
         label {
-            font-weight: bold;
-            margin-top: 10px;
-            color: #5534ad;
+            color: var(--colorTextos);
+            font-size: 16px;
+            position: absolute;
+            left: 5px;
+            top: 10px;
+            transition: 0.5s ease all;
+            pointer-events: none;
         }
 
-        .labelContainer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 10px;
+        input:focus~.barra::before,
+        textarea:focus~.barra::before {
+            width: 100%;
         }
 
-        .recuadroLabel {
-            flex: 1;
-            margin-left: 46px;
-            margin-bottom: 15px;
-            text-align: left;
+        .barra {
+            position: relative;
+            display: block;
+            width: 100%;
         }
 
-        .recuadroComunidad {
-            flex: 1;
-            margin-left: 46px;
-            margin-bottom: 15px;
-            text-align: left;
+        .barra::before {
+            content: '';
+            height: 2px;
+            width: 0%;
+            bottom: 0;
+            position: absolute;
+            background: linear-gradient(to left, #7048C7, #783DAC);
+            transition: 0.3s ease all;
+            left: 0%;
         }
 
-        .recuadroInput {
-            flex: 2;
-            width: 80%;
-            padding: 10px;
-            border: 2px solid #743cac;
-            border-radius: 5px;
-            outline-color: #f479ad;
-            background-color: #fadef7;
-            color: #f479ad;
-        }
-
-        .recuadroSelect {}
-
-        input[type="text"] {
-            font-family: 'MavenPro', sans-serif;
-            font-weight: bold;
-            width: 20%;
-            padding: 10px;
-            margin-right: 200px;
-            border: 2px solid #743cac;
-            border-radius: 5px;
-            outline-color: #f479ad;
-            background-color: #fadef7;
-            color: #f479ad;
-        }
 
         select {
-            width: 80%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 2px solid #743cac;
-            border-radius: 5px;
-            background-color: #fadef7;
-            outline-color: #f479ad;
-            color: #f479ad;
-            cursor: pointer;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            font-size: 17px;
         }
 
-        input[type="file"] {
-            width: 100%;
-            margin: 10px 0;
-            color: #7048c7;
-
+        select:focus {
+            outline: none;
+            border: 2px solid #F479AD;
+            border-radius: 10px;
         }
 
         input[type="submit"] {
-            background-color: #fadef7;
-            color: #f479ad;
-            padding: 10px 20px;
+            display: block;
+            width: 100px;
+            height: 40px;
             border: none;
+            color: #f479ad;
+            background-color: #fadef7;
             border-radius: 5px;
+            font-size: 16px;
+            margin: 10px auto;
             cursor: pointer;
+            padding: 10px 20px;
         }
 
-        select:hover {
-            background-color: #f3ceed;
+        select,
+        input[type="file"] {
+            border: 1px solid var(--colorTextos);
+            border-radius: 5px;
         }
 
-        select option {
-            color: #9d8ce0;
-        }
-
-        select option:hover {
-            background-color: #f479ad;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #f479ad;
+        select:focus,
+        input[type="file"]:focus {
+            outline: none;
+            border: 2px solid #F479AD;
+            border-radius: 10px;
         }
     </style>
 
@@ -236,18 +294,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <center><img src="IconoLetrasBorde.png" /></center>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+
+        <h3> Sugerencias para CyberThrone </h3>
+
+        <img src="silla (1).png" class="silla" alt="imagen_silla">
+        <div class="espacio"></div>
+        <div class="linea"></div>
+
+
+        <h2> Información del cliente </h2>
+
         <div class="form">
-            <h3> Sugerencias para CyberThrone </h3>
-
-            <img src="silla (1).png" class="silla" alt="imagen_silla">
-            <div class="espacio"></div>
-            <div class="linea"></div>
-
-            <h2> Información del cliente </h2>
-
-            <div class="">
+            <div class="grupo">
                 <label for="nombre" class="">Nombre</label>
-                <input value="<?php if (isset($_POST["nombre"]))
+                <input onfocus="onFocusInput(this)" onblur="onBlurInput(this)" value="<?php if (isset($_POST["nombre"]))
                     echo $_POST["nombre"]; ?>" id="nombre" name="nombre" type="text" required>
                 <span class="error">
                     <?php echo $nombreError; ?>
@@ -255,9 +315,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <span class="barra"></span>
             </div>
 
-            <div class="">
-                <label for="email" class="recuadroLabel">Email</label>
-                <input value="<?php if (isset($_POST["email"]))
+            <div class="grupo">
+                <label for="email" class="">Email</label>
+                <input onfocus="onFocusInput(this)" onblur="onBlurInput(this)" value="<?php if (isset($_POST["email"]))
                     echo $_POST["email"]; ?>" id="email" name="email" type="text" required>
                 <span class="error">
                     <?php echo $emailError; ?>
@@ -265,9 +325,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <span class="barra"></span>
             </div>
 
-            <div class="">
+            <div class="grupo">
                 <label for="edad" class="">Edad</label>
-                <input value="<?php if (isset($_POST["edad"]))
+                <input onfocus="onFocusInput(this)" onblur="onBlurInput(this)" value="<?php if (isset($_POST["edad"]))
                     echo $_POST["edad"]; ?>" id="edad" name="edad" type="text" required>
                 <span class="error">
                     <?php echo $edadError; ?>
@@ -275,9 +335,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <span class="barra"></span>
             </div>
 
-            <div class="">
-                <label for="telefono" class="recuadroLabel">Teléfono</label>
-                <input value="<?php if (isset($_POST["telefono"]))
+            <div class="grupo">
+                <label for="telefono" class="">Teléfono</label>
+                <input onfocus="onFocusInput(this)" onblur="onBlurInput(this)" value="<?php if (isset($_POST["telefono"]))
                     echo $_POST["telefono"]; ?>" id="telefono" name="telefono" type="text" required>
                 <span class="telefono">
                     <?php echo $telefonoError; ?>
@@ -286,8 +346,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
 
-            <div class="">
-                <label for="comunidadAutonoma" class="recuadroComunidad"> Indica tu comunidad autónoma </label>
+            <div class="grupo">
+                <p> Indica tu comunidad autónoma </p>
                 <select name="comunidadAutonoma" id="comunidadAutonoma" size="18" required>
                     <option value="Andalucía" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Andalucía")
                         echo "selected"; ?>>Andalucía
@@ -345,10 +405,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <span class="error">
                     <?php echo $comunidadAutonomaError; ?>
                 </span>
-                <span class="barra"></span>
             </div>
 
-            <input type="file" name="fichero" accept=".jpg, .jpeg, .png" />
+            <div class="grupo">
+                <textarea name="mensaje" id="mensaje" rows="3" required onfocus="onFocusInput(this)"
+                    onblur="onBlurInput(this)"><?php echo isset($_POST["mensaje"]) ? htmlspecialchars($_POST["mensaje"]) : ""; ?></textarea>
+                <span class="barra"></span>
+                <label id="mensajeLabel">Mensaje</label>
+            </div>
+
 
             <input type="submit">
         </div>

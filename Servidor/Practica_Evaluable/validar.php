@@ -1,13 +1,13 @@
 <?php
 
-function validar($nombre, $descripcion) {
+function validar($nombre, $mensaje) {
     $errores = array();
 
     if (!ctype_upper($nombre[0]) || strlen($nombre) > 20) {
         $errores[] = "Su nombre debe comenzar con una letra mayúscula y tener una longitud de hasta 20 caracteres.";
     }
 
-    if (strlen($descripcion) <= 50) {
+    if (strlen($mensaje) <= 50) {
         $errores[] = "La descripción debe tener al menos 50 caracteres.";
     }
 
