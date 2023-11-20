@@ -1,17 +1,12 @@
 <?php
 include("validar.php");
-$nombreError = $apellidoError = $edadError = $descripcionError = $telefonoError = $comunidadAutonomaError = "";
+$nombreError = $emailError = $edadError = $mensajeError = $telefonoError = $comunidadAutonomaError = "";
 error_reporting(E_ERROR | E_PARSE);
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($_POST["nombre"])) {
         $nombreError = "Indique su nombre.";
-    }
-
-    if (empty($_POST["apellido"])) {
-        $nombreError = "Indique su apellido.";
     }
 
     if (empty($_POST["edad"])) {
@@ -26,8 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $emailError = "Indique su email.";
     }
 
-    if (empty($_POST["descripcion"])) {
-        $descripcionError = "Indique qué busca en una silla gaming.";
+    if (empty($_POST["mensaje"])) {
+        $mensaje = "Indique qué busca en una silla gaming.";
     }
 
     if (!isset($_POST["comunidadAutonoma"])) {
@@ -35,12 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $nombre = $_POST["nombre"];
-    $descripcion = $_POST["descripcion"];
-    $validando = validar($nombre, $descripcion);
+    $mensaje = $_POST["mensaje"];
+    $validando = validar($nombre, $mensaje);
 
     if (!empty($errors)) {
         $nombre = $_POST["nombre"];
-        $apellido = $_POST["apellido"];
         $email = $_POST["email"];
         $comunidadAutonoma = $_POST["comunidadAutonoma"];
         $telefono = $_POST["telefono"];
@@ -56,33 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-//required
-//paleta de colores:
-#F2CEEC
-#7048C8
-#F479AD
-#9C8AE0
-#783DAC
-/*
-
-<link href="directorio_bootstrap" rel="stylesheet" media="screen">
-https://colorpalette.imageonline.co/es/
-https://www.jotform.com/build/233032800000331#preview
-https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1699444962&_gl=1*qjc1se*_ga*MTM5NDYzNzMyMi4xNjk5NDQ0OTYy*_ga_SG6DRL7MCG*MTY5OTQ0NDk2MS4xLjAuMTY5OTQ0NDk2MS4wLjAuMA..
-        .formcontainer {
-        text-align: left;
-        margin: 24px 50px 12px;
-         }
-
-        .container {
-        padding: 16px 0;
-        text-align:left;
-        }
-        */
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,800,900" rel="stylesheet">
 
 <head>
     <meta charset="UTF-8">
@@ -90,11 +62,6 @@ https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1
     <title>Sugerencias cyberthrone: Sillas Gaming 3000</title>
 
     <style>
-        @font-face {
-            font-family: 'MavenPro';
-            src: url('http://localhost/DAW2/Servidor/Ejercicios/Practica_Evaluable/MavenPro-VariableFont_wght.ttf') format('truetype');
-        }
-
         body {
             font-family: 'MavenPro', sans-serif;
             background: linear-gradient(to left, #7048C7, #783DAC);
@@ -204,9 +171,7 @@ https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1
             color: #f479ad;
         }
 
-        .recuadroSelect {
-            
-        }
+        .recuadroSelect {}
 
         input[type="text"] {
             font-family: 'MavenPro', sans-serif;
@@ -271,7 +236,7 @@ https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1
 <body>
     <center><img src="IconoLetrasBorde.png" /></center>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-        <center>
+        <div class="form">
             <h3> Sugerencias para CyberThrone </h3>
 
             <img src="silla (1).png" class="silla" alt="imagen_silla">
@@ -280,45 +245,50 @@ https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1
 
             <h2> Información del cliente </h2>
 
-            <div class="labelContainer">
-                <label for="nombre" class="recuadroLabel"> Tu nombre </label>
+            <div class="">
+                <label for="nombre" class="">Nombre</label>
                 <input value="<?php if (isset($_POST["nombre"]))
-                    echo $_POST["nombre"]; ?>" id="nombre" name="nombre" type="text" class="recuadroInput">
+                    echo $_POST["nombre"]; ?>" id="nombre" name="nombre" type="text" required>
                 <span class="error">
                     <?php echo $nombreError; ?>
                 </span>
+                <span class="barra"></span>
             </div>
 
-            <div class="labelContainer">
-                <label for="edad" class="recuadroLabel"> Edad </label>
-                <input value="<?php if (isset($_POST["edad"]))
-                    echo $_POST["edad"]; ?>" id="edad" name="edad" type="text" class="recuadroInput">
-                <span class="error">
-                    <?php echo $edadError; ?>
-                </span>
-            </div>
-
-            <div class="labelContainer">
-                <label for="telefono" class="recuadroLabel"> Teléfono </label>
-                <input value="<?php if (isset($_POST["telefono"]))
-                    echo $_POST["telefono"]; ?>" id="telefono" name="telefono" type="text" class="recuadroInput">
-                <span class="telefono">
-                    <?php echo $telefonoError; ?>
-                </span>
-            </div>
-
-            <div class="labelContainer">
-                <label for="email" class="recuadroLabel"> Email </label>
+            <div class="">
+                <label for="email" class="recuadroLabel">Email</label>
                 <input value="<?php if (isset($_POST["email"]))
-                    echo $_POST["email"]; ?>" id="email" name="email" type="text" class="recuadroInput">
+                    echo $_POST["email"]; ?>" id="email" name="email" type="text" required>
                 <span class="error">
                     <?php echo $emailError; ?>
                 </span>
+                <span class="barra"></span>
             </div>
 
-            <div class="labelContainer">
+            <div class="">
+                <label for="edad" class="">Edad</label>
+                <input value="<?php if (isset($_POST["edad"]))
+                    echo $_POST["edad"]; ?>" id="edad" name="edad" type="text" required>
+                <span class="error">
+                    <?php echo $edadError; ?>
+                </span>
+                <span class="barra"></span>
+            </div>
+
+            <div class="">
+                <label for="telefono" class="recuadroLabel">Teléfono</label>
+                <input value="<?php if (isset($_POST["telefono"]))
+                    echo $_POST["telefono"]; ?>" id="telefono" name="telefono" type="text" required>
+                <span class="telefono">
+                    <?php echo $telefonoError; ?>
+                </span>
+                <span class="barra"></span>
+            </div>
+
+
+            <div class="">
                 <label for="comunidadAutonoma" class="recuadroComunidad"> Indica tu comunidad autónoma </label>
-                <select name="comunidadAutonoma" id="comunidadAutonoma" size="18" class="recuadroSelect">
+                <select name="comunidadAutonoma" id="comunidadAutonoma" size="18" required>
                     <option value="Andalucía" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Andalucía")
                         echo "selected"; ?>>Andalucía
                     </option>
@@ -375,13 +345,13 @@ https://jobinplanet.com/register?_ga=2.77495315.76567381.1699444962-1394637322.1
                 <span class="error">
                     <?php echo $comunidadAutonomaError; ?>
                 </span>
+                <span class="barra"></span>
             </div>
 
             <input type="file" name="fichero" accept=".jpg, .jpeg, .png" />
 
-            <center><input type="submit"></center>
-
-        </center>
+            <input type="submit">
+        </div>
     </form>
 </body>
 
