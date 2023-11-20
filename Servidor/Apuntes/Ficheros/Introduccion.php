@@ -2,7 +2,7 @@
 
 //extensiones relacionadas sistema de ficheros -> sistema de ficheros
 //funciones de sistema de archivos
-/*
+
 $fich = fopen("ejemplo.txt", "r");
 if ($fich === False) {
     echo "No se encuentra fichero ejemplo.txt<br>";
@@ -59,7 +59,7 @@ if ($fich3 === false) {
 }
 fclose($fich3);
 
-*/
+
 /////////// array
 $fich4 = fopen("ejemplo.txt", "w+");
 if ($fich4 === False) {
