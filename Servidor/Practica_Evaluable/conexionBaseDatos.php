@@ -7,5 +7,4 @@ echo $mysqli->host_info . "\n";
 echo "estas conectada";
 
 
-
 ?>

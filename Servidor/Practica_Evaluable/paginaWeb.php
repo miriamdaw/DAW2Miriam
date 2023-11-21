@@ -1,12 +1,14 @@
 <?php
 session_start();
 include("validar.php");
-include("baseDatos.php");
+include("conexionBaseDatos.php");
 
-$nombreError = $emailError = $edadError = $mensajeError = $telefonoError = $comunidadAutonomaError = "";
-$nombre = $email = $edad = $mensaje = $telefono = $comunidadAutonoma = "";
+$nombre = $edad = $email = $telefono = $comunidadAutonoma = $satisfecho = $mensaje = $publicidad = $color = $motivo = "";
 
-//error_reporting(E_ERROR | E_PARSE);
+$nombreError = $edadError = $emailError = $telefonoError = $comunidadAutonomaError = $satisfechoError
+    = $mensajeError = $publicidadError = $colorError = $motivoError = "";
+
+error_reporting(E_ERROR | E_PARSE);
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -22,12 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $edad = $_POST["edad"];
     }
 
-    if (empty($_POST["telefono"])) {
-        $telefonoError = "Indique su teléfono.";
-    } else {
-        $telefono = $_POST["telefono"];
-    }
-
     if (empty($_POST["email"])) {
         $emailError = "Indique su email.";
     } else {
@@ -38,10 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    if (empty($_POST["mensaje"])) {
-        $mensajeError = "Indique qué busca en una silla gaming.";
+    if (empty($_POST["telefono"])) {
+        $telefonoError = "Indique su teléfono.";
     } else {
-        $mensaje = $_POST["mensaje"];
+        $telefono = $_POST["telefono"];
     }
 
     if (!isset($_POST["comunidadAutonoma"])) {
@@ -50,15 +46,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $comunidadAutonoma = $_POST["comunidadAutonoma"];
     }
 
+    if (empty($_POST["mensaje"])) {
+        $mensajeError = "Indique qué busca en una silla gaming.";
+    } else {
+        $mensaje = $_POST["mensaje"];
+    }
+
+    if (isset($_POST['publicidad'])) {
+        $publicidad = $_POST['publicidad'];
+    } else {
+        $publicidad = 0; // Si no se marca, establecer el valor predeterminado a 0
+    }
+
+
+    if (!empty($_POST['color'])) {
+        $color = $_POST['color'];
+    } else {
+        $colorError = "Seleccione un color para su silla.";
+    }
+
+
+    if (isset($_POST['motivo'])) {
+        $motivo = $_POST['motivo'];
+    } else {
+        $motivo = "Por determinar";
+    }
+
     $validando = validar($nombre, $email, $telefono, $mensaje);
 
     if (!empty($validando)) {
+        /*
         echo '<div class="error-container">';
         foreach ($validando as $error) {
             echo '<p class="error-message">Error: ' . $error . '</p>';
         }
         echo '</div>';
-
+*/
     } else {
         $_SESSION['nombre'] = $nombre;
         $_SESSION['email'] = $email;
@@ -66,8 +89,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['telefono'] = $telefono;
         $_SESSION['comunidadAutonoma'] = $comunidadAutonoma;
         $_SESSION['mensaje'] = $mensaje;
+        $_SESSION['publicidad'] = $publicidad;
+        $_SESSION['color'] = $color;
+        $_SESSION['motivo'] = $motivo;
 
-        header("Location: hola.php");
+        /*
+        echo "Nombre: " . $_SESSION['nombre'] . "<br>";
+        echo "Email: " . $_SESSION['email'] . "<br>";
+        echo "Edad: " . $_SESSION['edad'] . "<br>";
+        echo "Teléfono: " . $_SESSION['telefono'] . "<br>";
+        echo "Comunidad Autónoma: " . $_SESSION['comunidadAutonoma'] . "<br>";
+        echo "Mensaje: " . $_SESSION['mensaje'] . "<br>";
+        echo "Publicidad: " . $_SESSION['publicidad'] . "<br>";
+        echo "Color: " . $_SESSION['color'] . "<br>";
+        echo "Motivo: " . $_SESSION['motivo'] . "<br>";
+        */
+        header("Location: procesarFormulario.php");
         exit();
     }
 }
@@ -204,23 +241,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </span>
             </div>
 
+
+            <h2> Información de su silla </h2>
+
             <p>Seleccione con qué motivo compraría una silla</p>
 
-            <input type="radio" id="oficina" name="fav_language" value="Oficina">
+            <input type="radio" id="oficina" name="motivo" value="Oficina" <?php if (isset($_POST['motivo']) && $_POST['motivo'] == 'Oficina')
+                echo 'checked="checked"'; ?>>
             <p class="radio-label">Oficina</p>
 
-            <input type="radio" id="videojuegos" name="fav_language" value="Videojuegos">
+            <input type="radio" id="videojuegos" name="motivo" value="Videojuegos" <?php if (isset($_POST['motivo']) && $_POST['motivo'] == 'Videojuegos')
+                echo 'checked="checked"'; ?>>
             <p class="radio-label">Videojuegos</p>
 
-            <input type="radio" id="deporte" name="fav_language" value="Deporte">
+            <input type="radio" id="deporte" name="motivo" value="Deporte" <?php if (isset($_POST['motivo']) && $_POST['motivo'] == 'Deporte')
+                echo 'checked="checked"'; ?>>
             <p class="radio-label">Deporte</p>
-
-
 
             <div class="grupo">
                 <p>Selecciona el color para tu silla</p>
-                <input type="color" id="colorPicker" name="colorPicker" value="#f479ad">
+                <input type="color" id="color" name="color" value="#f479ad">
+                <span class="error">
+                    <?php echo $colorError; ?>
+                </span>
             </div>
+
 
             <div class="nuevos">
                 <p>Por favor, valore el servicio recibido y nuestra página web</p>
@@ -241,7 +286,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p class="publicidad">Quiero recibir publicidad</p>
             </center>
             <div class="heart-container" title="Like">
-                <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                <input type="checkbox" class="checkbox" id="Give-It-An-Id" name="publicidad" value="1" <?php if (isset($_POST['publicidad']) && $_POST['publicidad'] == '1')
+                    echo 'checked'; ?>>
                 <div class="svg-container">
                     <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
                         <path
