@@ -6,7 +6,7 @@ include("baseDatos.php");
 $nombreError = $emailError = $edadError = $mensajeError = $telefonoError = $comunidadAutonomaError = "";
 $nombre = $email = $edad = $mensaje = $telefono = $comunidadAutonoma = "";
 
-error_reporting(E_ERROR | E_PARSE);
+//error_reporting(E_ERROR | E_PARSE);
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -82,357 +82,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sugerencias cyberthrone: Sillas Gaming 3000</title>
-    <script>
-        function onFocusInput(element) {
-            var label = element.previousElementSibling; // Obtener el elemento label anterior al input
-            label.style.top = "-14px";
-            label.style.fontSize = "12px";
-            label.style.color = "#F479AD";
-        }
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+    <script src="script.js"></script>
 
-        function onBlurInput(element) {
-            if (element.value === "") {
-                var label = element.previousElementSibling;
-                label.style.top = "10px";
-                label.style.fontSize = "16px";
-                label.style.color = "var(--colorTextos)";
-            }
-        }
-    </script>
-    <style>
-        label#mensajeLabel {
-            color: #F479AD;
-        }
-
-        textarea:focus~label#mensajeLabel {
-            color: #F479AD;
-        }
-
-        textarea {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(to left, #7048C7, #783DAC);
-            font-family: 'Poppins', sans-serif;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        :root {
-            --colorTextos: #49454567;
-        }
-
-        *,
-        ::before,
-        ::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .silla {
-            float: left;
-            margin-top: 40px;
-            margin-left: 20px;
-            width: 30%;
-        }
-
-        .linea {
-            border-top: 1px solid #F479AD;
-            height: 2px;
-            width: 90%;
-            padding: 0;
-            margin: 35px auto 0 auto;
-            margin-bottom: 35px;
-            opacity: 50%;
-
-        }
-
-        .espacio {
-            height: 250px;
-        }
-
-        img {
-            margin-top: 30px;
-            margin-bottom: 5px;
-            width: 30%;
-        }
-
-        h3 {
-            text-align: center;
-            color: #F479AD;
-            font-size: 180%;
-            font-weight: bold;
-            margin-top: 15px;
-        }
-
-        h2 {
-            color: #F479AD;
-            font-size: 150%;
-            font-weight: bold;
-            text-align: left;
-            margin-left: 35px;
-            margin-bottom: 50px;
-        }
-
-
-        form {
-            margin-top: 20px;
-            border-radius: 24px;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 20px rgba(244, 121, 173, 1);
-            width: 40%;
-        }
-
-        form .grupo {
-            position: relative;
-            margin: 45px;
-        }
-
-        input,
-        textarea,
-        select {
-            background: none;
-            color: #c6c6c6;
-            font-size: 18px;
-            padding: 10px 10px 10px 5px;
-            display: block;
-            width: 100%;
-            border: none;
-            border-bottom: 1px solid var(--colorTextos);
-            resize: none;
-            padding: 10px 10px 10px 15px;
-        }
-
-        input:focus,
-        textarea:focus {
-            outline: none;
-            color: rgb(94, 93, 93);
-        }
-
-        input:focus~label,
-        input:valid~label,
-        textarea:focus~label,
-        textarea:valid~label {
-            position: absolute;
-            top: -14px;
-            font-size: 12px;
-            color: #2196F3;
-        }
-
-        label {
-            color: var(--colorTextos);
-            font-size: 16px;
-            position: absolute;
-            left: 5px;
-            top: 10px;
-            transition: 0.5s ease all;
-            pointer-events: none;
-        }
-
-        input:focus~.barra::before,
-        textarea:focus~.barra::before {
-            width: 100%;
-        }
-
-        .barra {
-            position: relative;
-            display: block;
-            width: 100%;
-        }
-
-        .barra::before {
-            content: '';
-            height: 2px;
-            width: 0%;
-            bottom: 0;
-            position: absolute;
-            background: linear-gradient(to left, #7048C7, #783DAC);
-            transition: 0.3s ease all;
-            left: 0%;
-        }
-
-
-        select {
-            width: 100%;
-            font-family: 'Poppins', sans-serif;
-            font-size: 17px;
-        }
-
-        select:focus {
-            outline: none;
-            border: 2px solid #F479AD;
-            border-radius: 10px;
-        }
-
-        input[type="submit"] {
-            display: block;
-            width: 100px;
-            height: 40px;
-            border: none;
-            color: #f479ad;
-            background-color: #fadef7;
-            border-radius: 5px;
-            font-size: 16px;
-            margin: 10px auto;
-            cursor: pointer;
-            padding: 10px 20px;
-        }
-
-        select,
-        input[type="file"] {
-            border: 1px solid var(--colorTextos);
-            border-radius: 5px;
-        }
-
-        select:focus,
-        input[type="file"]:focus {
-            outline: none;
-            border: 2px solid #F479AD;
-            border-radius: 10px;
-        }
-
-        .slider {
-            -webkit-appearance: none;
-            width: 70%;
-            height: 26px;
-            background: #fcd8e7;
-            outline: none;
-            opacity: 0.7;
-            -webkit-transition: .2s;
-            transition: opacity .2s;
-            margin: auto;
-            margin-top: 20px;
-
-        }
-
-        .slider:hover {
-            opacity: 1;
-        }
-
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 25px;
-            height: 25px;
-            background: #F479AD;
-            cursor: pointer;
-        }
-
-        .slider::-moz-range-thumb {
-            width: 25px;
-            height: 25px;
-            background: #F479AD;
-            cursor: pointer;
-        }
-
-        .nuevos {
-            text-align: center;
-        }
-
-        .satisfecho,
-        .noSatisfecho {
-            display: inline-block;
-            vertical-align: middle;
-            margin: 0 100px;
-            margin-top: 20px;
-        }
-
-        .heart-container {
-            --heart-color: rgb(255, 91, 137);
-            position: relative;
-            width: 50px;
-            height: 50px;
-            transition: .3s;
-            margin-left: 50px;
-        }
-
-        .heart-container .checkbox {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            z-index: 20;
-            cursor: pointer;
-        }
-
-        .heart-container .svg-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .heart-container .svg-outline,
-        .heart-container .svg-filled {
-            fill: var(--heart-color);
-            position: absolute;
-        }
-
-        .heart-container .svg-filled {
-            animation: keyframes-svg-filled 1s;
-            display: none;
-        }
-
-        .heart-container .svg-celebrate {
-            position: absolute;
-            animation: keyframes-svg-celebrate .5s;
-            animation-fill-mode: forwards;
-            display: none;
-            stroke: var(--heart-color);
-            fill: var(--heart-color);
-            stroke-width: 2px;
-        }
-
-        .heart-container .checkbox:checked~.svg-container .svg-filled {
-            display: block
-        }
-
-        .heart-container .checkbox:checked~.svg-container .svg-celebrate {
-            display: block
-        }
-
-        @keyframes keyframes-svg-filled {
-            0% {
-                transform: scale(0);
-            }
-
-            25% {
-                transform: scale(1.2);
-            }
-
-            50% {
-                transform: scale(1);
-                filter: brightness(1.5);
-            }
-        }
-
-        @keyframes keyframes-svg-celebrate {
-            0% {
-                transform: scale(0);
-            }
-
-            50% {
-                opacity: 1;
-                filter: brightness(1.5);
-            }
-
-            100% {
-                transform: scale(1.4);
-                opacity: 0;
-                display: none;
-            }
-        }
-
-        .publicidad {
-            margin: auto;
-        }
-    </style>
 </head>
 
 <body>
@@ -445,25 +97,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="espacio"></div>
         <div class="linea"></div>
 
+
         <h2> Información del cliente </h2>
 
+
         <div class="form">
+
             <div class="grupo">
                 <label for="nombre" class="">Nombre</label>
                 <input onfocus="onFocusInput(this)" onblur="onBlurInput(this)" value="<?php if (isset($_POST["nombre"]))
                     echo $_POST["nombre"]; ?>" id="nombre" name="nombre" type="text" required>
                 <span class="error">
                     <?php echo $nombreError; ?>
-                </span>
-                <span class="barra"></span>
-            </div>
-
-            <div class="grupo">
-                <label for="email" class="">Email</label>
-                <input onfocus="onFocusInput(this)" onblur="onBlurInput(this)" value="<?php if (isset($_POST["email"]))
-                    echo $_POST["email"]; ?>" id="email" name="email" type="text" required>
-                <span class="error">
-                    <?php echo $emailError; ?>
                 </span>
                 <span class="barra"></span>
             </div>
@@ -478,15 +123,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <span class="barra"></span>
             </div>
 
-
-            <!-- TODO 
-            AÑADIR INPUTS                          
-            Checkbox
-            Radio
-            Color picker
-            -->
-
-
+            <div class="grupo">
+                <label for="email" class="">Email</label>
+                <input onfocus="onFocusInput(this)" onblur="onBlurInput(this)" value="<?php if (isset($_POST["email"]))
+                    echo $_POST["email"]; ?>" id="email" name="email" type="text" required>
+                <span class="error">
+                    <?php echo $emailError; ?>
+                </span>
+                <span class="barra"></span>
+            </div>
 
             <div class="grupo">
                 <label for="telefono" class="">Teléfono</label>
@@ -559,7 +204,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </span>
             </div>
 
+            <p>Seleccione con qué motivo compraría una silla</p>
 
+            <input type="radio" id="oficina" name="fav_language" value="Oficina">
+            <p class="radio-label">Oficina</p>
+
+            <input type="radio" id="videojuegos" name="fav_language" value="Videojuegos">
+            <p class="radio-label">Videojuegos</p>
+
+            <input type="radio" id="deporte" name="fav_language" value="Deporte">
+            <p class="radio-label">Deporte</p>
+
+
+
+            <div class="grupo">
+                <p>Selecciona el color para tu silla</p>
+                <input type="color" id="colorPicker" name="colorPicker" value="#f479ad">
+            </div>
 
             <div class="nuevos">
                 <p>Por favor, valore el servicio recibido y nuestra página web</p>
@@ -567,7 +228,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p class="noSatisfecho">No satisfecho</p>
                 <p class="satisfecho">Satisfecho</p>
             </div>
-
 
             <div class="grupo">
                 <textarea name="mensaje" id="mensaje" rows="3" required onfocus="onFocusInput(this)"
@@ -577,7 +237,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
 
-            <p class="publicidad">Quiero recibir publicidad</p>
+            <center>
+                <p class="publicidad">Quiero recibir publicidad</p>
+            </center>
             <div class="heart-container" title="Like">
                 <input type="checkbox" class="checkbox" id="Give-It-An-Id">
                 <div class="svg-container">
@@ -601,8 +263,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </svg>
                 </div>
             </div>
-
-
 
             <input type="submit">
         </div>
