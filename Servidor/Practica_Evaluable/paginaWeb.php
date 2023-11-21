@@ -295,8 +295,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             border: 2px solid #F479AD;
             border-radius: 10px;
         }
-    </style>
 
+        .slider {
+            -webkit-appearance: none;
+            width: 70%;
+            height: 26px;
+            background: #fcd8e7;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+            margin: auto;
+
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #F479AD;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: #F479AD;
+            cursor: pointer;
+        }
+
+        .nuevos {
+            text-align: center;
+        }
+
+        .satisfecho {
+            text-align: right;
+        }
+
+        .noSatisfecho {
+            text-align: left;
+        }
+    </style>
 </head>
 
 <body>
@@ -308,7 +352,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <img src="silla (1).png" class="silla" alt="imagen_silla">
         <div class="espacio"></div>
         <div class="linea"></div>
-
 
         <h2> Información del cliente </h2>
 
@@ -343,6 +386,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <span class="barra"></span>
             </div>
 
+
+            <!-- TODO 
+            AÑADIR INPUTS
+            Slider
+            Checkbox
+            Radio
+            Color picker
+            -->
+
+
+
             <div class="grupo">
                 <label for="telefono" class="">Teléfono</label>
                 <input onfocus="onFocusInput(this)" onblur="onBlurInput(this)" value="<?php if (isset($_POST["telefono"]))
@@ -352,7 +406,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </span>
                 <span class="barra"></span>
             </div>
-
 
             <div class="grupo">
                 <p> Indica tu comunidad autónoma </p>
@@ -414,6 +467,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <?php echo $comunidadAutonomaError; ?>
                 </span>
             </div>
+
+
+
+            <div class="nuevos">
+                <p>Por favor, valore el servicio recibido y nuestra página web</p>
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <p class="noSatisfecho">No satisfecho</p>
+                <p class="satisfecho">Satisfecho</p>
+            </div>
+
+
+
+
+
+
 
             <div class="grupo">
                 <textarea name="mensaje" id="mensaje" rows="3" required onfocus="onFocusInput(this)"
