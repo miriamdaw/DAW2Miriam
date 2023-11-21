@@ -1,9 +1,13 @@
 <?php
 session_start();
 include("validar.php");
+include("baseDatos.php");
+
 $nombreError = $emailError = $edadError = $mensajeError = $telefonoError = $comunidadAutonomaError = "";
 $nombre = $email = $edad = $mensaje = $telefono = $comunidadAutonoma = "";
+
 error_reporting(E_ERROR | E_PARSE);
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["nombre"])) {
@@ -46,12 +50,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $comunidadAutonoma = $_POST["comunidadAutonoma"];
     }
 
-    $validando = validar($nombre, $mensaje);
+    $validando = validar($nombre, $email, $telefono, $mensaje);
 
     if (!empty($validando)) {
+        echo '<div class="error-container">';
         foreach ($validando as $error) {
-            echo "Error: " . $error . "<br>";
+            echo '<p class="error-message">Error: ' . $error . '</p>';
         }
+        echo '</div>';
+
     } else {
         $_SESSION['nombre'] = $nombre;
         $_SESSION['email'] = $email;
@@ -64,6 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 }
+
 ?>
 
 <!DOCTYPE html>
