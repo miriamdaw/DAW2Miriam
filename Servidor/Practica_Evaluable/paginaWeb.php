@@ -3,12 +3,19 @@ session_start();
 include("validar.php");
 include("conexionBaseDatos.php");
 
+// Limpiar la variable de sesión de imágenes si no se han seleccionado nuevas
+if (isset($_FILES["fichero"]) && empty($_FILES["fichero"]["name"][0])) {
+    unset($_SESSION['imagenes']);
+}
+
 $nombre = $edad = $email = $telefono = $comunidadAutonoma = $satisfecho = $mensaje = $publicidad = $color = $motivo = "";
 
 $nombreError = $edadError = $emailError = $telefonoError = $comunidadAutonomaError = $satisfechoError
     = $mensajeError = $publicidadError = $colorError = $motivoError = "";
 
-error_reporting(E_ERROR | E_PARSE);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -55,9 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['publicidad'])) {
         $publicidad = $_POST['publicidad'];
     } else {
-        $publicidad = 0; // Si no se marca, establecer el valor predeterminado a 0
+        $publicidad = 0;
     }
-
 
     if (!empty($_POST['color'])) {
         $color = $_POST['color'];
@@ -65,23 +71,77 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $colorError = "Seleccione un color para su silla.";
     }
 
-
     if (isset($_POST['motivo'])) {
         $motivo = $_POST['motivo'];
     } else {
         $motivo = "Por determinar";
     }
 
+
+    // Validación y manejo de imágenes
+    if (isset($_FILES["fichero"]) && !empty($_FILES["fichero"]["name"][0])) {
+        // Iterar a través de los archivos
+        $numArchivos = count($_FILES["fichero"]["name"]);
+        $imagenes = [];
+
+        for ($i = 0; $i < $numArchivos; $i++) {
+            $nombreArchivo = $_FILES["fichero"]["name"][$i];
+            $tipoArchivo = $_FILES["fichero"]["type"][$i];
+            $tamanoArchivo = $_FILES["fichero"]["size"][$i];
+            $rutaTemporal = $_FILES["fichero"]["tmp_name"][$i];
+
+            // Definir la ubicación de destino
+            $directorioDestino = "C:/xampp/htdocs/DAW2/DAW2Miriam/Servidor/Practica_Evaluable/Imagenes/";
+
+            // Construir la ruta completa del archivo de destino
+            $rutaDestino = $directorioDestino . $nombreArchivo;
+
+            // Validaciones (puedes personalizar según tus necesidades)
+            $extensionesPermitidas = array("jpg", "jpeg", "png");
+            $tamanoMaximo = 5 * 1024 * 1024; // 5 MB
+
+            // Obtener la extensión del archivo
+            $extension = strtolower(pathinfo($nombreArchivo, PATHINFO_EXTENSION));
+
+            // Verificar la extensión
+            if (!in_array($extension, $extensionesPermitidas)) {
+                $errores[] = "Error: El archivo '$nombreArchivo' tiene una extensión no permitida. Por favor, sube archivos JPG o PNG.";
+                // Continuar al siguiente archivo
+                continue;
+            }
+
+            // Verificar el tamaño del archivo
+            if ($tamanoArchivo > $tamanoMaximo) {
+                $errores[] = "Error: El archivo '$nombreArchivo' excede el tamaño máximo permitido (5 MB).";
+                // Continuar al siguiente archivo
+                continue;
+            }
+
+            // Mover el archivo a la ubicación de destino
+            if (move_uploaded_file($rutaTemporal, $rutaDestino)) {
+                // Almacenar el nombre del archivo para la base de datos
+                $imagenes[] = $nombreArchivo;
+            } else {
+                $errores[] = "Error al subir el archivo '$nombreArchivo'.";
+            }
+        }
+
+    } else {
+        // Si no se han agregado imágenes, agregar un error
+        $errores[] = "Error: No se han seleccionado imágenes.";
+    }
+
+
     $validando = validar($nombre, $email, $telefono, $mensaje);
 
     if (!empty($validando)) {
-        /*
+
         echo '<div class="error-container">';
         foreach ($validando as $error) {
             echo '<p class="error-message">Error: ' . $error . '</p>';
         }
         echo '</div>';
-*/
+
     } else {
         $_SESSION['nombre'] = $nombre;
         $_SESSION['email'] = $email;
@@ -92,20 +152,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['publicidad'] = $publicidad;
         $_SESSION['color'] = $color;
         $_SESSION['motivo'] = $motivo;
+        $_SESSION['imagenes'] = $imagenes;
 
-        /*
-        echo "Nombre: " . $_SESSION['nombre'] . "<br>";
-        echo "Email: " . $_SESSION['email'] . "<br>";
-        echo "Edad: " . $_SESSION['edad'] . "<br>";
-        echo "Teléfono: " . $_SESSION['telefono'] . "<br>";
-        echo "Comunidad Autónoma: " . $_SESSION['comunidadAutonoma'] . "<br>";
-        echo "Mensaje: " . $_SESSION['mensaje'] . "<br>";
-        echo "Publicidad: " . $_SESSION['publicidad'] . "<br>";
-        echo "Color: " . $_SESSION['color'] . "<br>";
-        echo "Motivo: " . $_SESSION['motivo'] . "<br>";
-        */
-        header("Location: procesarFormulario.php");
-        exit();
+        //Agregar echos para comprobar las variables
+        echo 'Nombre: ' . $_SESSION['nombre'] . '<br>';
+        echo 'Email: ' . $_SESSION['email'] . '<br>';
+        echo 'Edad: ' . $_SESSION['edad'] . '<br>';
+        echo 'Teléfono: ' . $_SESSION['telefono'] . '<br>';
+        echo 'Comunidad Autónoma: ' . $_SESSION['comunidadAutonoma'] . '<br>';
+        echo 'Mensaje: ' . $_SESSION['mensaje'] . '<br>';
+        echo 'Publicidad: ' . $_SESSION['publicidad'] . '<br>';
+        echo 'Color: ' . $_SESSION['color'] . '<br>';
+        echo 'Motivo: ' . $_SESSION['motivo'] . '<br>';
+        // Agregar echos para comprobar las imágenes
+        if (isset($_SESSION['imagenes'])) {
+            echo 'Imágenes: ' . implode(', ', $_SESSION['imagenes']) . '<br>';
+        } else {
+            echo 'No se han seleccionado imágenes.<br>';
+        }
+        
+                header("Location: procesarFormulario.php");
+                exit();
     }
 }
 
@@ -126,7 +193,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <center><img src="IconoLetrasBorde.png" /></center>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
 
         <h3> Sugerencias para CyberThrone </h3>
 
@@ -265,6 +332,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <?php echo $colorError; ?>
                 </span>
             </div>
+
+
+            <label for="fichero">Seleccione imágenes:</label>
+            <input type="file" name="fichero[]" id="fichero" accept=".jpg, .jpeg, .png" multiple />
 
 
             <div class="nuevos">
