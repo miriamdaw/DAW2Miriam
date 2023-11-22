@@ -13,48 +13,46 @@ $nombre = $edad = $email = $telefono = $comunidadAutonoma = $satisfecho = $mensa
 $nombreError = $edadError = $emailError = $telefonoError = $comunidadAutonomaError = $satisfechoError
     = $mensajeError = $publicidadError = $colorError = $motivoError = "";
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+$errores = [];
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["nombre"])) {
-        $nombreError = "Indique su nombre.";
+        $errores['nombre'] = "Indique su nombre.";
     } else {
         $nombre = $_POST["nombre"];
     }
 
     if (empty($_POST["edad"])) {
-        $edadError = "Indique su edad.";
+        $errores['edad'] = "Indique su edad.";
     } else {
         $edad = $_POST["edad"];
     }
 
     if (empty($_POST["email"])) {
-        $emailError = "Indique su email.";
+        $errores['email'] = "Indique su email.";
     } else {
         $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailError = "El formato del email no es válido.";
+            $errores['email'] = "El formato del email no es válido.";
         }
     }
 
     if (empty($_POST["telefono"])) {
-        $telefonoError = "Indique su teléfono.";
+        $errores['telefono'] = "Indique su teléfono.";
     } else {
         $telefono = $_POST["telefono"];
     }
 
     if (!isset($_POST["comunidadAutonoma"])) {
-        $comunidadAutonomaError = "Debe indicar la comunidad autónoma en la que vive.";
+        $errores['comunidadAutonoma'] = "Debe indicar la comunidad autónoma en la que vive.";
     } else {
         $comunidadAutonoma = $_POST["comunidadAutonoma"];
     }
 
     if (empty($_POST["mensaje"])) {
-        $mensajeError = "Indique qué busca en una silla gaming.";
+        $errores['mensaje'] = "Indique qué busca en una silla gaming.";
     } else {
         $mensaje = $_POST["mensaje"];
     }
@@ -96,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Construir la ruta completa del archivo de destino
             $rutaDestino = $directorioDestino . $nombreArchivo;
 
-            // Validaciones (puedes personalizar según tus necesidades)
+            // Validaciones
             $extensionesPermitidas = array("jpg", "jpeg", "png");
             $tamanoMaximo = 5 * 1024 * 1024; // 5 MB
 
@@ -131,16 +129,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errores[] = "Error: No se han seleccionado imágenes.";
     }
 
+    $errores = validar($nombre, $edad, $email, $telefono, $mensaje);
 
-    $validando = validar($nombre, $email, $telefono, $mensaje);
-
-    if (!empty($validando)) {
-
-        echo '<div class="error-container">';
-        foreach ($validando as $error) {
-            echo '<p class="error-message">Error: ' . $error . '</p>';
-        }
-        echo '</div>';
+    if (!empty($errores)) {
+        echo "";
 
     } else {
         $_SESSION['nombre'] = $nombre;
@@ -170,9 +162,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo 'No se han seleccionado imágenes.<br>';
         }
-        
-                header("Location: procesarFormulario.php");
-                exit();
+
+        header("Location: procesarFormulario.php");
+        exit();
     }
 }
 
@@ -201,7 +193,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="espacio"></div>
         <div class="linea"></div>
 
-
         <h2> Información del cliente </h2>
 
 
@@ -211,8 +202,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="nombre" class="">Nombre</label>
                 <input onfocus="onFocusInput(this)" onblur="onBlurInput(this)" value="<?php if (isset($_POST["nombre"]))
                     echo $_POST["nombre"]; ?>" id="nombre" name="nombre" type="text" required>
-                <span class="error">
-                    <?php echo $nombreError; ?>
+                <span class="error-message">
+                    <?php echo isset($errores['nombre']) ? $errores['nombre'] : ''; ?>
                 </span>
                 <span class="barra"></span>
             </div>
@@ -221,30 +212,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="edad" class="">Edad</label>
                 <input onfocus="onFocusInput(this)" onblur="onBlurInput(this)" value="<?php if (isset($_POST["edad"]))
                     echo $_POST["edad"]; ?>" id="edad" name="edad" type="text" required>
-                <span class="error">
-                    <?php echo $edadError; ?>
-                </span>
                 <span class="barra"></span>
+                <span class="error-message">
+                    <?php echo isset($errores['edad']) ? $errores['edad'] : ''; ?>
+                </span>
             </div>
 
             <div class="grupo">
                 <label for="email" class="">Email</label>
                 <input onfocus="onFocusInput(this)" onblur="onBlurInput(this)" value="<?php if (isset($_POST["email"]))
                     echo $_POST["email"]; ?>" id="email" name="email" type="text" required>
-                <span class="error">
-                    <?php echo $emailError; ?>
-                </span>
                 <span class="barra"></span>
+                <span class="error-message">
+                    <?php echo isset($errores['email']) ? $errores['email'] : ''; ?>
+                </span>
             </div>
 
             <div class="grupo">
                 <label for="telefono" class="">Teléfono</label>
                 <input onfocus="onFocusInput(this)" onblur="onBlurInput(this)" value="<?php if (isset($_POST["telefono"]))
                     echo $_POST["telefono"]; ?>" id="telefono" name="telefono" type="text" required>
-                <span class="telefono">
-                    <?php echo $telefonoError; ?>
-                </span>
                 <span class="barra"></span>
+                <span class="telefono">
+                    <?php echo isset($errores['telefono']) ? $errores['telefono'] : ''; ?>
+                </span>
             </div>
 
             <div class="grupo">
@@ -304,7 +295,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </option>
                 </select>
                 <span class="error">
-                    <?php echo $comunidadAutonomaError; ?>
+                    <?php echo isset($errores['comunidadAutonoma']) ? $errores['comunidadAutonoma'] : ''; ?>
                 </span>
             </div>
 
@@ -329,10 +320,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p>Selecciona el color para tu silla</p>
                 <input type="color" id="color" name="color" value="#f479ad">
                 <span class="error">
-                    <?php echo $colorError; ?>
+                    <?php echo isset($errores['color']) ? $errores['color'] : ''; ?>
                 </span>
             </div>
-
 
             <label for="fichero">Seleccione imágenes:</label>
             <input type="file" name="fichero[]" id="fichero" accept=".jpg, .jpeg, .png" multiple />
@@ -350,8 +340,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     onblur="onBlurInput(this)"><?php echo isset($_POST["mensaje"]) ? htmlspecialchars($_POST["mensaje"]) : ""; ?></textarea>
                 <span class="barra"></span>
                 <label id="mensajeLabel">Mensaje</label>
-            </div>
+                <span class="error">
+                    <?php echo isset($errores['mensaje']) ? $errores['mensaje'] : ''; ?>
+                </span>
 
+
+            </div>
 
             <center>
                 <p class="publicidad">Quiero recibir publicidad</p>
