@@ -10,10 +10,10 @@ if (isset($_FILES["fichero"]) && empty($_FILES["fichero"]["name"][0])) {
 
 
 //Declaración de variables
-$nombre = $edad = $email = $telefono = $comunidadAutonoma = $satisfecho = $mensaje = $publicidad = $color = $motivo = "";
+$nombre = $edad = $email = $telefono = $comunidadAutonoma = $satisfecho = $mensaje = $publicidad = $fechaCompra = $color = $motivo = $valoracion = "";
 
 $nombreError = $edadError = $emailError = $telefonoError = $comunidadAutonomaError = $satisfechoError
-    = $mensajeError = $publicidadError = $colorError = $motivoError = "";
+    = $mensajeError = $publicidadError = $colorError = $motivoError = $fechaError = "";
 
 $errores = [];
 
@@ -67,6 +67,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $publicidad = 0;
     }
 
+    if (empty($_POST["fechaCompra"])) {
+        $errores['fechaCompra'] = "Indique la fecha de compra.";
+    } else {
+        $fechaCompra = $_POST["fechaCompra"];
+    }
+
     if (!empty($_POST['color'])) {
         $color = $_POST['color'];
     } else {
@@ -77,6 +83,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $motivo = $_POST['motivo'];
     } else {
         $motivo = "Por determinar";
+    }
+
+    if (isset($_POST['slider_value'])) {
+        $sliderValue = $_POST['slider_value'];
+
+        switch ($sliderValue) {
+            case '1':
+                $valoracion = 'No Satisfecho';
+                break;
+            case '2':
+                $valoracion = 'Neutral';
+                break;
+            case '3':
+                $valoracion = 'Satisfecho';
+                break;
+        }
+    } else {
+        $valoracion = 'Neutral';
     }
 
 
@@ -141,8 +165,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['color'] = $color;
         $_SESSION['motivo'] = $motivo;
         $_SESSION['imagenes'] = $imagenes;
+        $_SESSION['valoracion'] = $valoracion;
+        $_SESSION['fechaCompra'] = $fechaCompra;
 
-        /*
+
         //Agregar echos para comprobar las variables
         echo 'Nombre: ' . $_SESSION['nombre'] . '<br>';
         echo 'Email: ' . $_SESSION['email'] . '<br>';
@@ -153,15 +179,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo 'Publicidad: ' . $_SESSION['publicidad'] . '<br>';
         echo 'Color: ' . $_SESSION['color'] . '<br>';
         echo 'Motivo: ' . $_SESSION['motivo'] . '<br>';
+        echo 'valoracion: ' . $_SESSION['valoracion'] . '<br>';
+        echo 'fecha: ' . $_SESSION['fechaCompra'] . '<br>';
         // Agregar echos para comprobar las imágenes
         if (isset($_SESSION['imagenes'])) {
             echo 'Imágenes: ' . implode(', ', $_SESSION['imagenes']) . '<br>';
         } else {
             echo 'No se han seleccionado imágenes.<br>';
         }
-*/
+
+
         header("Location: procesarFormulario.php");
         exit();
+
     }
 }
 
@@ -187,10 +217,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h3> Sugerencias para CyberThrone </h3>
 
         <img src="silla (1).png" class="silla" alt="imagen_silla">
-        <div class="espacio"></div>
+        <div id="parrafoJustificado">
+            <p>
+                ¡Bienvenido! En CyberThrone valoramos tu opinión. Si ya has recibido tu silla, nos encantaría conocer tu
+                experiencia. Tu retroalimentación es fundamental para nosotros.
+            </p>
+        </div>
+
         <div class="linea"></div>
 
-        <h2> Información del cliente </h2>
+        <h2> Información sobre ti </h2>
 
 
         <div class="form">
@@ -236,7 +272,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="grupo">
-                <p> Indica tu comunidad autónoma </p>
+                <p class="parrafos"> Indica tu comunidad autónoma </p>
                 <select name="comunidadAutonoma" id="comunidadAutonoma" size="18" required>
                     <option value="Andalucía" <?php if (isset($comunidadAutonoma) && $comunidadAutonoma === "Andalucía")
                         echo "selected"; ?>>Andalucía
@@ -296,41 +332,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </span>
             </div>
 
+            <div class="linea"></div>
 
-            <h2> Información de su silla </h2>
+            <h2> Información sobre tu silla </h2>
 
-            <p>Seleccione con qué motivo compraría una silla</p>
 
-            <input type="radio" id="oficina" name="motivo" value="Oficina" <?php if (isset($_POST['motivo']) && $_POST['motivo'] == 'Oficina')
-                echo 'checked="checked"'; ?>>
-            <p class="radio-label">Oficina</p>
+            <div class="opcionesSilla">
+                <p class="parrafos">¿Qué te animó a comprar en CyberThrone?</p>
 
-            <input type="radio" id="videojuegos" name="motivo" value="Videojuegos" <?php if (isset($_POST['motivo']) && $_POST['motivo'] == 'Videojuegos')
-                echo 'checked="checked"'; ?>>
-            <p class="radio-label">Videojuegos</p>
-
-            <input type="radio" id="deporte" name="motivo" value="Deporte" <?php if (isset($_POST['motivo']) && $_POST['motivo'] == 'Deporte')
-                echo 'checked="checked"'; ?>>
-            <p class="radio-label">Deporte</p>
+                <input type="radio" id="oficina" name="motivo" value="Oficina" <?php if (isset($_POST['motivo']) && $_POST['motivo'] == 'Oficina')
+                    echo 'checked="checked"'; ?>>
+                <p class="radio-label">Oficina</p>
+                <input type="radio" id="videojuegos" name="motivo" value="Videojuegos" <?php if (isset($_POST['motivo']) && $_POST['motivo'] == 'Videojuegos')
+                    echo 'checked="checked"'; ?>>
+                <p class="radio-label">Videojuegos</p>
+                <input type="radio" id="deporte" name="motivo" value="Deporte" <?php if (isset($_POST['motivo']) && $_POST['motivo'] == 'Deporte')
+                    echo 'checked="checked"'; ?>>
+                <p class="radio-label">Deporte</p>
+            </div>
 
             <div class="grupo">
-                <p>Selecciona el color para tu silla</p>
+                <label for="fechaCompra" class="">Fecha de Compra</label>
+                <br>
+                <input value="<?php echo isset($_POST['fechaCompra']) ? $_POST['fechaCompra'] : ''; ?>" id="fechaCompra"
+                    name="fechaCompra" type="date" required>
+                <span class="barra"></span>
+                <span class="error-message">
+                    <?php echo isset($errores['fechaCompra']) ? $errores['fechaCompra'] : ''; ?>
+                </span>
+            </div>
+
+
+            <div class="grupo">
+                <p class="parrafos">¿De qué color es tu silla?</p>
                 <input type="color" id="color" name="color" value="#f479ad">
                 <span class="error">
                     <?php echo isset($errores['color']) ? $errores['color'] : ''; ?>
                 </span>
             </div>
 
-            <label for="fichero">Seleccione imágenes:</label>
+            <center>
+                <p class="parrafos">Suba imágenes de su silla</p>
+            </center>
             <input type="file" name="fichero[]" id="fichero" accept=".jpg, .jpeg, .png" multiple />
 
 
-            <div class="nuevos">
-                <p>Por favor, valore el servicio recibido y nuestra página web</p>
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-                <p class="noSatisfecho">No satisfecho</p>
-                <p class="satisfecho">Satisfecho</p>
+            <div class="slider-container">
+                <br>
+                <p class="parrafos">Valora tu experiencia reciente</p>
+                <input type="range" id="slider" name="slider_value" min="1" max="3" step="1"
+                    value="<?php echo isset($_POST['slider_value']) ? $_POST['slider_value'] : '2'; ?>">
+                <div class="slider-labels">
+                    <span class="colorValoracion">No Satisfecho</span>
+                    <span class="colorValoracion">Neutral</span>
+                    <span class="colorValoracion">Satisfecho</span>
+                </div>
             </div>
+
 
             <div class="grupo">
                 <textarea name="mensaje" id="mensaje" rows="3" required onfocus="onFocusInput(this)"

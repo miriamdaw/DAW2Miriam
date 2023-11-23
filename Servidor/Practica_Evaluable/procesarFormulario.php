@@ -80,7 +80,9 @@ if (
     unset($_SESSION['color']);
     unset($_SESSION['motivo']);
 
+    /*
     header("Location: entradasClientes.php");
     exit();
+    */
 }
 ?>

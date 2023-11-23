@@ -33,13 +33,14 @@ body {
 
 .silla {
   float: left;
-  margin-top: 40px;
+  margin-top: 38px;
   margin-left: 20px;
+  margin-right: 50px;
   width: 30%;
 }
 
 .linea {
-  border-top: 1px solid #f479ad;
+  border-top: 1px solid  rgb(255, 91, 137);
   height: 2px;
   width: 90%;
   padding: 0;
@@ -60,19 +61,36 @@ img {
 
 h3 {
   text-align: center;
-  color: #f479ad;
+  color: rgb(255, 91, 137);
   font-size: 180%;
   font-weight: bold;
   margin-top: 15px;
 }
 
 h2 {
-  color: #f479ad;
+  color:  rgb(255, 91, 137);
   font-size: 150%;
   font-weight: bold;
   text-align: left;
   margin-left: 35px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+}
+
+.parrafos {
+  color: rgb(228, 116, 148);
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.opcionesSilla {
+  margin-top: 44px;
+  margin-left: 40px;
+}
+
+.radio-label {
+  margin-left: 10px;
+  color: #49454567;
+  font-size: 17px;
 }
 
 form {
@@ -80,7 +98,7 @@ form {
   border-radius: 24px;
   background-color: #fff;
   padding: 20px;
-  box-shadow: 0 0 20px rgba(244, 121, 173, 1);
+  box-shadow: 0 0 20px rgb(255, 91, 137);
   width: 40%;
 }
 
@@ -117,7 +135,7 @@ textarea:valid ~ label {
   position: absolute;
   top: -14px;
   font-size: 12px;
-  color: #2196f3;
+  color: rgba(244, 121, 173, 1);
 }
 
 label {
@@ -147,7 +165,7 @@ textarea:focus ~ .barra::before {
   width: 0%;
   bottom: 0;
   position: absolute;
-  background: linear-gradient(to left, #7048c7, #783dac);
+  background: linear-gradient(to right, rgb(255, 91, 137), #783dac);
   transition: 0.3s ease all;
   left: 0%;
 }
@@ -160,7 +178,7 @@ select {
 
 select:focus {
   outline: none;
-  border: 2px solid #f479ad;
+  border: 2px solid rgb(255, 91, 137);
   border-radius: 10px;
 }
 
@@ -169,7 +187,7 @@ input[type="submit"] {
   width: 100px;
   height: 40px;
   border: none;
-  color: #f479ad;
+  color:  rgb(255, 91, 137);
   background-color: #fadef7;
   border-radius: 5px;
   font-size: 16px;
@@ -187,52 +205,26 @@ input[type="file"] {
 select:focus,
 input[type="file"]:focus {
   outline: none;
-  border: 2px solid #f479ad;
+  border: 2px solid  rgb(255, 91, 137);
   border-radius: 10px;
 }
 
-.slider {
-  width: 70%;
-  height: 26px;
-  background: #fcd8e7;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
-  margin: auto;
-  margin-top: 20px;
-}
-
-.slider:hover {
-  opacity: 1;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  background: #f479ad;
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  background: #f479ad;
-  cursor: pointer;
-}
-
-.nuevos {
+.slider-container {
   text-align: center;
+  margin-top: 20px;
 }
 
-.satisfecho,
-.noSatisfecho {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 100px;
-  margin-top: 20px;
+#slider {
+  width: 100%; /* Cambiado a 100% para que sea más largo */
+  margin-top: 10px;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-weight: bold;
+  color: rgb(255, 91, 137); /* Cambia el color según sea necesario */
 }
 
 .heart-container {
@@ -338,4 +330,47 @@ input[type="color"] {
   margin-top: 5px; /* Puedes ajustar el margen superior según sea necesario */
 }
 
+#parrafoJustificado {
+  text-align: justify;
+  color: rgb(228, 116, 148);
+  margin-top: 80px;
+  margin-bottom: 80px;
+  margin-right: 80px;
+  font-size: 16px;
+  font-weight: bold;
+}
 
+/* Estilo predeterminado para los radio buttons */
+[type="radio"] {
+  appearance: none;
+  width: 4px; /* Ajusta el tamaño según sea necesario */
+  height: 5px; /* Ajusta el tamaño según sea necesario */
+  border: 2px solid #aaa;
+  border-radius: 50%;
+  margin-right: 5px;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Estilo al pasar el ratón por encima */
+[type="radio"]:hover {
+  border-color: #e471a1;
+  box-shadow: 0 0 5px rgba(244, 121, 173, 1); /* Sombra suave al pasar el ratón */
+}
+
+/* Estilo al dejar pulsado */
+[type="radio"]:active {
+  border-color: #f3a7c7;
+}
+
+/* Estilo para el estado seleccionado */
+[type="radio"]:checked {
+  background-color: #f1a7c6;
+  border-color: rgb(245, 180, 207);
+  box-shadow: 0 0 10px rgb(255, 91, 137); /* Sombra más pronunciada cuando está seleccionado */
+}
+
+.colorValoracion {
+  color:  #49454567;
+}
