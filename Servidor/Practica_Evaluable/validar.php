@@ -23,7 +23,6 @@ function validar($nombre, $edad, $email, $telefono, $mensaje)
         $errores['email'] = "El formato del email no es válido.";
     }
 
-    // Validación específica para el campo telefono
     if (!ctype_digit(str_replace([' ', '-'], '', $telefono)) || strlen(str_replace([' ', '-'], '', $telefono)) !== 9) {
         $errores['telefono'] = "El teléfono debe contener solo números y tener una longitud de 9 dígitos.";
     }

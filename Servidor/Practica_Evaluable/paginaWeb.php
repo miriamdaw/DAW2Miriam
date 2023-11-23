@@ -3,11 +3,13 @@ session_start();
 include("validar.php");
 include("conexionBaseDatos.php");
 
-// Limpiar la variable de sesión de imágenes si no se han seleccionado nuevas
+//Borrar la sesión de imagen para que no se solape con la siguiente
 if (isset($_FILES["fichero"]) && empty($_FILES["fichero"]["name"][0])) {
     unset($_SESSION['imagenes']);
 }
 
+
+//Declaración de variables
 $nombre = $edad = $email = $telefono = $comunidadAutonoma = $satisfecho = $mensaje = $publicidad = $color = $motivo = "";
 
 $nombreError = $edadError = $emailError = $telefonoError = $comunidadAutonomaError = $satisfechoError
@@ -16,6 +18,8 @@ $nombreError = $edadError = $emailError = $telefonoError = $comunidadAutonomaErr
 $errores = [];
 
 
+////////////DATOS
+//Comprobar que se han introducido
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["nombre"])) {
         $errores['nombre'] = "Indique su nombre.";
@@ -76,9 +80,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 
-    // Validación y manejo de imágenes
+    ////////////IMÁGENES
     if (isset($_FILES["fichero"]) && !empty($_FILES["fichero"]["name"][0])) {
-        // Iterar a través de los archivos
+
         $numArchivos = count($_FILES["fichero"]["name"]);
         $imagenes = [];
 
@@ -88,36 +92,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tamanoArchivo = $_FILES["fichero"]["size"][$i];
             $rutaTemporal = $_FILES["fichero"]["tmp_name"][$i];
 
-            // Definir la ubicación de destino
-            $directorioDestino = "C:/xampp/htdocs/DAW2/DAW2Miriam/Servidor/Practica_Evaluable/Imagenes/";
+            $directorioDestino = "Imagenes/";
 
-            // Construir la ruta completa del archivo de destino
             $rutaDestino = $directorioDestino . $nombreArchivo;
 
-            // Validaciones
+            //Solo se permite estas extensiones y hasta este tamaño
             $extensionesPermitidas = array("jpg", "jpeg", "png");
             $tamanoMaximo = 5 * 1024 * 1024; // 5 MB
 
-            // Obtener la extensión del archivo
+            //validar las IMÁGENES
             $extension = strtolower(pathinfo($nombreArchivo, PATHINFO_EXTENSION));
 
-            // Verificar la extensión
             if (!in_array($extension, $extensionesPermitidas)) {
                 $errores[] = "Error: El archivo '$nombreArchivo' tiene una extensión no permitida. Por favor, sube archivos JPG o PNG.";
-                // Continuar al siguiente archivo
                 continue;
             }
 
-            // Verificar el tamaño del archivo
             if ($tamanoArchivo > $tamanoMaximo) {
                 $errores[] = "Error: El archivo '$nombreArchivo' excede el tamaño máximo permitido (5 MB).";
                 // Continuar al siguiente archivo
                 continue;
             }
 
-            // Mover el archivo a la ubicación de destino
             if (move_uploaded_file($rutaTemporal, $rutaDestino)) {
-                // Almacenar el nombre del archivo para la base de datos
                 $imagenes[] = $nombreArchivo;
             } else {
                 $errores[] = "Error al subir el archivo '$nombreArchivo'.";
@@ -125,14 +122,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
     } else {
-        // Si no se han agregado imágenes, agregar un error
         $errores[] = "Error: No se han seleccionado imágenes.";
     }
 
+    //VALIDAR los DATOS
     $errores = validar($nombre, $edad, $email, $telefono, $mensaje);
 
     if (!empty($errores)) {
-        echo "";
 
     } else {
         $_SESSION['nombre'] = $nombre;
@@ -146,6 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['motivo'] = $motivo;
         $_SESSION['imagenes'] = $imagenes;
 
+        /*
         //Agregar echos para comprobar las variables
         echo 'Nombre: ' . $_SESSION['nombre'] . '<br>';
         echo 'Email: ' . $_SESSION['email'] . '<br>';
@@ -162,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo 'No se han seleccionado imágenes.<br>';
         }
-
+*/
         header("Location: procesarFormulario.php");
         exit();
     }
@@ -178,7 +175,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sugerencias cyberthrone: Sillas Gaming 3000</title>
-    <link rel="stylesheet" type="text/css" href="estilos.css">
+    <link rel="stylesheet" type="text/css" href="CSSpaginaWeb.css">
     <script src="script.js"></script>
 
 </head>
