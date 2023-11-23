@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $rutaTemporal = $_FILES["fichero"]["tmp_name"][$i];
 
             // Definir la ubicación de destino
-            $directorioDestino = "C:/xampp/htdocs/DAW2/DAW2Miriam/Servidor/Practica_Evaluable/Imagenes/";
+            $directorioDestino = "/Imagenes";
 
             // Construir la ruta completa del archivo de destino
             $rutaDestino = $directorioDestino . $nombreArchivo;
