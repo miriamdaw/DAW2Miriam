@@ -40,7 +40,7 @@ body {
 }
 
 .linea {
-  border-top: 1px solid  rgb(255, 91, 137);
+  border-top: 1px solid rgb(255, 91, 137);
   height: 2px;
   width: 90%;
   padding: 0;
@@ -68,7 +68,7 @@ h3 {
 }
 
 h2 {
-  color:  rgb(255, 91, 137);
+  color: rgb(255, 91, 137);
   font-size: 150%;
   font-weight: bold;
   text-align: left;
@@ -77,7 +77,7 @@ h2 {
 }
 
 .parrafos {
-  color: rgb(228, 116, 148);
+  color: rgb(253, 90, 131);
   font-size: 17px;
   font-weight: bold;
 }
@@ -184,14 +184,14 @@ select:focus {
 
 input[type="submit"] {
   display: block;
-  width: 100px;
-  height: 40px;
+  width: 200px;
+  height: 60px;
   border: none;
-  color:  rgb(255, 91, 137);
+  color: rgb(255, 91, 137);
   background-color: #fadef7;
   border-radius: 5px;
-  font-size: 16px;
-  margin: 10px auto;
+  font-size: 20px;
+  margin: 20px auto;
   cursor: pointer;
   padding: 10px 20px;
 }
@@ -205,7 +205,7 @@ input[type="file"] {
 select:focus,
 input[type="file"]:focus {
   outline: none;
-  border: 2px solid  rgb(255, 91, 137);
+  border: 2px solid rgb(255, 91, 137);
   border-radius: 10px;
 }
 
@@ -230,12 +230,18 @@ input[type="file"]:focus {
 .heart-container {
   --heart-color: rgb(255, 91, 137);
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   transition: 0.3s;
-  margin-left: 345px;
+  margin: auto; /* Centra horizontalmente */
   margin-top: 10px;
   margin-bottom: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centra verticalmente */
+  text-align: center;
 }
 
 .heart-container .checkbox {
@@ -318,6 +324,7 @@ input[type="file"]:focus {
 
 .publicidad {
   margin: auto;
+  color: rgb(255, 91, 137);
 }
 
 input[type="color"] {
@@ -332,12 +339,13 @@ input[type="color"] {
 
 #parrafoJustificado {
   text-align: justify;
-  color: rgb(228, 116, 148);
+  color:  rgb(253, 90, 131);
   margin-top: 80px;
   margin-bottom: 80px;
   margin-right: 80px;
   font-size: 16px;
   font-weight: bold;
+  
 }
 
 /* Estilo predeterminado para los radio buttons */
@@ -372,5 +380,18 @@ input[type="color"] {
 }
 
 .colorValoracion {
-  color:  #49454567;
+  color: #49454567;
+}
+
+.error-message {
+  color: rgb(155, 6, 26);
+  font-weight: bold;
+
+}
+
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }

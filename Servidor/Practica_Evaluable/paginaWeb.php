@@ -247,7 +247,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input onfocus="onFocusInput(this)" onblur="onBlurInput(this)" value="<?php if (isset($_POST["telefono"]))
                     echo $_POST["telefono"]; ?>" id="telefono" name="telefono" type="text" required>
                 <span class="barra"></span>
-                <span class="telefono">
+                <span class="error-message">
                     <?php echo isset($errores['telefono']) ? $errores['telefono'] : ''; ?>
                 </span>
             </div>
@@ -382,17 +382,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     onblur="onBlurInput(this)"><?php echo isset($_POST["mensaje"]) ? htmlspecialchars($_POST["mensaje"]) : ""; ?></textarea>
                 <span class="barra"></span>
                 <label for="campoMensaje" id="mensajeLabel">Mensaje</label>
-            
-                <span class="error">
+
+                <span class="error-message">
                     <?php echo isset($errores['mensaje']) ? $errores['mensaje'] : ''; ?>
                 </span>
 
 
             </div>
 
-            <center>
-                <p class="publicidad">Quiero recibir publicidad</p>
-            </center>
+            <div class="centered-container">
+                <center>
+                    <p class="publicidad"><b>Quiero recibir publicidad</b></p>
+                </center>
+            </div>
             <div class="heart-container" title="Like">
                 <input type="checkbox" class="checkbox" id="Give-It-An-Id" name="publicidad" value="1" <?php if (isset($_POST['publicidad']) && $_POST['publicidad'] == '1')
                     echo 'checked'; ?>>
@@ -418,8 +420,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
 
-            <input type="submit">
+            <div class="centered-container">
+                <input type="submit">
+            </div>
+
         </div>
+
     </form>
 </body>
 
