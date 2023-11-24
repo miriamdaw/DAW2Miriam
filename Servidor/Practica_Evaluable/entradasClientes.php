@@ -20,7 +20,7 @@
 
         include("conexionBaseDatos.php");
 
-        $consulta = "SELECT nombre, email, edad, telefono, comunidadAutonoma, mensaje, valoracion, s.id FROM clientes c join silla s on s.idCliente=c.id";
+        $consulta = "SELECT nombre, email, edad, telefono, comunidadAutonoma, mensaje, valoracion, fecha_compra, s.id FROM clientes c join silla s on s.idCliente=c.id";
         $result = $mysqli->query($consulta);
         if ($result) {
             while ($row = $result->fetch_assoc()) {
@@ -36,11 +36,13 @@
             foreach ($id as $posicion => $idUsada) {
                 echo '<div class="entrada">';
                 echo "<strong>$nombre[$posicion]<br></strong> ";
-                echo "$edad[$posicion] años<br>";
-                echo "$comunidadAutonoma[$posicion]<br>";
+                echo "$edad[$posicion] años&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                echo "📍&nbsp;$comunidadAutonoma[$posicion]<br>";
+
+
                 echo '<hr class="separador">';
-            
-            
+
+
                 echo "<strong>$valoracion[$posicion]</strong><br>";
                 echo "$mensaje[$posicion]<br>";
                 unset($dir);
