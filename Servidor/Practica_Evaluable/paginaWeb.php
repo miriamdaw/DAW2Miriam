@@ -9,6 +9,7 @@ if (isset($_FILES["fichero"]) && empty($_FILES["fichero"]["name"][0])) {
 }
 
 
+
 //Declaración de variables
 $nombre = $edad = $email = $telefono = $comunidadAutonoma = $satisfecho = $mensaje = $publicidad = $fechaCompra = $color = $motivo = $valoracion = "";
 
@@ -73,16 +74,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fechaCompra = $_POST["fechaCompra"];
     }
 
-    if (!empty($_POST['color'])) {
-        $color = $_POST['color'];
-    } else {
-        $colorError = "Seleccione un color para su silla.";
+
+    $color = isset($_POST['color']) ? $_POST['color'] : '#f479ad';
+
+    if (empty($_POST['color'])) {
+        $errores['color'] = "Seleccione el color de su silla.";
     }
 
     if (isset($_POST['motivo'])) {
         $motivo = $_POST['motivo'];
     } else {
-        $motivo = "Por determinar";
+        $errores['motivo'] = "Selecciona una opción que te animó a comprar en CyberThrone.";
     }
 
     if (isset($_POST['slider_value'])) {
@@ -102,6 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $valoracion = 'Neutral';
     }
+
 
     ////////////IMÁGENES
     if (isset($_FILES["fichero"]) && !empty($_FILES["fichero"]["name"][0])) {
@@ -123,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $extensionesPermitidas = array("jpg", "jpeg", "png");
             $tamanoMaximo = 5 * 1024 * 1024; // 5 MB
 
-            //validar las IMÁGENES
+            //Validar las IMÁGENES
             $extension = strtolower(pathinfo($nombreArchivo, PATHINFO_EXTENSION));
 
             if (!in_array($extension, $extensionesPermitidas)) {
@@ -133,7 +136,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($tamanoArchivo > $tamanoMaximo) {
                 $errores[] = "Error: El archivo '$nombreArchivo' excede el tamaño máximo permitido (5 MB).";
-                // Continuar al siguiente archivo
                 continue;
             }
 
@@ -147,6 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $errores[] = "Error: No se han seleccionado imágenes.";
     }
+
 
     //VALIDAR los DATOS
     $errores = validar($nombre, $edad, $email, $telefono, $mensaje);
@@ -166,28 +169,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['imagenes'] = $imagenes;
         $_SESSION['valoracion'] = $valoracion;
         $_SESSION['fechaCompra'] = $fechaCompra;
-
-
-        //Agregar echos para comprobar las variables
-        echo 'Nombre: ' . $_SESSION['nombre'] . '<br>';
-        echo 'Email: ' . $_SESSION['email'] . '<br>';
-        echo 'Edad: ' . $_SESSION['edad'] . '<br>';
-        echo 'Teléfono: ' . $_SESSION['telefono'] . '<br>';
-        echo 'Comunidad Autónoma: ' . $_SESSION['comunidadAutonoma'] . '<br>';
-        echo 'Mensaje: ' . $_SESSION['mensaje'] . '<br>';
-        echo 'Publicidad: ' . $_SESSION['publicidad'] . '<br>';
-        echo 'Color: ' . $_SESSION['color'] . '<br>';
-        echo 'Motivo: ' . $_SESSION['motivo'] . '<br>';
-        echo 'valoracion: ' . $_SESSION['valoracion'] . '<br>';
-        echo 'fecha: ' . $_SESSION['fechaCompra'] . '<br>';
-        // Agregar echos para comprobar las imágenes
-        if (isset($_SESSION['imagenes'])) {
-            echo 'Imágenes: ' . implode(', ', $_SESSION['imagenes']) . '<br>';
-        } else {
-            echo 'No se han seleccionado imágenes.<br>';
-        }
-
-
 
         header("Location: procesarFormulario.php");
         exit();
@@ -343,13 +324,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="radio" id="oficina" name="motivo" value="Oficina" <?php if (isset($_POST['motivo']) && $_POST['motivo'] == 'Oficina')
                     echo 'checked="checked"'; ?>>
                 <p class="radio-label">Oficina</p>
+
                 <input type="radio" id="videojuegos" name="motivo" value="Videojuegos" <?php if (isset($_POST['motivo']) && $_POST['motivo'] == 'Videojuegos')
                     echo 'checked="checked"'; ?>>
                 <p class="radio-label">Videojuegos</p>
+
                 <input type="radio" id="deporte" name="motivo" value="Deporte" <?php if (isset($_POST['motivo']) && $_POST['motivo'] == 'Deporte')
                     echo 'checked="checked"'; ?>>
                 <p class="radio-label">Deporte</p>
+
+                <span class="error">
+                    <?php echo isset($errores['motivo']) ? $errores['motivo'] : ''; ?>
+                </span>
             </div>
+
 
             <div class="grupo">
                 <label for="fechaCompra" class="">Fecha de Compra</label>
@@ -365,7 +353,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="grupo">
                 <p class="parrafos">¿De qué color es tu silla?</p>
-                <input type="color" id="color" name="color" value="#f479ad">
+                <input type="color" id="color" name="color" value="<?php echo $color; ?>">
                 <span class="error">
                     <?php echo isset($errores['color']) ? $errores['color'] : ''; ?>
                 </span>
@@ -375,7 +363,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p class="parrafos">Suba imágenes de su silla</p>
             </center>
             <input type="file" name="fichero[]" id="fichero" accept=".jpg, .jpeg, .png" multiple />
-
 
             <div class="slider-container">
                 <br>
@@ -394,7 +381,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <textarea name="mensaje" id="mensaje" rows="3" required onfocus="onFocusInput(this)"
                     onblur="onBlurInput(this)"><?php echo isset($_POST["mensaje"]) ? htmlspecialchars($_POST["mensaje"]) : ""; ?></textarea>
                 <span class="barra"></span>
-                <label id="mensajeLabel">Mensaje</label>
+                <label for="campoMensaje" id="mensajeLabel">Mensaje</label>
+                <textarea id="campoMensaje" name="campoMensaje"></textarea>
+
                 <span class="error">
                     <?php echo isset($errores['mensaje']) ? $errores['mensaje'] : ''; ?>
                 </span>
