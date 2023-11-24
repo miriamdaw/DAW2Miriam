@@ -6,7 +6,9 @@ include("conexionBaseDatos.php");
 ////////////SESIONES
 if (
     isset($_SESSION['nombre'], $_SESSION['email'], $_SESSION['edad'], $_SESSION['telefono'], $_SESSION['comunidadAutonoma'],
-    $_SESSION['mensaje'], $_SESSION['publicidad'], $_SESSION['color'], $_SESSION['motivo'], $_SESSION['imagenes'])
+    $_SESSION['mensaje'], $_SESSION['publicidad'], $_SESSION['color'], $_SESSION['motivo'], $_SESSION['imagenes'], $_SESSION['valoracion'],
+    $_SESSION['fechaCompra']
+)
 ) {
 
     if (!$mysqli) {
@@ -22,19 +24,39 @@ if (
     $publicidad = $_SESSION['publicidad'];
     $color = $_SESSION['color'];
     $motivo = $_SESSION['motivo'];
+    $valoracion = $_SESSION['valoracion'];
+    $imagenes = $_SESSION['imagenes'];
+    $fechaCompra = $_SESSION['fechaCompra'];
+
+    echo 'Nombre: ' . $_SESSION['nombre'] . '<br>';
+    echo 'Email: ' . $_SESSION['email'] . '<br>';
+    echo 'Edad: ' . $_SESSION['edad'] . '<br>';
+    echo 'Teléfono: ' . $_SESSION['telefono'] . '<br>';
+    echo 'Comunidad Autónoma: ' . $_SESSION['comunidadAutonoma'] . '<br>';
+    echo 'Mensaje: ' . $_SESSION['mensaje'] . '<br>';
+    echo 'Publicidad: ' . $_SESSION['publicidad'] . '<br>';
+    echo 'Color: ' . $_SESSION['color'] . '<br>';
+    echo 'Motivo: ' . $_SESSION['motivo'] . '<br>';
+    echo 'imagenes: ';
+    foreach ($_SESSION['imagenes'] as $imagen) {
+        echo $imagen . ', ';
+    }
+    echo '<br>';
+    echo 'valoracion: ' . $_SESSION['valoracion'] . '<br>';
+    echo 'fecha: ' . $_SESSION['fechaCompra'] . '<br>';
 
 
     ////////////CONSULTAS PREPARADAS
     //INSERTAR (clientes)
-    $stmtClientes = $mysqli->prepare("INSERT INTO clientes (nombre, email, edad, telefono, comunidad_autonoma, mensaje) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmtClientes = $mysqli->prepare("INSERT INTO clientes (nombre, email, edad, telefono, comunidadAutonoma, mensaje) VALUES (?, ?, ?, ?, ?, ?)");
     $stmtClientes->bind_param("ssisss", $nombre, $email, $edad, $telefono, $comunidadAutonoma, $mensaje);
     if ($stmtClientes->execute()) {
         $clienteId = $stmtClientes->insert_id;
         $stmtClientes->close();
 
         //INSERTAR (silla)
-        $stmtSilla = $mysqli->prepare("INSERT INTO silla (id_cliente, color, motivo) VALUES (?, ?, ?)");
-        $stmtSilla->bind_param("iss", $clienteId, $color, $motivo);
+        $stmtSilla = $mysqli->prepare("INSERT INTO silla (idCliente, color, motivo, valoracion, fecha_compra) VALUES (?, ?, ?, ?, ?)");
+        $stmtSilla->bind_param("issss", $clienteId, $color, $motivo, $valoracion, $fechaCompra);
         if ($stmtSilla->execute()) {
             $sillaId = $stmtSilla->insert_id;
             $stmtSilla->close();
@@ -79,10 +101,10 @@ if (
     unset($_SESSION['publicidad']);
     unset($_SESSION['color']);
     unset($_SESSION['motivo']);
-
-    /*
-    header("Location: entradasClientes.php");
-    exit();
-    */
+    unset($_SESSION['valoracion']);
+    unset($_SESSION['fechaCompra']);
+    
+        header("Location: entradasClientes.php");
+        exit();
 }
 ?>

@@ -103,7 +103,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $valoracion = 'Neutral';
     }
 
-
     ////////////IMÁGENES
     if (isset($_FILES["fichero"]) && !empty($_FILES["fichero"]["name"][0])) {
 
@@ -187,6 +186,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo 'No se han seleccionado imágenes.<br>';
         }
+
 
 
         header("Location: procesarFormulario.php");
