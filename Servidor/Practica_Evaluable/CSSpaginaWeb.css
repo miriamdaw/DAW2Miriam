@@ -6,6 +6,10 @@ textarea:focus ~ label#mensajeLabel {
   color: #f479ad;
 }
 
+textarea {
+  font-family: "Poppins", sans-serif;
+}
+
 body {
   background: linear-gradient(to left, #7048c7, #783dac);
   font-family: "Poppins", sans-serif;
@@ -14,7 +18,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
 
 :root {
   --colorTextos: #49454567;
@@ -371,5 +374,3 @@ input[type="color"] {
 .colorValoracion {
   color:  #49454567;
 }
-
-

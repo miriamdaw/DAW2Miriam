@@ -382,8 +382,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     onblur="onBlurInput(this)"><?php echo isset($_POST["mensaje"]) ? htmlspecialchars($_POST["mensaje"]) : ""; ?></textarea>
                 <span class="barra"></span>
                 <label for="campoMensaje" id="mensajeLabel">Mensaje</label>
-                <textarea id="campoMensaje" name="campoMensaje"></textarea>
-
+            
                 <span class="error">
                     <?php echo isset($errores['mensaje']) ? $errores['mensaje'] : ''; ?>
                 </span>
