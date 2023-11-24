@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reseñas Cyberthrone</title>
     <link rel="stylesheet" type="text/css" href="CSSReseñas.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,800,900" rel="stylesheet">
 </head>
 
 <body>
@@ -18,9 +19,8 @@
         <?php
 
         include("conexionBaseDatos.php");
-        echo "antre";
 
-        $consulta = "SELECT nombre, email, edad, telefono, comunidadAutonoma, mensaje, s.id FROM clientes c join silla s on s.idCliente=c.id";
+        $consulta = "SELECT nombre, email, edad, telefono, comunidadAutonoma, mensaje, valoracion, s.id FROM clientes c join silla s on s.idCliente=c.id";
         $result = $mysqli->query($consulta);
         if ($result) {
             while ($row = $result->fetch_assoc()) {
@@ -31,15 +31,18 @@
                 $comunidadAutonoma[] = $row['comunidadAutonoma'];
                 $mensaje[] = $row['mensaje'];
                 $id[] = $row['id'];
+                $valoracion[] = $row['valoracion'];
             }
             foreach ($id as $posicion => $idUsada) {
                 echo '<div class="entrada">';
-                echo "<strong>Nombre:</strong> $nombre[$posicion]<br>";
-                echo "<strong>Email:</strong> $email[$posicion]<br>";
-                echo "<strong>Edad:</strong> $edad[$posicion]<br>";
-                echo "<strong>Teléfono:</strong> $telefono[$posicion]<br>";
-                echo "<strong>Comunidad Autónoma:</strong> $comunidadAutonoma[$posicion]<br>";
-                echo "<strong>Mensaje:</strong> $mensaje[$posicion]<br>";
+                echo "<strong>$nombre[$posicion]<br></strong> ";
+                echo "$edad[$posicion] años<br>";
+                echo "$comunidadAutonoma[$posicion]<br>";
+                echo '<hr class="separador">';
+            
+            
+                echo "<strong>$valoracion[$posicion]</strong><br>";
+                echo "$mensaje[$posicion]<br>";
                 unset($dir);
                 $consulta = "SELECT nombre_archivo FROM imagenes_silla WHERE id_silla = $idUsada";
                 if ($consu3 = $mysqli->query($consulta)) {
@@ -56,6 +59,9 @@
                         }
                     }
                 }
+                echo '<hr class="separador">';
+                echo "Correo electrónico: $email[$posicion]<br>";
+                echo "Teléfono: $telefono[$posicion]<br>";
                 echo "</div>";
             }
         }

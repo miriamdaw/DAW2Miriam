@@ -1,30 +1,46 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+  font-family: "Poppins", sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
 }
 
 .mensaje {
-  background-color: #f0f0f0;
-  padding: 20px;
-  margin-bottom: 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 15px;
 }
 
 .entradas-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  max-width: 800px;
+  margin: 20px auto;
 }
 
 .entrada {
-  background-color: #ffffff;
+  background-color: white;
   border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.entrada img {
+
+  max-width: 40%;
+  height: auto;
+  margin-top: 10px;
+  margin-left: 38px;
+  border-radius: 5px;
   padding: 10px;
-  margin: 10px;
-  width: 30%;
-  box-sizing: border-box;
 }
 
 .clear {
   clear: both;
+}
+
+.separador {
+  border: 1px solid #ddd; /* Estilo del borde */
+  margin: 10px 0; /* Márgenes superiores e inferiores */
 }
 
