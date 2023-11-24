@@ -53,42 +53,43 @@ if ($stmt = $mysqli->prepare("SELECT nombre, email, edad, telefono, comunidadAut
             $dir;
             $max++;
             for ($i = $min; $i <= $max; $i++) {
+                unset($dir);
                 $consulta = "SELECT nombre_archivo FROM imagenes_silla WHERE id_silla = $i";
-                if ($stmt = $mysqli->prepare($consulta)) {
-                    if ($stmt->execute()) {
-                        $stmt->bind_result($dir);
-                        $stmt->fetch();
-                        $stmt->free_result();
-                        echo "$dir<br>";
+                if ($stmt = $mysqli->query($consulta)) {
+
+                    while ($row = $stmt->fetch_assoc()) {
+                        $dir[] = $row["nombre_archivo"];
+                        echo "<br>";
+                    }
+                    if (isset($dir)) {
+                        foreach ($dir as $salida) {
+                            echo "<br>$salida";
+                        }
                     }
                 }
 
-                
-                
 
+                /*
+                    $consulta1 = $mysqli->prepare("SELECT id_silla, nombre_archivo FROM imagenes_silla JOIN silla ON silla.id = imagenes_silla.id_silla");
+                    
+                    
+                    while ($stmt->fetch()) {
+                        echo '<div class="entrada">';
+                        echo "<strong>Nombre:</strong> $nombre<br>";
+                        echo "<strong>Email:</strong> $email<br>";
+                        echo "<strong>Edad:</strong> $edad<br>";
+                        echo "<strong>Teléfono:</strong> $telefono<br>";
+                        echo "<strong>Comunidad Autónoma:</strong> $comunidadAutonoma<br>";
+                        echo "<strong>Mensaje:</strong> $mensaje<br>";
+
+                        if ($consulta1 = $mysqli->prepare("")) {
+                        echo '</div>';
+                    }
+                    $stmt->close();
+            } else {
+            echo "Error en la preparación de la consulta: " . $mysqli->error;
+            }*/
             }
-
-
-    /*
-        $consulta1 = $mysqli->prepare("SELECT id_silla, nombre_archivo FROM imagenes_silla JOIN silla ON silla.id = imagenes_silla.id_silla");
-        
-        
-        while ($stmt->fetch()) {
-            echo '<div class="entrada">';
-            echo "<strong>Nombre:</strong> $nombre<br>";
-            echo "<strong>Email:</strong> $email<br>";
-            echo "<strong>Edad:</strong> $edad<br>";
-            echo "<strong>Teléfono:</strong> $telefono<br>";
-            echo "<strong>Comunidad Autónoma:</strong> $comunidadAutonoma<br>";
-            echo "<strong>Mensaje:</strong> $mensaje<br>";
-
-            if ($consulta1 = $mysqli->prepare("")) {
-            echo '</div>';
-        }
-        $stmt->close();
-} else {
-echo "Error en la preparación de la consulta: " . $mysqli->error;
-}*/
 }
 ?>
     </div>
