@@ -1,5 +1,5 @@
 function onFocusInput(element) {
-  var label = element.previousElementSibling; // Obtener el elemento label anterior al input
+  var label = element.previousElementSibling;
   label.style.top = "-14px";
   label.style.fontSize = "12px";
   label.style.color = "#F479AD";

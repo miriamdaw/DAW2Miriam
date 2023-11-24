@@ -362,7 +362,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <center>
                 <p class="parrafos">Suba imágenes de su silla</p>
             </center>
-            <input type="file" name="fichero[]" id="fichero" accept=".jpg, .jpeg, .png" multiple />
+            <input type="file" name="fichero[]" id="fichero" accept=".jpg, .jpeg, .png" multiple required/>
+
 
             <div class="slider-container">
                 <br>
