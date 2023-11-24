@@ -32,10 +32,12 @@
                 $mensaje[] = $row['mensaje'];
                 $id[] = $row['id'];
                 $valoracion[] = $row['valoracion'];
+                $fecha_compra[] = $row['fecha_compra'];
+                
             }
             foreach ($id as $posicion => $idUsada) {
                 echo '<div class="entrada">';
-                echo "<strong>$nombre[$posicion]<br></strong> ";
+                echo "<strong class='nombre'>$nombre[$posicion]</strong><br>";
                 echo "$edad[$posicion] años&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
                 echo "📍&nbsp;$comunidadAutonoma[$posicion]<br>";
 
@@ -44,6 +46,7 @@
 
 
                 echo "<strong>$valoracion[$posicion]</strong><br>";
+
                 echo "$mensaje[$posicion]<br>";
                 unset($dir);
                 $consulta = "SELECT nombre_archivo FROM imagenes_silla WHERE id_silla = $idUsada";
@@ -61,6 +64,7 @@
                         }
                     }
                 }
+                echo "<p class='letras'>Fecha de compra: $fecha_compra[$posicion]</p>";
                 echo '<hr class="separador">';
                 echo "Correo electrónico: $email[$posicion]<br>";
                 echo "Teléfono: $telefono[$posicion]<br>";

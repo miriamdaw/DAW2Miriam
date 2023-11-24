@@ -3,10 +3,11 @@ body {
   background-color: #f5f5f5;
   margin: 0;
   padding: 0;
+  background: linear-gradient(to left, #7048c7, #783dac);
 }
 
 .mensaje {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   text-align: center;
   padding: 15px;
@@ -23,16 +24,36 @@ body {
   margin: 10px 0;
   padding: 15px;
   border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.entrada strong {
+  font-size: 1.2em; /* Tamaño de la fuente más grande, ajusta según tus preferencias */
+}
+
+.fecha-compra {
+  color: #666; /* Color gris clarito, ajusta según tus preferencias */
+  font-weight: bold; /* Texto más grueso */
+}
+
+body .nombre {
+  font-size: 18px;
 }
 
 .entrada img {
-
   max-width: 40%;
   height: auto;
   margin-top: 10px;
   margin-left: 38px;
+  margin-bottom: 20px;
   border-radius: 5px;
   padding: 10px;
+}
+
+.letras {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 0px;
 }
 
 .clear {
@@ -41,6 +62,6 @@ body {
 
 .separador {
   border: 1px solid #ddd; /* Estilo del borde */
-  margin: 10px 0; /* Márgenes superiores e inferiores */
+  margin: 10px 0;
 }
 
