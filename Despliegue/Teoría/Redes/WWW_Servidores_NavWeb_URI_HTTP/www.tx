@@ -14,7 +14,8 @@ Uniform Resource Locator
 1. Hypertext Transfer Protocol
 
 * Protocolo de la capa de Aplicación
-* Sin estado -> el servidor NO guarda información del cliente NUNCA !!! 
+* Sin estado/Stateless -> el servidor NO guarda información del cliente NUNCA !!! Las peticiones son independientes las unas con las otras
+* Interfaz Krud
 * Comunicación entre navegadores (clientes) y servidores web
 * Modelo cliente-servidor
 
@@ -34,8 +35,38 @@ Uniform Resource Locator
     - 501 
 
 
-3. Métodos básicos HTTP 
+3. Métodos básicos HTTP -> INTERFAZ CRUD
 Create => POST
 Read => GET
 Update => PUT
 Delete => DELETE
+
+
+4. Tipos MIME -> Multipurpose Internet Mail Extensions 
+-> Define el tipo de archivo que se manda al cliente
+
+
+5. Conexiones HTTP
+* Conexion: conjunto de peticiones que unen a cliente y servidor
+* Se inicia siempre por el cliente
+* Más común -> TCP
+
+5. 1- Tipos de Conexiones
+...
+
+
+5.2- Sesiones
+El cliente guarda cosas en forma de cookies. 
+Las cookies estan en formato clave/valor, almacena una clase de datos del servidor.
+No confundir con estado; no tiene nada que ver. 
+Las sesiones son un conjunto de peticiones entre cliente y servidor.
+El servidor recupera las cookies.
+> Cuando estamos haciendo una compra online y el carrito sigue como estaba.
+
+Caché -> almacena recursos servidor que un cliente luego va a pedir. Suelen estar pegadas en el cliente o en el servidor. 
+         Almacenar cosas que en algun momento tu le has pedido al servidor. Dentro de un tiempo vuelves a hacer la peticiones
+         al mismo recurso, ese recurso se ha quedado cacheado.
+
+
+
+

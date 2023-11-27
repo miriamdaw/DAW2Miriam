@@ -322,15 +322,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p class="parrafos">¿Qué te animó a comprar en CyberThrone?</p>
 
                 <input type="radio" id="oficina" name="motivo" value="Oficina" <?php if (isset($_POST['motivo']) && $_POST['motivo'] == 'Oficina')
-                    echo 'checked="checked"'; ?>>
+                    echo 'checked="checked"'; ?> required>
                 <p class="radio-label">Oficina</p>
 
                 <input type="radio" id="videojuegos" name="motivo" value="Videojuegos" <?php if (isset($_POST['motivo']) && $_POST['motivo'] == 'Videojuegos')
-                    echo 'checked="checked"'; ?>>
+                    echo 'checked="checked"'; ?> required>
                 <p class="radio-label">Videojuegos</p>
 
                 <input type="radio" id="deporte" name="motivo" value="Deporte" <?php if (isset($_POST['motivo']) && $_POST['motivo'] == 'Deporte')
-                    echo 'checked="checked"'; ?>>
+                    echo 'checked="checked"'; ?> required>
                 <p class="radio-label">Deporte</p>
 
                 <span class="error">
@@ -353,7 +353,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="grupo">
                 <p class="parrafos">¿De qué color es tu silla?</p>
-                <input type="color" id="color" name="color" value="<?php echo $color; ?>">
+                <input type="color" id="color" name="color" value="<?php echo $color; ?>" required>
                 <span class="error">
                     <?php echo isset($errores['color']) ? $errores['color'] : ''; ?>
                 </span>
@@ -369,7 +369,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <br>
                 <p class="parrafos">Valora tu experiencia reciente</p>
                 <input type="range" id="slider" name="slider_value" min="1" max="3" step="1"
-                    value="<?php echo isset($_POST['slider_value']) ? $_POST['slider_value'] : '2'; ?>">
+                    value="<?php echo isset($_POST['slider_value']) ? $_POST['slider_value'] : '2'; ?>" required>
                 <div class="slider-labels">
                     <span class="colorValoracion">No Satisfecho</span>
                     <span class="colorValoracion">Neutral</span>

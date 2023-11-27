@@ -49,6 +49,7 @@
 
                 echo "$mensaje[$posicion]<br>";
                 unset($dir);
+
                 $consulta = "SELECT nombre_archivo FROM imagenes_silla WHERE id_silla = $idUsada";
                 if ($consu3 = $mysqli->query($consulta)) {
 
