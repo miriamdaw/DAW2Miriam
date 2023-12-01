@@ -52,10 +52,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['cp'] = $cp;
         $_SESSION['ciudad'] = $ciudad;
         $_SESSION['direccion'] = $direccion;
+
         header("Location: login.php");
         exit();
     }
 }
+
 ?>
 
 <!DOCTYPE html>

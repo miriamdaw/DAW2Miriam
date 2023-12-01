@@ -1,4 +1,5 @@
 <?php
+
 function leer_config($nombre, $esquema)
 {
 	$config = new DOMDocument();
@@ -34,9 +35,45 @@ function comprobar_usuario($nombre, $clave)
 	}
 }
 
-//otra funcion para registrar
+function registrar_restaurante()
+{
+	if (
+		isset($_SESSION['correo'], $_SESSION['clave'], $_SESSION['pais'], $_SESSION['cp'], $_SESSION['ciudad'],
+		$_SESSION['direccion'])
+	) {
+		try {
+			// Enable error reporting
+			error_reporting(E_ALL);
+			ini_set('display_errors', 1);
 
-//estas funciones hay que incluirlas en bd_tienda_restaurantes.php
+			$correo = $_SESSION['correo'];
+			$clave = $_SESSION['clave'];
+			$pais = $_SESSION['pais'];
+			$cp = $_SESSION['cp'];
+			$ciudad = $_SESSION['ciudad'];
+			$direccion = $_SESSION['direccion'];
+
+			$res = leer_config(dirname(__FILE__) . "/configuracion.xml", dirname(__FILE__) . "/configuracion.xsd");
+			$bd = new PDO($res[0], $res[1], $res[2]);
+
+			$ins = "INSERT INTO restaurantes (correo, clave, pais, cp, ciudad, direccion) VALUES (?, ?, ?, ?, ?, ?)";
+			$stmt = $bd->prepare($ins);
+
+			if ($stmt->execute([$correo, $clave, $pais, $cp, $ciudad, $direccion])) {
+				return TRUE;
+			} else {
+				return FALSE;
+			}
+		} catch (PDOException $e) {
+			echo "Error: " . $e->getMessage();
+			return FALSE;
+		}
+	} else {
+		return FALSE;
+	}
+}
+
+
 function cargar_categorias()
 {
 	$res = leer_config(dirname(__FILE__) . "/configuracion.xml", dirname(__FILE__) . "/configuracion.xsd");
@@ -86,4 +123,29 @@ function cargar_productos_categoria($codCat)
 
 //comprobar si un producto ya está, si no está se añade, si está no se añade
 //buscar todo el rato en el carrito
+
+
+// recibe un array de códigos de productos
+// devuelve un cursor con los datos de esos productos
+function cargar_productos($codigosProductos)
+{
+	$res = leer_config(dirname(__FILE__) . "/configuracion.xml", dirname(__FILE__) . "/configuracion.xsd");
+	$bd = new PDO($res[0], $res[1], $res[2]);
+	/*if (empty($codigosProductos)){
+			  return FALSE;
+		  }*/
+	$texto_in = implode(",", $codigosProductos);
+	$ins = "SELECT * FROM productos WHERE codProd IN ($texto_in)";
+	$resul = $bd->query($ins);
+
+	if (!$resul) {
+		return FALSE;
+	}
+
+	$productos = array();
+	while ($producto = $resul->fetch(PDO::FETCH_ASSOC)) {
+		$productos[] = $producto;
+	}
+	return $productos;
+}
 ?>
