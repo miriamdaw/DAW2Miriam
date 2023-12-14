@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <button onclick="cifrar()">Cifrar textos</button>
+
+
+    <p id="textooriginal"></p>
+    <p id="clave"></p>
+    <p id="textocifrado"></p>
+
+    <script>
+        function cifrar() {
+
+            let texto = prompt("Escriba el texto que desea cifrar"); // Prompt para que el usuario ingrese el texto
+            let claves;
+
+            /*Para mostrar el mensaje por pantalla con el resultado, escribo document
+                y getElementById, busca un atributo de tipo "id"
+                que sea igual a textooriginal. Haré lo mismo con los demás*/
+            document.getElementById('textooriginal').innerText = "Texto original: " + texto;
+
+            do {
+                claves = prompt("Escriba la clave (numeros enteros separados por espacios)"); // Solicita la clave al usuario
+
+                document.getElementById('clave').innerText = "Clave introducida: " + claves;
+
+                const arrayClaves = claves.split(" ").map(clave => parseInt(clave)); //con map y parseint convierto cada elemento en el array en un número entero
+
+                if (arrayClaves.some(isNaN)) { // Comprueba si alguna parte de la clave no es un número válido
+                    alert("La clave contiene elementos no válidos");
+                } else {
+                    claves = arrayClaves;
+                }
+            } while (!claves); // Continúa solicitando la clave hasta que se ingrese una clave válida
+
+            let indiceClave = 0; // Variable para seguir el índice actual en la lista de claves
+
+
+            ////////////////
+            // let cifrado = ""; //lo voy a comentar porque si lo descomento me imprime el cifrado, pero sin "Este es el cifrado" y sin los otros títulos
+            ///////////////
+
+
+            for (let letra of texto) { // Bucle for...of que itera sobre cada letra del texto introducido
+                if (letra === " ") {  // Comprueba si la letra es un espacio, si es verdadero, se mantiene tal cual
+                    document.write(" "); // Imprime el espacio tal cual
+                } else {
+                    let cifra = letra.charCodeAt(0) + claves[indiceClave]; // Obtiene el valor Unicode de la letra y suma la clave de cifrado
+                    cifrado += String.fromCharCode(cifra); //para mostrar el mensaje cifrado entero por pantalla, pero no funciona
+                    document.write(String.fromCharCode(cifra)); // Imprime el resultado del cifrado
+
+                    
+                    // Avanza al siguiente índice en la lista de claves
+                    indiceClave = (indiceClave + 1) % claves.length;
+                }
+            }
+
+            document.getElementById('textocifrado').innerText = "Texto cifrado: " + cifrado; //No funciona
+        }
+
+    </script>
+
+</body>
+
+</html>

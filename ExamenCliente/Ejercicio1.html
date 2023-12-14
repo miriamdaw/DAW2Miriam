@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>Cifrado Cesar</h2>
+
+    <script>
+        let texto = prompt("Escriba el texto que desea cifrar"); //Prompt sirve para que salga un mensaje donde el usuario puede escribir lo que se le está pidiendo
+        let clave;
+
+        do {
+            clave = prompt("Escriba la clave (un numero entero)");
+
+            if (isNaN(parseInt(clave))) { // Comprueba si la entrada no es un número válido
+                alert("No has escrito un numero"); 
+            }
+        } while (isNaN(parseInt(clave))); //Mientras que la entrada del cliente sea un número válido
+
+        clave = parseInt(clave); // Convierte la cadena introducida como clave a un número entero
+
+        for (let letra of texto) { // Bucle for...of que itera sobre cada letra del texto introducido
+            let cifra = letra.charCodeAt(0) + clave; // Obtiene el valor Unicode de la letra y suma la clave de cifrado
+            if (letra == " ") {  //Bucle que comprueba si la letra es un espacio, si es verdadero, se mantiene tal cual
+                console.log(letra); //Y se imprime tal cual
+            } else {
+                document.write(String.fromCharCode(cifra)); //Si no es un espacio se procede con normalidad
+            }
+        }
+
+    </script>
+</body>
+</html>
