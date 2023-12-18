@@ -132,8 +132,8 @@ function cargar_productos($codigosProductos)
 	$res = leer_config(dirname(__FILE__) . "/configuracion.xml", dirname(__FILE__) . "/configuracion.xsd");
 	$bd = new PDO($res[0], $res[1], $res[2]);
 	/*if (empty($codigosProductos)){
-			  return FALSE;
-		  }*/
+					   return FALSE;
+				   }*/
 	$texto_in = implode(",", $codigosProductos);
 	$ins = "SELECT * FROM productos WHERE codProd IN ($texto_in)";
 	$resul = $bd->query($ins);
@@ -147,5 +147,15 @@ function cargar_productos($codigosProductos)
 		$productos[] = $producto;
 	}
 	return $productos;
+}
+
+//funcion insertar pedido
+function insertar_pedido($carrito, $codRes)
+{
+	$res = leer_config(dirname(__FILE__) . "/configuracion.xml", dirname(__FILE__) . "/configuracion.xsd");
+	$bd = new PDO($res[0], $res[1], $res[2]);
+
+	$ins = "INSERT INTO pedidos (restaurante) VALUES (?)";
+	$stmt = $bd->prepare($ins);
 }
 ?>

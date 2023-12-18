@@ -31,7 +31,7 @@ comprobar_sesion();
         $peso = $producto['Peso'];
         $unidades = $_SESSION['carrito'][$cod];
 
-        //print_r($productos);				
+        //print_r($producto);				
         echo "<tr><td>$nom</td><td>$des</td><td>$peso</td><td>$unidades</td>
 			<td><form action = 'eliminar.php' method = 'POST'>
 			<input name = 'unidades' type='number' min = '1' value = '1'>
