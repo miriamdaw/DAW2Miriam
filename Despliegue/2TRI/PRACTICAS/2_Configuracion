@@ -1,0 +1,92 @@
+1- Acceder a /etc/apache2/sites-available. Comprobar que está creado el archivo default
+y comprobar la configuración del servidor virtual por defecto, explicarla.
+ 
+- ServerName: nombre de host que debe aparecer en el encabezado Host: de la solicitud para
+              que coincida con el host virtual. Para este archivo este valor no es decisivo
+              y se utiliza como ultimo recurso.
+-> Ejemplo: #ServerName www.example.com
+
+
+- ServerAdmin: dirección correo electrónico del administrador del servidor. Esta dirección
+               se utiliza en mensajes de error enviados al cliente.
+-> Ejemplo: ServerAdmin webmaster@localhost
+
+
+- DocumentRoot: define el directorio raiz de los documentos web. Especifica el directorio
+                donde el servidor debe buscar los archivos para servir.
+-> Ejemplo: DocumentRoot /var/www/html
+
+
+- ErrorLog y CustomLog: es una directiva que se utiliza para configurar
+                        registros de error y acceso. La variable '${APACHE_LOG_DIR}' 
+                        apunta al directorio de registros de Apache.
+-> Ejemplo: ErrorLog ${APACHE_LOG_DIR}/error.log
+            CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+
+- Include: se utiliza para incluir archivos de configuración del directorio 'conf-available'
+-> Ejemplo: #Include conf-available/serve-cgi-bin.conf
+
+
+
+2- Acceder a /etc/apache2/sites-enabled. ¿Qué es el fichero 000-default?
+Archivo de configuración predeterminado para el host virtual principal en un servidor Apache. 
+Este host virtual se utiliza cuando no se encuentra una coincidencia con ninguno de los otros
+hosts virtuales configurados en el servidor.
+
+- VirtualHost *:80: este host virtual responde a todas las solicitudes en el pueeto 80, que es
+                    el puerto estándar para el tráfico HTTP.
+
+
+
+3- Comprobar el valor de las directivas: ServerRoot, User, Group y TimeOut que están en
+/etc/apache2/apache2.conf. ¿Qué quieren decir estas directivas?
+
+- ServerRoot: ubicación principal del árbol de directorios donde se mantienen la conf, 
+              archivos de error y de registro del servidor.
+-> Valor: "/etc/apache2"
+
+- User y Group: establecen el usuario y grupo bajo los cuales se ejecutará el servidor Apache.
+-> Valor: ${APACHE_RUN_USER} y ${APACHE_RUN_GROUP}
+
+- Timeout: establece el tiempo máximo en segundos que el sevidor esperará para recibir y
+           enviar datos en una conexión. Si la coneción no recibe ni envía datos dentro de
+           este período, se cerrará. En este caso está configurado para 300 segundos 
+           (5 minutos).
+-> Valor: 300
+
+
+
+4- Consultando la documentación de Apache, ¿Se permiten conexiones persistentes? ¿Qué directiva define ese comportamiento de persistencia en una conexión sobre
+TCP?
+- Sí. La directiva relacionada con esto es 'KeepAlive'
+  # KeepAlive: Wether or not to allow persistent connections (more than one request per connection). Set to "Off" to deactivate. KeepAlive On
+
+¿Dónde está el fichero de errores? ¿Qué directiva lo define?
+- La directiva ErrorLog.
+  # ErrorLog: the location of the error log file
+
+
+
+5- En el fichero /etc/apache2/ports.conf comprobar el valor del puerto en el que escucha
+el servidor apache.
+
+- El puerto 80.
+
+
+
+6- En el fichero /etc/apache2/sites-available/default, explicar:
+a. Lo que incluye y que quiere decir la directiva <VirtualHost>
+- Define un bloque de configuracion para un host virtual que escucha en el puerto 80, puerto
+  estándar para el protocolo HTTP. 
+
+b. El valor del la directiva DocumentRoot
+- Este es el directorio raiz para este host virtual: /var/www/html
+
+c. El valor de la directiva <Directory>
+- Establecen configuraciones especificas para diferentes directorios.
+<Directory /var/www/>
+ Options Indexes FollowSymLinks
+ AllowOverride None
+ Require all granted
+</Directory>
