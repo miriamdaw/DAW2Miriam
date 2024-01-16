@@ -1,2 +1,26 @@
 http://192.168.60.136/ direccion maquina ubuntu
 
+ServerAdmin webmaster0localhost
+DocumentRoot /var/www/html
+<Directory />
+Options FollowSymLinks
+AllowOverride None (no se sobreescribe ninguna pauta de seguridad)
+</Directory>
+<Directory var/www/>
+DirectoryIndex despliegue.html
+Options Indexes FollowSymLinks MultiViews
+AllowOverride None
+Order allow,deny
+allow from all
+</Directory>
+
+sudo su para que no pregunte nunca mas sudo
+sudo service apache2 restart
+:x para guardar (sudo vi)
+sudo mv ficheromover adondemover
+index.html esta en /var/www/html
+cambiar nombre mv antiguonombre nuevonombre
+sudo nano 000-default
+ErrorDocument 404
+
+index en escritorio (eclipse workspace src webapp)
