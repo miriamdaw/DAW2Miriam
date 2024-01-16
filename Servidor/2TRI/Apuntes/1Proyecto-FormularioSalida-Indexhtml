@@ -1,0 +1,22 @@
+1- EN ECLIPSE
+/////////////
+En el archivo de mi proyecto:
+-> Java Resources
+    -> src/main/java
+    Archivos .java...
+    FormularioSalidaIndex.java (El que nos interesa. Aquí, de momento, está la salida de los elementos recogidos por el formulario que rellena
+                            el cliente, en index.html)
+-> src 
+    -> main
+        -> webapps
+        index.html
+
+2- EN EL EXPLORADOR DE ARCHIVOS
+///////////////////////////////
+Archivos de programa -> Apache Software Foundation -> Tomcat 10.1 -> webapps
+-> 1erProyecto
+-> docs, examples, ROOT...
+-> index.html
+
+
+---> INDEX.HTML DEBE ESTAR EN WEBAPPS.
