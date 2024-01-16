@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <style>
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"],
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="FormularioPracticaEvaluable" method="post">
+        <table>
+            <tr>
+                <th>Elemento</th>
+                <th>Entrada</th>
+            </tr>
+            <tr>
+                <td>Género</td>
+                <td>
+                <input type="radio" name="radio_option" value="opcion1">Mujer
+                <input type="radio" name="radio_option" value="opcion1">Hombre
+                <input type="radio" name="radio_option" value="opcion1">Otro
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" name="email" required></td>
+            </tr>
+            <tr>
+                <td>Teléfono</td>
+                <td><input type="tel" name="telefono" pattern="[0-9]{9}" placeholder="Ej. 123456789" required></td>
+            </tr>
+            <tr>
+                <td>Contraseña</td>
+                <td><input type="password" name="contrasena" required></td>
+            </tr>
+            <tr>
+                <td>Fecha</td>
+                <td><input type="date" name="fecha" required></td>
+            </tr>
+            <tr>
+                <td>Ciudad</td>
+                <td>
+                    <select name="ciudad[]" multiple>
+                        <option value="ciudad1">Madrid</option>
+                        <option value="ciudad2">Barcelona</option>
+                        <option value="ciudad3">Galicia</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Publicidad</td>
+                <td><input type="checkbox" name="publicidad" value="aceptada"> Acepto recibir publicidad</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" value="Enviar">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>
