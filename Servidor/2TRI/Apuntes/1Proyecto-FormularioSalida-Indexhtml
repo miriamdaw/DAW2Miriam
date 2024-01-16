@@ -10,13 +10,10 @@ En el archivo de mi proyecto:
     -> main
         -> webapps
         index.html
+        
 
-2- EN EL EXPLORADOR DE ARCHIVOS
-///////////////////////////////
-Archivos de programa -> Apache Software Foundation -> Tomcat 10.1 -> webapps
--> 1erProyecto
--> docs, examples, ROOT...
--> index.html
-
+//////////////////////////////
+Usuarios -> eclipse workspace -> 1erProyecto -> src -> main -> webapps
+-> index.html 
 
 ---> INDEX.HTML DEBE ESTAR EN WEBAPPS.
