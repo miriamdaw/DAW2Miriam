@@ -29,6 +29,13 @@ input, select, textarea {
 </head>
 <body>
 
+<tr>
+    <td>Suma</td>
+    <td><%= request.getAttribute("a") %></td>
+</tr>
+
+
+
 	<%
 	String name = "";
 	String fecha = "";

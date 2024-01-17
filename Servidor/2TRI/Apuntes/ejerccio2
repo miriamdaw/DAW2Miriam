@@ -11,6 +11,25 @@ import java.io.PrintWriter;
 @WebServlet("/EnviaYRecibe")
 public class EnviaYRecibe extends HttpServlet {
 	@Override
+
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+
+		int suma=0;
+		int numero1=45;
+		int numero2=38;
+		suma = numero1+numero2;
+		
+		request.setAttribute("a", suma);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("formulario.jsp");
+		rd.forward(request, response);
+
+		
+	}
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nombre = request.getParameter("nombre");
 		String clave = request.getParameter("clave");
