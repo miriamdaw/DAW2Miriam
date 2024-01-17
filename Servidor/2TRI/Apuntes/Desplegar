@@ -1,0 +1,6 @@
+1- Parar servidor de ECLIPSE
+2- Desplegar Proyecto -> click Proyecto -> Export -> WAR file
+3- Guardar en escritorio
+4- Activar servidor de TOMCAT
+5- Mover WAR de Proyecto en webapps de TOMCAT 10.1
+6- En unos segundos se crea la carpeta de Proyecto

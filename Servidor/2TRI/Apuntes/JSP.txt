@@ -1,0 +1,6 @@
+1- New -> Web Dynamic Proyect -> ESPECIFICAR LA VERSION DE TOMCAT EN ESTE PROCESO 
+2- Webapps -> New JSP File
+
+http://localhost:8080/JavaServerPages/expresiones.jsp?nombre=miriam
+http://localhost:8080/JavaServerPages/color.jsp?bgColor=PINK
+http://localhost:8080/JavaServerPages/division.jsp?op1=12&op2=6

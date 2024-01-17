@@ -5,7 +5,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class FormularioPracticaEvaluable extends HttpServlet {
+public class FormularioComoPracticaEvaluable extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
@@ -22,7 +22,7 @@ public class FormularioPracticaEvaluable extends HttpServlet {
             String telefono = request.getParameter("telefono");
             String contrasena = request.getParameter("contrasena");
             String fecha = request.getParameter("fecha");
-            String[] ciudades = request.getParameterValues("ciudad");
+            String[] ciudad = request.getParameter("ciudad");
             String publicidad = request.getParameter("publicidad");
 
             // Salida de los datos recogidos
@@ -32,7 +32,7 @@ public class FormularioPracticaEvaluable extends HttpServlet {
             out.println("<p>Teléfono: " + telefono + "</p>");
             out.println("<p>Contraseña: " + contrasena + "</p>");
             out.println("<p>Fecha: " + fecha + "</p>");
-            out.println("<p>Ciudades: " + String.join(", ", ciudades) + "</p>");
+            out.println("<p>Ciudad: " + ciudad + "</p>");
             out.println("<p>Publicidad: " + (publicidad != null ? "Aceptada" : "No aceptada") + "</p>");
 
             out.println("</body></html>");
