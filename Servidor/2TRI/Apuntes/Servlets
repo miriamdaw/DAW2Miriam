@@ -1,0 +1,9 @@
+El nombre del Servlet se guarda. Si lo cambias da error.
+
+Se puede mirar en:
+
+Proyecto
+ -> src
+    -> webapp
+        -> web-inf
+           web.xml

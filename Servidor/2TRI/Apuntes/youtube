@@ -1,0 +1,15 @@
+doGet {
+int suma=0;
+int numero1=45;
+int numero2=38;
+suma = numero1+numero2;
+
+request.setAttribute("a", suma);
+
+RequestDispatcher rd = request.getRequestDispatcher("formulario.jsp");
+rd.forward(request, response);
+
+/////////////
+jsp
+
+out.println()
