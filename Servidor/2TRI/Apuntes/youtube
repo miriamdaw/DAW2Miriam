@@ -1,3 +1,5 @@
+como enviar variables desde el servlet a 
+
 doGet {
 int suma=0;
 int numero1=45;
