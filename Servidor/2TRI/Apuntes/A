@@ -1,0 +1,55 @@
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet("/EnviaYRecibe")
+public class EnviaYRecibe extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getAttribute("formularioEnviado") == null) {
+            request.setAttribute("nombre", "");
+            request.setAttribute("clave", "");
+            request.setAttribute("genero", "");
+            request.setAttribute("fecha", "");
+            request.setAttribute("email", "");
+            request.setAttribute("telefono", "");
+            request.setAttribute("ciudades", new String[]{});
+
+            request.setAttribute("formularioEnviado", true);
+        }
+
+        // Forward al formulario.jsp
+        RequestDispatcher rd = request.getRequestDispatcher("formulario.jsp");
+        rd.forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String nombre = request.getParameter("nombre");
+        String clave = request.getParameter("clave");
+        String genero = request.getParameter("genero");
+        String fecha = request.getParameter("fecha");
+        String email = request.getParameter("email");
+        String telefono = request.getParameter("telefono");
+        String ciudades[] = request.getParameterValues("ciudad");
+
+        // Configurar atributos con los datos del formulario
+        request.setAttribute("nombre", nombre);
+        request.setAttribute("clave", clave);
+        request.setAttribute("genero", genero);
+        request.setAttribute("fecha", fecha);
+        request.setAttribute("email", email);
+        request.setAttribute("telefono", telefono);
+        request.setAttribute("ciudades", ciudades);
+        request.setAttribute("formularioEnviado", true);
+
+        // Forward al formulario.jsp
+        RequestDispatcher rd = request.getRequestDispatcher("formulario.jsp");
+        rd.forward(request, response);
+    }
+}

@@ -1,4 +1,5 @@
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -25,10 +26,8 @@ public class EnviaYRecibe extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("formulario.jsp");
 		rd.forward(request, response);
-
 		
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nombre = request.getParameter("nombre");

@@ -28,27 +28,41 @@ input, select, textarea {
 </style>
 </head>
 <body>
+	<%@page errorPage="errores.jsp"%>
 
-<tr>
-    <td>Suma</td>
-    <td><%= request.getAttribute("a") %></td>
-</tr>
-
-
+	Suma es:
+	<%=request.getAttribute("a")%>
 
 	<%
-	String name = "";
-	String fecha = "";
-	String email = "";
-	String[] ciudadesSeleccionadas = null;
+    String[] errores = new String[4];
+    String name = "";
+    String fecha = "";
+    String email = "";
+    String[] ciudadesSeleccionadas = null;
 
-	if (request.getMethod().equalsIgnoreCase("post")) {
-		name = request.getParameter("nombre");
-		fecha = request.getParameter("fecha");
-		email = request.getParameter("email");
-		ciudadesSeleccionadas = request.getParameterValues("ciudad");
-	}
-	%>
+    if (request.getMethod().equalsIgnoreCase("post")) {
+        name = request.getParameter("nombre");
+        fecha = request.getParameter("fecha");
+        email = request.getParameter("email");
+        ciudadesSeleccionadas = request.getParameterValues("ciudad");
+
+        if (name == null || name.isEmpty()) {
+            errores[0] = "No ha introducido su nombre";
+        }
+
+        if (fecha == null || fecha.isEmpty()) {
+            errores[1] = "No ha introducido una fecha";
+        }
+
+        if (email == null || email.isEmpty()) {
+            errores[2] = "No ha introducido su email";
+        }
+
+        if (ciudadesSeleccionadas == null || ciudadesSeleccionadas.length == 0) {
+            errores[3] = "No ha seleccionado una ciudad";
+        }
+    }
+    %>
 
 	<form action=formulario.jsp method="post">
 		<table>
@@ -58,15 +72,15 @@ input, select, textarea {
 			</tr>
 			<tr>
 				<td>Nombre</td>
-				<td><input type="text" name="nombre" required><%=name%></td>
+				<td><input type="text" name="nombre"><%=name%></td>
 			</tr>
 			<tr>
 				<td>Fecha Nacimiento</td>
-				<td><input type="date" name="fecha" required><%=fecha%></td>
+				<td><input type="date" name="fecha"><%=fecha%></td>
 			</tr>
 			<tr>
 				<td>Email</td>
-				<td><input type="email" name="email" required><%=email%></td>
+				<td><input type="email" name="email"><%=email%></td>
 			</tr>
 			<tr>
 				<td>Ciudad</td><%=ciudadesSeleccionadas != null ? Arrays.asList(ciudadesSeleccionadas).contains("Madrid") ? "selected" : "" : ""%>
@@ -85,5 +99,12 @@ input, select, textarea {
 		</table>
 	</form>
 
+	<%--
+    if ((errores[0].isEmpty() && errores[1].isEmpty() && errores[2].isEmpty() && errores[3].isEmpty())) {
+        request.setAttribute("mensajesError", errores);
+        RequestDispatcher rd = request.getRequestDispatcher("errores.jsp");
+        rd.forward(request, response);
+    }
+    --%>
 </body>
 </html>
