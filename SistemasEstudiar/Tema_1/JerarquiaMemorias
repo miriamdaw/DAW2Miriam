@@ -1,0 +1,28 @@
+                        -
+                     -     -    >>>>>>>>>> Registros (CPU)
+                   -----------         
+                 -             -    >>>>>>>> Caché (CPU, discos, memorias RAM)
+               -------------------                 
+             -                     -   >>>>>> RAM                   
+           ---------------------------                         
+         -                            -   >>>  Memoria Secundaria (HDD, SDD, USB, SD)
+       ---------------------------------                                 
+     -                                   -   >> Auxiliar (CD, DVD, BRAY) 
+   -----------------------------------------
+
+
+1-  Registros. 
+Los registros guardan la información del programa que está ejecutando la CPU en un momento dado.
+
+2- Caché.
+La caché guarda la información más usada y/o la más reciente.
+
+3- RAM.
+Guarda los procesos que tienen que ser ejecutados por la CPU.
+
+4- Memoria Secundaria.
+Guarda toda la información y no es volátil.
+
+
+* Según se sube por la pirámide, implica más velocidad, más caro y menor capacidad (excepto en memorias auxiliares).
+    
