@@ -1,4 +1,8 @@
-El nombre del Servlet se guarda. Si lo cambias da error.
+* Crear un servlet:
+Proyecto -> Java Resources -> package -> new servlet
+
+
+* El nombre del Servlet se guarda. Si lo cambias da error.
 
 Se puede mirar en:
 
