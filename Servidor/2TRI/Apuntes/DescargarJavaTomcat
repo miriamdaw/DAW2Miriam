@@ -1,6 +1,6 @@
 1- Desinstalar todo lo que tengamos de java
 2- Instalar kit jdk ultima version (version 21) https://oracle.com/java/technologies/downloads -> x64 installer
-3- Instalar solo una parte de Jakarta, la que corresponde a lado servidor -> tomcat https://tomcat.apache.org/ (version 10.1.17, core 32/64, 
+3- Instalar solo una parte de Jakarta, la que corresponde a lado servidor -> tomcat https://tomcat.apache.org/ (version 10.1.18, core 32/64, 
    en el instalador marcar instalar todo, y lo demas dejarlo tal cual)
 4- escribir en cmd -> netstat -a -p TCP -n
    y comprobar que está el puerto 8080 en la linea 9
