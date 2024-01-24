@@ -7,15 +7,7 @@
 <title>Formulario Cookie</title>
 </head>
 <body>
-	<%
-	String usuario = "";
-	String clave = "";
-	String idioma = "";
 
-	usuario = request.getParameter("usuario");
-	clave = request.getParameter("clave");
-	idioma = request.getParameter("idioma");
-	%>
 
 	<form action=creaCookie method="post">
 		<table>
