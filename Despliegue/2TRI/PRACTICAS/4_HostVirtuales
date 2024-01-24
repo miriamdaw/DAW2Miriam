@@ -1,0 +1,13 @@
+1.- Por nombre
+
+cd /var/www
+sudo chmod 755 /var/www/empresadaw
+ls -l
+cd empresadaw
+sudo touch index.html
+cd /etc/apache2/sites-available
+sudo cp 000-default.conf /var/www/empresadaw
+sudo mv 000-default.conf empresadaw.conf
+sudo mv empresadaw html
+
+sociedades no entra

@@ -1,0 +1,23 @@
+2- Host virtuales
+/////////////////
+- Host virtual por nombre: comparte misma direccion IP pero tiene varios nombres distintos de dominio.
+- Host virtual por IP: distintas IP publicas. Cada direccion web esta asociada a una de esas direcciones.
+
+1- Módulos
+//////////
+Apache -> servidor modular (se van acoplando y desacoplando cosas)
+Añaden funcionalidades al servidor. 
+
+* Se encuentran en /etc/apache2/mod-available
+* Puedes ver los que están activos en /etc/apache2/mod-enabled
+-> a2enmod nombre_mod -> para crear enlace simbolico en mods_enabled
+-> a2dismod nombre_mod -> para eliminar el enlace simbolico de mod
+-> apt-get install nombre_mod -> para instalar 
+
+- Estáticos
+- Dinámicos
+
+
+
+
+
