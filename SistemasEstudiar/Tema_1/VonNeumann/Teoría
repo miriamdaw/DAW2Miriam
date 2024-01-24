@@ -1,0 +1,53 @@
+Componentes de la Arquitectura de Von Neumann explicados
+
+1. La CPU
+
+La CPU se divide en dos componentes: 
+    1- La ALU -> Unidad Aritmético Lógica
+        Es la encargada de realizar las operaciones.
+
+    2- La UC -> Unidad de Control
+        Establece el qué, cómo, cuándo, dónde, quién
+
+
+2. La RAM 
+
+La memoria principal ALMACENA los PROCESOS (programas que va a ejecutar la CPU). 
+Los PROCESOS se dividen en:
+
+    1- Instrucciones
+    2- Datos
+
+* Es VOLÁTIL -> cuando el flujo de corriente se detiene (programa es ejecutado) los datos se borran.
+* Acceso directo -> puedo situarme en una celda sin pasar directamente por las anteriores.
+* CELDAS -> se divide en celdas, las cuales están numeradas (direcciones).
+
+
+    2.1 Tipos de Direccionamiento
+
+        1. Inmediato
+            En la instrucción está incluido directamente el operando o dato
+            # SUM "1","2"
+
+        2. Directo
+            En la instrucción, el campo del operando contiene la dirección en memoria donde se encuentra el operando
+            # (Nos dicen la celda de donde coger el dato)
+
+        3. Indirecto
+            El campo del operando contiene una dirección de memoria en la que se encuentra la dirección efectiva del operando
+            # (Nos mandan en la operación a una celda y de esa celda nos manda a otra)
+
+        4. Relativo
+            La dirección del dato que interviene en la instrucción se obtiene sumando a la dirección de la propia instrucción una cantidad fija, que normalmente está contenida en un registro de tipo especial
+            # (Suma entre celdas (coger datos de celda #1 y suma [2] encontrándonos en la celda #3))
+
+
+             * Las direcciones NO se borran
+             * La suma se refiere al número de dirección
+
+
+3. Fases de los Programas
+
+    · Fase de Búsqueda -> Busca la instrucción y comandos que intervienen
+    · Fase de Ejecución -> Ejecuta los comandos
+

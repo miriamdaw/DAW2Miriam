@@ -7,4 +7,5 @@ Se compone de parte hardware y parte firmware;
 
 
 2.- Controlador
+Es un software que posibilita que el sistema operativo del PC entienda el lenguaje de la controladora presente en el dispositivo y así poder interactuar con la computadora. El controlador es el PROGRAMA que permite al sistema operativo entender el funcionamiento de un ratón, por ejemplo.
 

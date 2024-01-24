@@ -1,0 +1,80 @@
+RAM significa Random Access Memory. Es la memoria.
+
+
+1.1 ¿Qué hace?
+
+- Almacena procesos (programas que se van a ejecutar en la CPU) -> instrucciones y datos
+- Realiza operaciones de lectura y escritura
+- Es gestionada por la controladora de memoria, ubicada en el chipset o CPU
+- Se divide en celdas. Estas celdas están numeradas, lo que se conoce como direcciones.
+- El acceso es directo: puedo situarme en una celda sin pasar por la anterior.
+
+
+1.2 Características
+
+    1.2.1 Velocidad
+        La velocidad de una memoria RAM se mide en varios factores:
+        
+        1- FRECUENCIA
+            - Se mide en MHz (MegaHerzios).
+            - Es el número de operaciones de lectura que realiza por segundo.
+            - Por ejemplo, 1Hz es un click de reloj, lo que equivale a una operación.
+            - Importante -> 64 bits equivalen a 8 bytes.
+            !! ¿Cuál es la frecuencia? -> MB/s / 8 bytes
+
+        2- ANCHO DE BANDA
+            - Se mide en PC | MB/s (Megabytes/segundo).
+            - Es la cantidad de datos que se transfieren en un segundo.
+            - Importante -> 64 bits equivalen a 8 bytes.
+            !! ¿Cuál es el ancho de banda? -> MHz * 8 bytes
+
+        3- LATENCIA
+            - Se expresa en nanosegundos. 
+            - Mide los tiempos de respuesta desde que se pide un dato hasta que se recibe.
+            
+        3.2- LATENCIA DE COLUMNA (CL)
+            - Tiempo de respuesta entre que se pide un dato y este se sitúa en la fila, y dentro de esa fila en la columna dentro de la RAM.
+
+
+    1.2.2 Double Data Radio (DDR)
+        Si una tarjeta de RAM posee la tecnología DDR, significa que realizará el doble de operaciones que anteriormente, ya que cada golpe de reloj tendrá dos operaciones, una en el tic, y otra en el tac.
+        
+        · Generaciones de DDR y el número de pines
+
+            1. DDR1 -> 184
+            2. DDR2 -> 240
+            3. DDR3 -> 240
+            4. DDR4 -> 288 (144 x 2) ACTUAL
+               - Módulos de hasta 64GB
+               - Procesadores: Intel y AMD
+               - Latencia 9.15 CL
+               - Frecuencia 4266 MHz
+
+    
+    1.2.3 Dual Channel 
+        Si una tarjeta RAM posee la tecnología Dual Channel, significa que posee la capacidad de buscar un dato en dos módulos de RAM a la vez. Sólo funciona en operaciones de LECTURA, no en las de escritura. 
+        Con Dual CHannel, es posible acceder a la información de las dos memorias RAM de manera simultánea. 
+        Esta lectura se realiza por conjuntos de dos (A1 y A2, B1 y B2) memorias RAM, al disponerlas en los primeros slots o zócalos de RAM de cada conjunto. 
+        A la hora de acceder a la información van a leer simultáneamente el A1 y B1, pasando a continuación al A2 y B2.
+        En definitiva: Dual Channel supone un acceso más rápido a la información. Por eso, es más conveniente emplear dos memoria de 8GB que una de 16GB.
+
+        · Requisitos 
+
+        - Comprobar que nuestra placa base soporta esta tecnología
+        - Activarlo a través de la BIOS, tanto en modo manual como auto
+        - Tener en cuenta la disposición física de las memorias RAM en los zócalos
+        - Las memorias RAM deben ser de la misma generación y misma capacidad (x2 DDR3 de 4GB o x2 DDR4 de 8GB) 
+        - Las memorias RAM deben trabajar a la misma velocidad o ancho de banda (x2 DDR4 de 8GB a 3200 MHz)
+        - Es recomendable que sean del mismo fabricante.
+
+
+!! PREGUNTA DE EXAMEN !!
+Tengo una etiqueta RAM con las siguientes características:
+- PC4: 32000
+- CL: 12
+
+- Frecuencia: [Nos está pidiendo los MHz, que se calculan dividiendo los MB/s (ancho de banda) / 8 bytes. La respuesta es -> 4000 MHz.]
+- CL: [Latencia de columna. Esto es el tiempo que tarda un dato en introducirse en la fila, y dentro de la fila en la columna dentro de la RAM. Se mide en nanosegundos, en este caso serían 12.]
+- Versión DDR: [Double Data Radio (realiza doble de operaciones, en tic y tac). La versión de DDR es 4, nos lo indica la etiqueta en PC4. PC significa su ancho de banda o cantidad de datos que tranfiere en un segundo. Al ser DDR4, su tamaño máximo es 64GB.]
+
+        
