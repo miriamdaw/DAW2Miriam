@@ -1,0 +1,100 @@
+1.- Almacenamiento Secundario
+
+
+    1.2.- HDD | Hard Disk Drive
+
+    Permiten almacenar y recuperar gran cantidas de información.
+    No es volátil.
+    El acceso es más lento que el acceso a la memoria principal.
+
+
+        1.2.1- Ventajas
+
+            1. Más barato
+            2. Más fácil recuperación de datos ante daños físicos
+            3. Más resistente a la humedad
+            4. Más vida útil
+
+
+        1.2.2- Desventajas
+
+            1. Se fragmentan. Un HDD está fragmentado cuando no existen huecos contiguos para almacenar la información. Para ello, los sitemas operativos cuentan con herramientas para desfragmentar los discos duros.
+
+
+        1.2.3.- Cálculos
+
+            NºPLATOS X NºCARAS X NºPISTAS X NºSECTORES X TAMAÑO SECTOR
+            Tamaño DD = NºPLATOS * NºCARAS POR CADA PLATO * NºPISTAS POR CADA CARA * NºSECTORES POR CADA PISTA * TAMAÑO SECTOR
+
+            !! EXAMEN !!
+            · Tengo un disco de 512GB=? * 2 * 1000000 * 100000 * 512
+DD= 3*2*100000*100000*4=240000000000 para hacer la conversión de kiloByte a MegaByte sería dividiendo entre 1024 y así sucesivamente hasta llegar a GB. 
+El cluster tiene 16kb en 4 sectores
+
+
+        1.2.4.- Tipos de particiones
+
+        · MASTER BOOT RECORD
+            - Primarias
+            - Extendidas
+            - Lógicas
+
+            - En este sistema sólo se pueden tener instalados 4 Sistemas Operativos como máximo
+            - Puede tener 4 particiones primarias como máximo
+            - 3 primarias + 1 extendida + 127 lógicas
+            - Sólo 1 MBT 
+            - Sólo hasta Windows 7
+
+        · GPT 
+            - Particiones primarias infinitas
+            - Puede superar 2TB tamaño partición y llegar a infinito
+            - Más seguro a virus y pérdida de información
+            - Todos los SO (obligatorio a partir de Windows 8-11)
+
+
+
+    1.3.- SDD | Solid State Drive
+
+
+        1.3.1.- Ventajas 
+        
+            1. No tiene partes mecánicas:
+                - Más resistente a los golpes
+                - Menos peso
+                - Menos consumo
+                - Menos calor
+                - Menos tamaño
+                - Menos vibraciones y ruido
+                - Más veloz
+                - Más resistente a polvo y suciedades
+                - Más resistente a los campos magnéticos
+                - No fragmentación
+
+
+        1.3.2.- Tecnologías
+
+            · SLC (Single Level Cell)
+                 - Solo un bit de información por cada célula de memoria
+                 - Menos desgaste, más duraderas, menos propensas a errores
+                 - Más rápidas
+                 - Precio mucho más alto
+                 - Entornos empresariales
+
+             · MLC (Multiple Level Cell)
+                 - Dos bits por cada celda
+                 - Duplicar capacidad de manera barata
+                 - Más lenta que SLC 
+                 - Menos durabilidad y fiabilidad que SLC
+
+             · TLC (Triple Level Cell)
+                 - Tres bits en cada celda
+                 - Más capacidad, menos precio
+                 - Menos velocidad, fiabilidad y durabilidad
+
+
+        1.3.3.- Interfaces SSD
+
+            De menor a mayor velocidad:
+
+            · SATA III: Velocidad de 600 MB/s
+            · SATA EXPRESS: dos satas, 1200 MB/s
