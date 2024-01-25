@@ -1,0 +1,38 @@
+1.- Conectores RCA (Radio Corporation America)
+
+Estos conectores se usan para transmitir señales de AUDIO y VIDEO.
+
+    - Forma circular
+    - 1 único pin central
+    - Velocidad de transmisión de 150 KB/s
+    - Señal de vídeo analógica
+
+
+    1.2.- Colores
+
+        · Verde: brillo o luminancia de la señal de vídeo
+        · Azul: diferencia entre componente roja y la y
+        · Rojo: canal de audio derecho en sistemas estéreo O señal de video derecha en video compuesto.
+        · Amarillo: señal de vídeo en vídeo compuesto 
+        · Blanco: audio izquierdo en sistemas estéreo
+
+
+    1.3.- s/PDIF coaxial
+
+        - Transmite señal de audio DIGITAL
+        - Se utiliza para dispositivos que no tienen HDMI o Display-Port
+
+
+    1.4.- Vídeo compuesto
+
+        - Transmite señal de vídeo analógica compuesta, brillo y color. 
+
+    
+    1.5.- S-Vídeo
+
+        - Transmite señal de vídeo
+        - 50 MB/s
+        - 4 pines
+
+
+

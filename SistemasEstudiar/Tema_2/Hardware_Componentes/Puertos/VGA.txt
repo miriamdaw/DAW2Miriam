@@ -1,0 +1,5 @@
+VGA (Video Graphic Array)
+
+    - Proporciona salida de vídeo analógica (no audio)
+    - Señal analógica a 4MB/s
+    - 15 pines -> 3 filas

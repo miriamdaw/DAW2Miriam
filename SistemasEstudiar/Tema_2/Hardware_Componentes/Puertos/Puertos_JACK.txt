@@ -1,0 +1,13 @@
+1.- Puertos JACK
+
+Conectores de AUDIO para transmititr señales de audio analógicas.
+
+
+    1.2.- Colores
+
+        · Naranja -> subwoofer
+        · Negro -> altavoces traseros
+        · Azul -> tarjeta de audio
+        · Verde -> altavoces
+        · Rosa -> micrófono
+        · Gris -> altavoces delanteros

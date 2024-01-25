@@ -1,0 +1,6 @@
+Sirve para conectar el teclado (morado) o ratón (verde).
+Conexión de tipo serial y controlado.
+Necesitan ser detectados por la BIOS (quitas dispositivo toca reiniciar PC)
+
+- Velocidad 150 KB/s
+- 6 pines

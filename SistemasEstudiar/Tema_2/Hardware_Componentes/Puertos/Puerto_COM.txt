@@ -1,0 +1,4 @@
+Puerto COM
+//////////
+    - Se conectan antiguos routers, joysticks, ratones
+    - 10 pines -> falta uno

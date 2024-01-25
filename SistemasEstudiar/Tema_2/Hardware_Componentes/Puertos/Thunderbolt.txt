@@ -1,0 +1,4 @@
+- Permite conectar dispositivos y transferir a altas velocidades.
+- Se conecta al PCIe y es gestionado por el microprocesador
+- Tarjetas gráficas externas, monitores, dispositivos SSD
+- 24 pines

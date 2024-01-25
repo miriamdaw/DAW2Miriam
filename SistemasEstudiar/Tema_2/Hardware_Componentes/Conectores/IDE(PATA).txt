@@ -1,0 +1,8 @@
+IDE (PATA)
+//////////
+    - Se conectan antiguos HDD y CD/DVD
+    - Transmite en paralelo
+    - Su velocidad alcanza 133 MB/s
+    - Por cada conector IDE, se pueden conectar dos dispositivos que se configuran mediante esclavo/maestro a través de un cable
+    - El arranque lo determina la configuración esclavo/maestro
+    - 40 pines -> falta nº 20

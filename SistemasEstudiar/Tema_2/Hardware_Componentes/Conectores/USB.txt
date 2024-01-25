@@ -1,0 +1,11 @@
+Conectores USB
+
+    1.- USB 2.0 
+
+        - Por cada conector, se pueden sacar 2 puertos USB
+        - 10 pines -> falta nº 9
+
+    2.- USB 3.0
+
+        - Por cada conector, se pueden sacar 2 puertos USB
+        - 20 pines -> falta nº 19

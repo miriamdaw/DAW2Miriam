@@ -1,1 +1,57 @@
-Overclocking es el proceso mediante el cual se aumenta la velocidad del reloj del procesador, 
+1.- Overclocking
+
+Overclocking es el proceso mediante el cual se aumenta la velocidad del reloj del procesador, es decir, su FRECUENCIA (GHz).
+
+    · Real -> Aumenta la velocidad base
+    · Puntual -> Aumenta la velocidad del turbo
+
+Al realizar un overclocking, es recomendable hacerlo de entre un 10% y un 15% cada vez.
+
+
+2.- Elementos a revisar a la hora de hacer un Overclocking
+
+    * Monitorizar la temperatura: 
+        Habrá que tener en cuenta el cambio de la pasta térmica, el disipador, los ventiladores, la caja
+
+    * Hay que monitorizar el consumo:
+        Para ello hay que tener en cuenta la fuente de alimentación
+
+    * Los Buses: 
+        Hay que controlar que no haya cuello de botella. 
+
+    * Reinicios cuando se le exige poco al ordenador, fallos de escritura y lectura en el disco duro, fallos en el software
+
+
+3.- Ya se ha hecho el Overclocking, ¿funciona?
+
+    · SI TODO FUNCIONA -> Si todo está correcto, se vuelve a realizar un aumento de entre 10% y 15% de rendimiento
+    · SI NO FUNCIONA -> O bien volvemos a la configuración de práctica, o volvemos al aumento de rendimiento donde el ordenador era estable
+
+
+4.- Ventajas y Desventajas de hacer Overclocking
+
+    4.2.- Ventajas 
+
+        - A igual precio, mayor rendimiento
+
+    4.3.- Desventajas
+
+        - La vida útil disminuye
+        - Se pierde la garantía
+        - Aumenta el coste como consecuencia de la temperatura, consumo y buses
+
+
+5.- Maneras de hacer Overclocking
+
+    1.- A través de la BIOS
+        - Es más complejo, debido a que hay que modificar los parámetros de manera individual
+        - Se hace en frío, con lo cual la CPU no está funcionando, sólo provoca fallos de arranque
+
+    2.- A través de aplicaciones
+        - Es más sencillo, ya que la configuración es automática
+        - Se hace en caliente. La configuración de los parámetros se realiza con la PCU funcionando. Lo que se puede traducir en muchos más fallos de ejecución
+
+    3.- Con Nitrógeno líquido
+        - La temperatura ya no es un problema
+        - Las propiedades de los semiconductores cambian y el voltaje es más estable
+

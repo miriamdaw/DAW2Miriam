@@ -1,0 +1,9 @@
+Dependiendo de si es el Norte o Sur:
+
+    2.1.- Chipset Norte
+       - Se encargaba de procesar la información procedente de los principales componentes de la placa base (tarjeta gráfica, memoria RAM). Antiguamente estaba conectado con el procesador mediante un bus de datos directo y permitía la comunicación entre Chipset Sur y Procesador.
+       - Actualmente ha desaparecido de las placas bases, está integrado en la circuitería del microprocesador, quien ha absorbido su función. Desapareció debido al aumento de la capacidad y velocidad de los microprocesadores actuales.
+
+    2.2.- Chipset Sur 
+       - Se encarga de procesar la información del resto de dispositivos de entrada y salida de la placa base (USB, SATA, audio, tarjetas de red).
+       - No está conectado directamente con el Microprocesador sino que, a través de un bus de datos, se conecta con el Chipset Norte.

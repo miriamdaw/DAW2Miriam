@@ -1,0 +1,6 @@
+ATX de 12 Voltios
+/////////////////
+    - Está situado cerca del microprocesador
+    - Se encarga de dar alimentación extra para el microprocesador, ya que consume mucha potencia
+    - 4 pines | 8 ó 12
+    
