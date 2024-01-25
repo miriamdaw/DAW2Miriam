@@ -1,0 +1,56 @@
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/cookieContador")
+public class cookieContador extends HttpServlet {
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
+		Realizar contador de visitas utilizando una cookie
+
+		establece cookie para ir contando
+		entrar en el servlet por la url
+		servlet la primera vez que entra crea una cookie si no existe, en su valor lleva una variable y es el contador de visitas, que va a 0 y luego va contando
+		la segunda vez ya existe la cookie y se incrementa el contador y se envia al cliente
+		cookie tiene como valor el contador
+		 * */
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+
+		int contadorCookie = 0;
+		Cookie unaCookie;
+		String nombreCookie = "CookieCreada";
+
+		if (request.getCookies() != null) {
+			for (Cookie cookie : request.getCookies()) {
+				if (cookie.getName().equals(nombreCookie)) {
+					contadorCookie = Integer.parseInt(cookie.getValue());
+					break;
+				}
+			}
+		}
+
+		contadorCookie++;
+		unaCookie = new Cookie(nombreCookie, String.valueOf(contadorCookie));
+		response.addCookie(unaCookie);
+
+		out.println("<html><body>");
+		out.println("<h1>Contador de Visitas</h1>");
+		out.println("<p>¡Hola por " + contadorCookie + " vez!</p>");
+		out.println("<button onclick=\"window.location.href='formulario.jsp'\">Ir al formulario</button>");
+		out.println("</body></html>");
+		out.close();
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	}
+}

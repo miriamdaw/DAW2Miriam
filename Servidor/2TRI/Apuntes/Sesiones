@@ -1,0 +1,22 @@
+En un servlet donde se manejan sesiones, lo primero 
+es preguntar si la sesion ya existe, argumento en true o false (lioso)
+
+
+//se vacia la sesion si existe
+
+if (request.getSession(false) != null) { //sesion no existe, si es distnto de null y sí existe, la invalidamos
+    request.getSession().invalidate();
+}
+
+//se crea sesion asociada a la peticion
+httpsession lasesion = request.getSession(true);
+
+
+////////recupera sesion
+httpsession lasion = request.getSession(true);
+
+//se imprime el contenido de la sesion
+enumeration enumeracionAtributos;
+String nombreAtributo, valorAtributo;
+enumeracionAtributos = lasesion.getAtributteNames();
+out.println (variables de sesion:)

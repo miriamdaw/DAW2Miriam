@@ -1,0 +1,10 @@
+WEB-INF 
+    web.xml (para ver el codigo, darle a source)
+
+1- Mapping -> cómo accedes desde el navegador
+
+2- url-pattern -> como se accede desde la url, con que nombre
+-> se puede cambiar la forma de acceder, como por ejemplo, no se acuerda el nombre del servlet, es mas sencillo escribir hola
+
+<url-pattern>/DiHola</url-pattern>
+http://localhost:8080/1erProyecto/DiHola
