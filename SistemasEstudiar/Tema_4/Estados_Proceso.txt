@@ -1,0 +1,15 @@
+1.- Diagrama de estados de un Proceso
+
+-----------------            ------------                      --------------            ----------
+- Nuevo proceso -  (admitir) -   Listo  -  (pasar a ejecución) -  Ejecución -  (liberar) - Salida -
+-----------------            ------------                      --------------            ----------
+                                              (Fin de plazo
+                                                 timeout)
+                        
+                        (E/S o Evento occurre)              (E/S o Espera evento)
+                             -------------
+                             - Bloqueado -  
+                             -------------
+
+
+2.- Estado de los Procesos
