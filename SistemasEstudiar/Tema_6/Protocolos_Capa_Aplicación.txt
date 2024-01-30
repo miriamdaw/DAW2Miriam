@@ -1,0 +1,36 @@
+1. Protocolos de la capa de Aplicación
+
+La capa de aplicación es la capa que proporciona la interfaz entre las aplicaciones que utilizamos para comunicarnos y la red subyacente en la cual se transmiten los mensajes.
+Es donde, mediante software y hardware, convierte la comunicación  a un formato digital.
+Los servicios de la capa de aplicación inician una tranferencia de datos. Cada una de las capas va a cumplir su determinada función para finalmente recibir los datos de la red y prepararlos para que las personas los utilicen.
+
+    · HTTP: se usa para las páginas web y es el protocolo de transferencia de hipertexto.
+    · NFS: protocolos de transferencia de archivos.
+    · SMTP: protocolo de correo electrónico.
+    · DNS: protocolo para gestión de nombres de dominios.
+
+
+    1.2- HTTP, protocolo de transferencia de hipertexto
+        Establece una conexión con el servicio web del servidor que utiliza este protocolo.
+        El protocolo, al iniciar una navegación y al ingresar en la url a través de la red, lo qie está haciendo es solicitar esta página a un servidor http. El servidor responde con los recursos y una vez recibidos, el explorador 
+        interpreta los datos y los presenta al usuario. Los exploradores pueden intepretar y presentar muchos tipos de datos, como el texto sin formato con lenguaje de marcado de hipertexto, conocido como HTML, que es el lenguaje 
+        que se utiliza para construir una página web. Finalmente, el explorador va a descifrar el código HTML que fue y da el formato a la página para la ventana del explorador.
+
+        # http:// 
+            Le indica al navegador qué tipo de protocolo debe usar
+
+        # www.
+            Identifica el nombre del host o el nombre de un aparato determinado
+
+        # cisco.com 
+            Representa la entidad de dominio del sitio web
+        
+        # /edu/
+            Identifica la carpeta donde se localiza la página web del servidor
+
+
+    1.3- DNS, protocolo de gestión de nombres de dominio 
+        Sistema que se desarrolló para poder asociar el contenido del sitio con su dirección; convertir las direcciones numéricas en nombres cuyo objetivo era poder reconoder de manera simple una pñagina web y no tener que recordar un número, que sería más difícil.
+        DNS convierte los nombres de los dominios y de sus nodos de red publicados abiertamente en direcciones IP.
+        Existen muchos nombres de dominios que significan cosas diferentes: .us Estados Unidos, .uk Reino Unido, .edu para sitios educacionales
+        

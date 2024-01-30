@@ -24,3 +24,10 @@
                 - Tras la carga del SO se van cargando los prorgamas según van llegando y almacenándose en la memoria según su tamaño
                 - Ventaja: no se produce fragmentación interna
                 - Desventaja: se puede producir fragmentación externa, ya que aunque tengamos espacio suficiente, si el espacio que queda es menor que el proceso que hay que cargar, a pesar de tener el espacio, al no poderse cargar de manera contigua, ese proceso no se podría cargar y tendría que esperar a que se terminaran otros procesos o a realizar una desfragmentación para unificar los huecos de la memoria
+
+
+2.- Los programas se dividen en partes y se carga en la Memoria Principal sólo aquellas partes que se vayan a utilizar
+
+En los SO actualez, se ejecutan varios programas a la vez. Muchos de estos programas ocupan mucho espacio, incluo algunos ciertos juegos pueden llegar a sobrepasar el tamaño de la propia memoria ram. ¿Cómo es capaz el SO de  tener tantos programas corriendo a la vez, o ejecutar programas tan grandes, si la memoria principal no los puede almacenar por completo? 
+Sólo se carga en la memoria principal la parte del programa  que en ese momento está utilizando el usuario, o tiene que ser ejecutado por la CPU. El resto del programa lo deja almacenado en la memoria secundaria.
+
