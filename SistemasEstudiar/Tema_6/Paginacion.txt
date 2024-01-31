@@ -1,0 +1,18 @@
+1. Páginas
+- Las diferentes partes en las que se divide un programa se llaman PÁGINAS. Estas páginas son todas del mismo tamaño.
+
+2. Marcos
+- A su vez, la memoria principal se divide en partes llamadas MARCOS, del tamaño de las páginas.
+
+- El programa se divide en páginas completas
+- Se puede producir fragmentación interna si no se utiliza todo el espacio de la página
+- 1 marco solo puede contener 1 página
+
+En la memoria principal se cargan las partes a ser ejecutadas por la CPU y el resto en la memoria secundaria.
+Por ello, se produce un fallo de página cuando se necesita una página que no está cargada en RAM, sino que se encuentra en la memoria secundaria. 
+Para ello, el SO deberá decidir qué partes son llevadas de una memoria a otra, y cuando la memoria principal esté llena, qué página debe quitar de la
+memoria principal para dejar marcos libres que puedan albergar nuevas páginas de los mismos programas, o de nuevos programas que se tengan que ejecutar.
+Cuanto más grande sea la memoria RAM, menos intercambios habrá que hacer y menos tiempo se perderá.
+
+Estos intercambios de páginas se llevan a cabo teniendo en cuenta las políticas de reemplazo.
+

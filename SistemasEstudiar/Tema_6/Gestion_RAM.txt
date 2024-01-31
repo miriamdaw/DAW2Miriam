@@ -28,6 +28,6 @@
 
 2.- Los programas se dividen en partes y se carga en la Memoria Principal sólo aquellas partes que se vayan a utilizar
 
-En los SO actualez, se ejecutan varios programas a la vez. Muchos de estos programas ocupan mucho espacio, incluo algunos ciertos juegos pueden llegar a sobrepasar el tamaño de la propia memoria ram. ¿Cómo es capaz el SO de  tener tantos programas corriendo a la vez, o ejecutar programas tan grandes, si la memoria principal no los puede almacenar por completo? 
+En los SO actuales, se ejecutan varios programas a la vez. Muchos de estos programas ocupan mucho espacio, incluo algunos ciertos juegos pueden llegar a sobrepasar el tamaño de la propia memoria ram. ¿Cómo es capaz el SO de  tener tantos programas corriendo a la vez, o ejecutar programas tan grandes, si la memoria principal no los puede almacenar por completo? 
 Sólo se carga en la memoria principal la parte del programa  que en ese momento está utilizando el usuario, o tiene que ser ejecutado por la CPU. El resto del programa lo deja almacenado en la memoria secundaria.
 
