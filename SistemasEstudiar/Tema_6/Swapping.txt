@@ -1,0 +1,9 @@
+En un sistema de multitarea (tema 4, SO multitarea), normalmente hay mñas procesos que memoria 
+para contener todos los procesos, por lo que se hace necesario guardar los procesos sobrantes 
+en memoria auxiliar. Para poder ejecutar estos procesos será necesario llevarlos a la memoria principal.
+
+Se entiende por Swapping a la técnica mediante la cual se intercambia un proceso que está en memoria principal
+por otro que está en memoria secundaria. Esto permite a la CPU creer que tiene más memoria principal de la que realmente existe. 
+Para esto se hace uso de un área de memoria secundaria conocida como de intercambio (swap).
+
+DESVENTAJA: Ralentiza el proceso al tener que emplear esa forma de engañar varias veces. 
