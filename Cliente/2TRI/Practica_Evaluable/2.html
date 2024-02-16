@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Recorrer Elementos</title>
+</head>
+<body>
+
+ <p><head> <h1>Texto a revisar</h1></head>
+Listado de todos los nodos y sus relaciones de una web dada.
+</p>
+  <h1>Recorriendo Elementos</h1>
+  <ul id="resultado"></ul>
+  <script>
+    function recorrerElementos() {
+      var resultado = document.getElementById('resultado');
+      var nodos = document.body.childNodes;
+      
+      for (var i = 0; i < nodos.length; i++) {
+        var nodo = nodos[i];
+        if (nodo.nodeType === 1) { 
+          var elementoLista = document.createElement('li');
+          var textoNodo = "Elemento: " + nodo.nodeName;
+          if (nodo.previousElementSibling) {
+            textoNodo += ", Hijo del nodo anterior";
+          }
+          if (nodo.nextElementSibling) {
+            textoNodo += " y Padre del nodo siguiente";
+          }
+          var etiqueta = document.createTextNode(textoNodo);
+          elementoLista.appendChild(etiqueta);
+          resultado.appendChild(elementoLista);
+        }
+      }
+    }
+
+
+    window.onload = recorrerElementos;
+  </script>
+</body>
+</html>

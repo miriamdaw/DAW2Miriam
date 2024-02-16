@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Botón para página anterior</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: whitesmoke;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: gray;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    button {
+      padding: 15px 30px;
+      background-color: lightblue;
+      color: whitesmoke;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    button:hover {
+      background-color: turquoise;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>¿Quieres volver a la página anterior?</h1>
+    <button onclick="goBack()">¡Sí!</button> 
+    <!-- Al hacer click, ejecuta la función atras() 
+      que vuelve a la página anterior en el historial -->
+  </div>
+
+  <script>
+    function atras() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>

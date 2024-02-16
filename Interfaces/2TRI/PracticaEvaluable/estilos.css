@@ -1,0 +1,164 @@
+
+body {
+    background-color: #f5e6ff;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+header {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.contenedor-header {
+    display: flex;
+    align-items: center;
+}
+
+.contenedor-header img {
+    margin-right: 20px;
+}
+
+.boton {
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #4b0082;
+    border: 2px solid transparent;
+    border-radius: 5px;
+}
+
+.boton:hover {
+    color: #ff69b4;
+}
+
+.boton img {
+    width: 30px;
+    height: 30px;
+}
+
+
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    color: #4b0082;
+}
+
+h3 {
+    color: #4b0082;
+}
+
+p {
+    color: #4b0082;
+}
+
+footer {
+    background-color: #4b0082;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.columna {
+    flex: 1;
+}
+
+.columna h3 {
+    color: white;
+}
+
+.columna a {
+    color: white;
+    text-decoration: none;
+}
+
+.columna a:hover {
+    color: #ff69b4;
+}
+
+.contenido {
+    background-color: #f5e6ff;
+    padding: 20px;
+}
+
+.icono-mediano {
+    width: 250px;
+    height: auto;
+}
+
+.contenido {
+    padding: 20px;
+    text-align: center;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.imagen {
+    text-align: center;
+}
+
+.imagen img {
+    width: 100%;
+    max-height: 300px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.imagen img:hover {
+    transform: scale(1.05);
+}
+
+.imagen h3 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.imagen p {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+video {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+header, footer {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.rotar-svg {
+    animation: rotar 4s linear infinite;
+}
+
+@keyframes rotar {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
