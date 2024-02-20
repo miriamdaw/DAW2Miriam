@@ -1,0 +1,74 @@
+PRÁCTICA 3. FICHEROS DE CONFIGURACIÓN Y DIRECTIVAS EN LINUX
+
+* Ficheros a servidor por defecto (Directory Index)
+
+4. Editar el archivo /etc/apache2/sites-available/default y 
+dentro de la sección <Directory /var/www> … </Directory> 
+incluir la directiva DirectoryIndex con el valor despliegue.html
+<Directory /var/www/html>
+	Options Indexes FollowSymLinks
+	Allow Override None
+	Require all granted
+	DirectoryIndex despliegue.html
+	</Directory>
+
+
+5. Reiniciar el servidor (stop y start)
+sudo systemctl restart apache2
+
+
+
+* Opciones sobre directorios (Directory y Option Indexes)
+
+1. Editar el fichero /etc/apache2/sites-available/default. La directiva
+<Directory> … </Directory> contiene las directivas que determinan como
+Apache sirve el contenido de ese directorio. Todos los directorios que
+están dentro /var/www heredan esa configuración, y /var/www hereda y
+sobrescribe la configuración del directorio raíz (/)
+2. Desde la máquina física entrar en http://IP/ciclos ¿Qué se muestra?. El
+directorio /var/www/ciclos ha heredado la configuración /var/www
+(Cuidado con el archivo despliegue.html)
+3. Crear una nueva directiva <Directory> … </Directory> para
+/var/www/ciclos:
+Options FollowSymLinks MultiViews
+AllowOverride None
+Order allow, deny
+Allow from all
+4. Reiniciar el servidor y acceder de nuevo desde la máquina física. ¿Qué se
+muestra? ¿Por qué? En este caso no se ha definido la opción Indexes.
+Explicar el contenido de la directiva indicado en el punto anterior. Explicar
+directivas: Directory, DirectoryIndex, Indexes
+5. Desde la máquina física acceder a http://IP/ciclos/listado.html y
+comprobar que se accede correctamente
+Códigos de error (ErrorDocument)
+Apartado 1
+1. Configurar el servidor virtual por defecto para que cuando retorne el código de error
+404 Not found, envíe el texto “Página no encontrada en el servidor al que se está
+accediendo”. Para ello editar el fichero /etc/apache2/sites-available/default
+2. Reiniciar el servidor y acceder a algún recurso que no exista en el servidor para
+comprobar que se muestra correctamente
+Apartado 2
+3. Configurar el servidor virtual por defecto para que cuando retorne el código de error
+404 Not found, envíe la página 404.html (crear fichero) almacenada en el directorio
+raíz del servidor
+4. Reiniciar el servidor y acceder a algún recurso que no exista en el servidor para
+comprobar que se muestra correctamente
+Directorios virtuales (Alias)
+1. Crear el directorio /home/alumno/apuntes. Dentro del directorio crear un fichero
+llamado apuntes.html con el contenido que quieras
+2. Editar el archivo /etc/apache2/sites-available/default. Utilizar la directiva Alias para
+crear un directorio virtual denominado /apuntes que referencie
+/home/alumno/apuntes. Usar la directiva Directory para definir las opciones de
+configuración del directorio /home/alumno/apuntes, como sigue:
+Alias /apuntes /home/alumno/apuntes
+<Directory /home/alumno/apuntes>
+Options Indexes FollowSymLinks Multiviews
+AllowOverride None
+Order allow, deny
+allow from all
+</Directory>
+3. Reiniciar el servidor y acceder a http://IP/apuntes
+Redirecciones (Redirect)
+1. Editar el archivo /etc/apache2/sites-available/default. Utilziar la directiva Redirect para
+crear una redirección de /fp hacia a http://www.todofp.es
+2. Reinicar el servidor y acceder a http://IP/fp

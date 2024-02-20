@@ -1,0 +1,103 @@
+1.	En /var/www crea el directorio empresadaw y comprueba 
+que tenga permisos de lectura y ejecución.
+
+* sudo mkdir empresadaw
+* sudo chmod +rx empresadaw
+
+
+2. Crea:
+b.	empresadaw.conf Para crearlo, haz una copia del archivo 
+del host virtual por defecto. Modifica el archivo .conf 
+para este nuevo host virtual con los datos del enunciado.
+
+* sudo cp 000-default.conf empresadaw.conf
+* sudo nano empresadaw.conf:
+<VirtualHost *:80>
+    ServerAdmin webmaster@empresadaw.com
+        ServerName www.empresadaw.com
+        ServerAlias www.empresadaw.local
+        DocumentRoot /var/www/html/empresadaw
+
+        ErrorLog ${APACHE_LOG_DIR}/empresadaw_error.log
+        CustomLog ${APACHE_LOG_DIR}/empresadaw_access.log combined
+
+
+        <Directory /var/www/html/empresadaw>
+        Options FollowSymLinks MultiViews
+        AllowOverride All
+        Require all granted
+        </Directory>
+</VirtualHost>
+
+* sudo nano 000-default.conf:
+ServerAdmin webmaster@empresadaw.com
+        ServerName www.empresadaw.com
+        ServerAlias www.empresadaw.local
+        DocumentRoot /var/www/html/empresadaw
+
+        ErrorLog ${APACHE_LOG_DIR}/empresadaw_error.log
+        CustomLog ${APACHE_LOG_DIR}/empresadaw_access.log combined
+
+
+        <Directory /var/www/html/empresadaw>
+        Options FollowSymLinks MultiViews
+        AllowOverride All
+        Require all granted
+        </Directory>
+
+
+3. Modifica el fichero /etc/hosts para que incluya 
+el nombre y alias del servidor:
+
+127.0.0.1 localhost
+127.0.1.1 miriam-1-2
+192.168.0.21 empresadaw.com www.empresadaw.com empresadaw.local www.empresadaw.local
+
+
+4. En el fichero apache2.conf tienes que dar 
+los permisos para leer el directorio /var/www mediante 
+directivas. Revisar la configuración del host virtual con 
+ayuda del comando que da información de depuración apachectl -S
+
+<Directory /var/www/html>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+</Directory>
+
+* sudo systemctl restart apache2
+
+
+5. Hay que comprobar en /etc/apache2/ports.conf que 
+el puerto 80 está listo para escuchar peticiones. 
+Debe tener una línea que ponga Listen 80. Debería 
+estar así, ya que es el puerto por defecto. Si quisiéramos 
+poner otro puerto, por ejemplo el 8085, habría que añadir 
+otra línea Listen para ese nuevo puerto que pusiera Listen 8085
+
+Listen 80
+
+<IfModule ssl_module>
+        Listen 443
+</IfModule>
+
+<IfModule mod_gnutls.c>
+        Listen 443
+</IfModule>
+
+
+6.	Hay que habilitar un nuevo host virtual con el comando a2ensite
+
+* sudo a2ensite empresadaw.conf
+
+
+7. Reinicia el servicio Apache para que tengan efecto 
+los cambios y comprueba que el servicio web está disponible 
+por su nombre empresadaw.com y por su alias empresadaw.local.
+
+* sudo systemctl restart apache2
+
+
+
+
+

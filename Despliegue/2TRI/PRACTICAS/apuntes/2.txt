@@ -1,0 +1,145 @@
+PRÁCTICA 2. FICHEROS DE CONFIGURACIÓN Y DIRECTIVAS EN LINUX
+
+
+1. Se necesitan permisos de administrador
+
+sudo
+
+2. Acceder al directorio /etc/apache2
+
+cd /etc/apache2
+
+3. Abrir fichero apache2.conf. Explicar a que refiere cada 
+una de las líneas donde aparece la directiva include
+
+cat apache2.conf
+
+Las directivas Include en el archivo apache2.conf 
+permiten incluir otros archivos de configuración en 
+la configuración principal de Apache. Estos archivos 
+incluidos pueden contener configuraciones específicas 
+para diferentes partes del servidor, lo que permite 
+una organización modular de la configuración de Apache.
+
+1- IncludeOptional mods-enabled/*.load:
+ incluye todos los archivos .load ubicados en el directorio 
+ mods-enabled. Estos archivos suelen cargar módulos de Apache.
+
+2- IncludeOptional mods-enabled/*.conf:
+ incluye todos los archivos .conf ubicados en el directorio
+ mods-enabled. Estos archivos suelen contener configuraciones 
+ específicas para los módulos de Apache.
+
+3- Include ports.conf:
+ incluye el archivo ports.conf, que determina los 
+ puertos en los que Apache escuchará las conexiones entrantes.
+
+4- IncludeOptional conf-enabled/*.conf:
+ incluye todos los archivos .conf ubicados en el directorio 
+ conf-enabled. Estos archivos pueden contener fragmentos de 
+ configuración global para el servidor Apache.
+
+5- IncludeOptional sites-enabled/*.conf:
+ Esta línea incluye todos los archivos .conf ubicados en 
+ el directorio sites-enabled. Estos archivos suelen definir 
+ la configuración de los servidores virtuales de Apache.
+
+
+
+Servidor virtual por defecto
+
+
+4. Acceder a /etc/apache2/sites-available. Comprobar 
+que está creado el archivo default y comprobar la 
+configuración del servidor virtual por defecto, explicarla
+
+cd /etc/apache2/sites-available
+
+1- <VirtualHost *:80>
+Esta directiva define el inicio de la configuración para 
+un servidor virtual que escucha en el puerto 80. El asterisco * 
+indica que el servidor virtual responderá a todas las solicitudes 
+entrantes en todas las direcciones IP de la máquina.
+
+2- ServerAdmin webmaster@localhost
+Esta línea especifica la dirección de correo electrónico del 
+administrador del servidor.
+
+3- DocumentRoot /var/www/html
+Esta línea especifica el directorio raíz del sitio web para 
+este servidor virtual. Los archivos del sitio web se encontrarán 
+en el directorio /var/www/html.
+
+4- ErrorLog ${APACHE_LOG_DIR}/error.log
+Esta línea especifica la ubicación del archivo de registro de 
+errores para este servidor virtual. 
+
+5- CustomLog ${APACHE_LOG_DIR}/access.log combined
+Esta línea especifica la ubicación del archivo de registro de acceso 
+para este servidor virtual.
+
+
+5. Acceder a /etc/apache2/sites-enabled. 
+¿Qué es el fichero 000-default?
+
+El archivo 000-default es un enlace simbólico al 
+archivo default en sites-available. Los archivos 
+en sites-enabled son aquellos que Apache realmente 
+está utilizando. Por lo tanto, el 000-default es el 
+archivo de configuración del servidor virtual por 
+defecto que Apache está utilizando en ese momento.
+
+
+6. Comprobar el valor de las directivas:
+/etc/apache2/apache2.conf 
+ServerRoot: "/etc/apache2"
+User: ${APACHE_RUN_USER}
+Group: ${APACHE_RUN_GROUP}
+TimeOut: 300
+
+¿Qué quieren decir estas directivas?
+ServerRoot: directorio base en el que se encuentran 
+            los archivos de configuración y los recursos 
+            del servidor Apache.
+User y Group: usuario y grupo bajo los cuales se ejecutará 
+              Apache. Este usuario y grupo generalmente son
+              www-data en sistemas Debian/Ubuntu.
+TimeOut: tiempo máximo de espera para las solicitudes de Apache 
+         antes de que se cierre la conexión.
+
+
+7. Consultando la documentación de Apache, 
+¿Se permiten conexiones persistentes?
+Sí.
+
+¿Qué directiva define ese comportamiento de persistencia 
+en una conexión sobre TCP?
+KeepAlive.
+
+¿Dónde está el fichero de errores?
+/var/log/apache2/error.log
+
+¿Qué directiva lo define?
+ErrorLog.
+
+
+8. En el fichero /etc/apache2/ports.conf comprobar el
+valor del puerto en el que escucha el servidor apache
+Listen 80
+
+
+9. En el fichero /etc/apache2/sites-available/default, explicar:
+a. Lo que incluye y que quiere decir la directiva <VirtualHost>
+Esta directiva define la configuración para un servidor virtual 
+en Apache. En este caso, <VirtualHost *:80> indica que este servidor 
+virtual escuchará en todas las direcciones IP (*) en el puerto 80.
+
+b. El valor del la directiva DocumentRoot
+/var/www/html
+directorio raíz del sitio web para este servidor virtual
+
+c. El valor de la directiva <Directory>
+se utilizan típicamente para aplicar configuraciones específicas 
+a un directorio en el sistema de archivos. Cuando se utilizan dentro 
+de un bloque <VirtualHost>, estas directivas afectan solo al directorio 
+especificado por la directiva DocumentRoot.

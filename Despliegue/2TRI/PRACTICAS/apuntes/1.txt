@@ -1,0 +1,42 @@
+PRÁCTICA 1. INSTALACIÓN DE APACHE
+
+
+1. Instalar apache
+sudo apt-get update
+sudo apt-get install apache2
+
+
+2. ¿Qué es www-data?
+Usuario de sistema predeterminado utilizado por Apache para 
+servir y administrar archivos del sitio web. Este usuario 
+tiene permisos limitados para garantizar la seguridad del 
+servidor.
+
+
+3. ¿Qué es /var/www? ¿Quién es el propietario?
+Directorio predeterminado donde se almacenan los archivos 
+del sitio web en un servidor Apache en sistemas basados en 
+Unix/Linux. El propietario de este directorio suele 
+ser el usuario root.
+
+
+4. Comprobar que el servidor está iniciado y escuchando en 
+el puerto 80
+a. ps -ef | grep apache
+b. netstat -ltn
+
+
+5. En la máquina virtual donde Apache está instalado, 
+obtén su dirección IP. Puedes hacerlo ejecutando el 
+siguiente comando en la terminal:
+
+a. ip a
+b. ifconfig (la primera)
+
+b. Anota la dirección IP que aparece junto a inet en la 
+interfaz de red que estás utilizando para la conexión.
+
+c. n la barra de direcciones del navegador, escribe la dirección 
+IP del servidor Apache. Por ejemplo:
+
+c. http://192.168.1.100
