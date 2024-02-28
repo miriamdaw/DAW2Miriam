@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obtener Información del Navegador</title>
+
+
+</head>
+
+<body>
+    <h1>Información del Navegador</h1>
+
+    <!-- Botón para obtener información -->
+    <button id="obtenerInfo">Obtener Información</button>
+
+    <!-- Sección para mostrar la información -->
+    <div id="info"></div>
+
+    <script>
+        function obtenerInformacion() {
+            //Obtener el objeto navigator …<código BOM>
+
+            //1: navigator.appName -> para encontrar el nombre del navegador.
+            //* Nota: lo he buscado en internet y dice que actualmente está obsoleto y algunos buscadores pueden no soportarlo.
+            //https://developer.mozilla.org/en-US/docs/Web/API/Navigator/appName
+            var nombreNavegador = navigator.appName;
+
+            //2: navigator.appVersion -> para obtener la versión del ordenador
+            //* Nota: esta herramienta también está obsoleta, según esta página
+            //https://developer.mozilla.org/en-US/docs/Web/API/Navigator/appVersion
+            var versionNavegador = navigator.appVersion;
+
+            //3: navigator.language -> para obtener el idioma predeterminado del usuario
+            //* Nota: esta herramienta no está obsoleta
+            //https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language
+            var idiomaNavegador = navigator.language;
+
+            // Crear el mensaje con la información obtenida
+            var info = "<h2>Información del Navegador</h2><b>Nombre:</b> " + nombreNavegador + "<br><br>" +
+                "<b>Versiónr:</b> " + versionNavegador + "<br><br>" +
+                "<b>Idioma:</b> " + idiomaNavegador;
+
+            // Mostrar la información en la sección correspondiente ….<código JS>
+            // Mostrar la información en el elemento con id "info"
+            document.getElementById("info").innerHTML = info;
+        }
+
+        // Obtener el botón y agregar un evento para el click del ratón
+        var boton = document.getElementById("obtenerInfo");
+        boton.addEventListener("click", obtenerInformacion);
+    </script>
+</body>
+
+</html>

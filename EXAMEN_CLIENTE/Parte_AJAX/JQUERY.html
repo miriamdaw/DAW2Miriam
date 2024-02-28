@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta AJAX con jQuery - REST Countries API</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+
+    <!-- 
+        Para este ejercicio he usado las páginas web para orientarme:
+        https://desarrolloweb.com/articulos/uso-ajax-jquery.html
+        https://www.w3schools.com/jquery/default.asp
+    -->
+    <h1>Consulta - REST Countries API</h1>
+
+    <!-- Lista para mostrar los resultados de la consulta AJAX -->
+    <ul id="resultadoConsulta"></ul>
+
+    <script>
+        $(document).ready(function () {
+            // función AJAX/JQUERY para acceder a REST Countries API
+            $.ajax({
+                url: "https://restcountries.com/v3.1/all",
+                type: "GET",
+                success: function (data) {
+                    mostrarConsulta(data);
+                },
+
+                //si ocurriese un error 
+                error: function (error) {
+                    console.error('Error en la consulta AJAX:', error);
+                }
+            });
+
+            // Función para mostrar los resultados en el HTML
+            function mostrarConsulta(data) {
+                var lista = $("#resultadoConsulta");
+                lista.empty(); // hay que limpiar la lista primero: https://www.php.net/manual/en/function.empty.php
+
+                // Uso un bucle foreach para recorrer los datos y mostrar la informacion
+                data.forEach(function (pais) {
+                    var nombre = pais.name.common;
+                    var capital = pais.capital[0];
+                    var item = $("<li>").text(nombre + " - Capital: " + capital);
+                    lista.append(item);
+                });
+            }
+        });
+    </script>
+</body>F
+</html>
