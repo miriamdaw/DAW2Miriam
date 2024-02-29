@@ -10,7 +10,8 @@
             - Android
 
         · Multiusuario
-            Varios usuarios pueden ejecutar procesos distintos sobre la misma CPU y compartir el uso de los recursos existentes en el sistema de forma simultánea.
+            Varios usuarios pueden ejecutar procesos distintos sobre la misma CPU y compartir el uso de los recursos existentes en el sistema de forma 
+            simultánea.
             Aquel que permite el acceso de diferentes usuarios a ciertos recursos, como el disco o las impresoras, conectados a un mismo sistema.
             - Windows 10
             - Ubuntu
@@ -23,7 +24,8 @@
             - Electrodomésticos
 
         · Multitarea
-            Pueden ejecutarse varios procesos simultáneamente de tal manera que dichos procesos compartirán el tiempo de uso del procesador hasta la finalización de cada uno de ellos. 
+            Pueden ejecutarse varios procesos simultáneamente de tal manera que dichos procesos compartirán el tiempo de uso del procesador hasta 
+            la finalización de cada uno de ellos. 
             Prácticamente todos los SO que se comercializan en la actualidad son multitarea.
             - Windows 10
             - Ubuntu Server
@@ -35,7 +37,8 @@
             Los PCS se conectan a un ordenador centralizado, donde estarán todas las cuentas de usuarios y todos los recursos.
             El ordenador centralizado es el que va alojar todas las cuentas de usuario que se van a utilizar en todos los ordenadores.
             Al loguearse con un ordenador conectado a la máquina central podrá acceder sin que el usuario esté en un ordenador específico.
-            En cuanto a los recursos; a través de la máquina central, se gestiona, por ejemplo, la impresora en red que permitirá acceder a los diferentes uaurios a la impresora, lo que no impide que cada uno de los ordenadores tenga su impresora local.
+            En cuanto a los recursos; a través de la máquina central, se gestiona, por ejemplo, la impresora en red que permitirá acceder a 
+            los diferentes uaurios a la impresora, lo que no impide que cada uno de los ordenadores tenga su impresora local.
 
 
             # VENTAJAS

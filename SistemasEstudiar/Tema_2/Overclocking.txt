@@ -2,6 +2,7 @@
 
 Overclocking es el proceso mediante el cual se aumenta la velocidad del reloj del procesador, es decir, su FRECUENCIA (GHz).
 
+Dos tipos:
     · Real -> Aumenta la velocidad base
     · Puntual -> Aumenta la velocidad del turbo
 
@@ -25,7 +26,7 @@ Al realizar un overclocking, es recomendable hacerlo de entre un 10% y un 15% ca
 3.- Ya se ha hecho el Overclocking, ¿funciona?
 
     · SI TODO FUNCIONA -> Si todo está correcto, se vuelve a realizar un aumento de entre 10% y 15% de rendimiento
-    · SI NO FUNCIONA -> O bien volvemos a la configuración de práctica, o volvemos al aumento de rendimiento donde el ordenador era estable
+    · SI NO FUNCIONA -> O bien volvemos a la configuración de fabrica, o volvemos al aumento de rendimiento donde el ordenador era estable
 
 
 4.- Ventajas y Desventajas de hacer Overclocking
@@ -49,7 +50,8 @@ Al realizar un overclocking, es recomendable hacerlo de entre un 10% y un 15% ca
 
     2.- A través de aplicaciones
         - Es más sencillo, ya que la configuración es automática
-        - Se hace en caliente. La configuración de los parámetros se realiza con la PCU funcionando. Lo que se puede traducir en muchos más fallos de ejecución
+        - Se hace en caliente. La configuración de los parámetros se realiza con la PCU funcionando. Lo que se puede traducir en muchos más 
+        fallos de ejecución
 
     3.- Con Nitrógeno líquido
         - La temperatura ya no es un problema
