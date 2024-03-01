@@ -53,6 +53,7 @@ CDN -> cache donde esta replicado el contenido original de algo
 REST 
 usa métodos de HTTP -> GET, POS, PUT, DELETE
 cuerpo de mensaje es el POST
+idempotente siempre va a dar el mismo resultado
 
 Códigos de error 
 
