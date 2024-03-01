@@ -15,16 +15,19 @@
 2.- Estado de los Procesos
 
    1.- Nuevo
-      El proceso ha sido creado y todavía no ha sido admitido por el SO. Los procesos que se encuentran en este estado todavía no fueron cargados en la memoria principal.
+      El proceso ha sido creado y todavía no ha sido admitido por el SO. Los procesos que se encuentran en este estado todavía no fueron cargados en 
+      la memoria principal.
 
    2.- Listo
       El proceso está listo para ser ejecutado, y está esperando que el planificador de corto plazo así lo disponga.
 
    3.- Ejecución
-      El proceso se está ejecutando. Cuando el SO decide que ya no se está ejecutando, lo manda a salida, donde pondrá a disposición los recursos que estaba utilizando. En ocasiones va a ser utilizado varias veces, por lo que pasa de ser ejecutado a Listo.
+      El proceso se está ejecutando. Cuando el SO decide que ya no se está ejecutando, lo manda a salida, donde pondrá a disposición 
+      los recursos que estaba utilizando. En ocasiones va a ser utilizado varias veces, por lo que pasa de ser ejecutado a Listo.
 
    4.- Bloqueado
-      En ocasiones, cuando se emplean dispositivos de entrada y salida, el proceso entra en estado Bloqueado. Mientras tanto, el SO va atendiendo otros procesos, y una ves resuelto el proceso de bloqueado, vuelve al proceso de Listo, hasta que el SO decide si lo tiene que llamar de nuevo. En ese caso pasaría a Listo, no a Ejecución.
+      En ocasiones, cuando se emplean dispositivos de entrada y salida, el proceso entra en estado Bloqueado. Mientras tanto, el SO va atendiendo 
+      otros procesos, y una ves resuelto el proceso de bloqueado, vuelve al proceso de Listo, hasta que el SO decide si lo tiene que llamar de nuevo. En ese caso pasaría a Listo, no a Ejecución.
 
    5.- Terminado
       El proceso fue expulsado del grupo de procesos ejecutables, ya sea porque terminó o por algún fallo, como un error de protección o aritmético.

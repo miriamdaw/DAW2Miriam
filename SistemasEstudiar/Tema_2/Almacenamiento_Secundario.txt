@@ -18,7 +18,8 @@
 
         1.2.2- Desventajas
 
-            1. Se fragmentan. Un HDD está fragmentado cuando no existen huecos contiguos para almacenar la información. Para ello, los sitemas operativos cuentan con herramientas para desfragmentar los discos duros.
+            1. Se fragmentan. Un HDD está fragmentado cuando no existen huecos contiguos para almacenar la información. 
+            Para ello, los sistemas operativos cuentan con herramientas para desfragmentar los discos duros.
 
 
         1.2.3.- Cálculos
