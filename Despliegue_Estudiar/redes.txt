@@ -1,0 +1,59 @@
+REDES
+
+tcp/ip --> 4 capas
+------
+fisica
+internet
+transporte
+aplicaciones
+
+
+osi --> 7 capas
+---
+fisica -> medio fisico transmite señal, fibra optica -> 
+enlace a datos -> direccion mac, trabaja switches, control errores salto a salto -> enlace
+red -> direcciones ip, enrutamiento, routers -> paquete
+transporte -> control enlace extremo a extremo, protocolos TCP(conexion) y UDP(no conexion no fiable) -> segmentp
+sesion -> tener establecida la sesion
+presentacion 
+aplicaciones -> interactua el usuario
+
+
+- Que hace cada capa y protocolos, sobre todo 4 primeras
+
+
+Protocolo HTTP -> capa transporte tcp/ip, capa aplicacion osi
+Protocolo sin estado -> servidor no guarda informacion cliente
+Si que tiene sesiones
+Servidor se las pasa en forma de cookies
+
+* Tipos de conexiones
+- Serie -> distintos canales de tcp
+- Persistente -> mantiene circuito tcp para sucesivas transacciones
+En estas dos para que haya una peticion tiene que hacer respuesta de la otra.
+- Paralelo -> distintas solicitudes sin haber recibido respuesta
+
+* Distintas conexiones, tantas pestañas abiertas como conexiones
+
+URL -> variante, ubicacion físico de un recurso en la web
+URN-> no varía, no indica la ubicación física
+URI -> URN + URL  
+
+Cachés -> saber su definición, no tener que consultar al servidor de origen, 
+recurso cacheado 
+
+
+CDN -> netflix
+* Berlin -> esta en los servidores de alemania, tiene su propia CDN
+* El servidor original netflix replica su contenido a otros servidores que formas
+parte de ese CDN
+CDN -> cache donde esta replicado el contenido original de algo
+
+
+REST 
+usa métodos de HTTP -> GET, POS, PUT, DELETE
+cuerpo de mensaje es el POST
+
+Códigos de error 
+
+
