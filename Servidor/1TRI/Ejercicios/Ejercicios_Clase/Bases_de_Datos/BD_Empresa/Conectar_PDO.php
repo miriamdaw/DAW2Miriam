@@ -12,7 +12,7 @@ try {
     echo "Conexión realizada con éxito<br>";
 
     // insertar nuevo usario
-    $ins = "insert into usuarios(nombre, clave, rol) values('Alberto', '33333', '1');";
+    $ins = "insert into usuarios(nombre, clave, rol) values('Alberto', '33333', '1')";
     $resul = $bd->query($ins);
 
     //comprobar errores

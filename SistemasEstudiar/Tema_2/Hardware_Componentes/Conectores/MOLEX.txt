@@ -1,6 +1,0 @@
-MOLEX
-/////
-    - Discontinuado -> antes daba alimentación a los HDD. 
-    - Los cables SATA han absorbidu su función.
-    - Solo se puede conectar SATA o MOLEX.
-    - 4 pines.

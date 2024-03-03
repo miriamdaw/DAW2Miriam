@@ -1,0 +1,68 @@
+Comandos de git
+
+* Para manejar opciones de configuración -> git config
+
+* Configurar git con tus credenciales:
+    -> git config --global user.name "miriam"
+    ->  git config --global user.email miriam@gmail.com
+
+* Indicar a un directorio que es un repositorio de git -> git init 
+    - Esto inicializa el repositorio git en el directorio seleccionado
+
+* Clonar -> git clone
+
+* Añadir documentos para el proximo commit -> git add
+* Para solo añadir los que indiquemos -> git add <ficheros>
+
+* Realizar un commit -> git commit -m "Mensaje de commit para identificarlo"
+
+* Modificar el ultimo commit -> git commit ammend -m "Mensaje de modificacion de commit"
+    - No es recomendable realizar un ammend a un commit que ya se ha hecho publico a otros desarrolladores.
+
+* Eliminar commit -> git reset id_commit
+
+* Subir a repositorio en la nube -> git push <remote> <rama>
+
+* Para indicar el contenido de los archivos que no se van a incluir en git -> git ignore
+
+* Para ver el estado de los ficheros -> git status
+    - Estados:
+        1. untracked -> ficheros que no están bajo el control de versiones
+        2. tracked -> ficheros que si están registrados en la versión, se han añadido con git add
+            - modified -> ficheros modificados no incluidos en el ultimo commit
+            - unmodified -> ficheros no modificados que siguen estando en el proximo commit
+            - staged -> ficheros modificados e incluidos en el ultimo commit
+
+* Historial de versiones de git -> git log 
+
+* Borrar ficheros -> git rm <file>
+
+* Renombrar y mover ficheros -> git mv <fichero_antiguo> <fichero_nuevo>
+
+* Diferencias entre ficheros -> git diff <file>
+
+* Eliminar modificaciones de ficheros del directorio y que se quede 
+  igual que la version del repositorio -> git checkout -<file>
+* Deshacer todos los cambios añadidos al area de trabajo -> git checkout
+* Eliminar del area de staging las modificaciones de un fichero -> git reset HEAD <file>
+
+
+/// RAMAS ///
+* Crear rama -> git branch <nombre_rama>
+* Ver ramas de un repositorio -> git branch
+* Cambiar entre ramas -> git checkout <nombre_rama>
+* Crear una rama y cambiarme a ella -> git checkout -b <nombre_rama>
+* Mostrar ramas remotas -> git branch -r
+* Unir ramas -> git merge
+    - Asegurarse de estar en la rama a la cual quieres fusionar otra rama. Si deseas fusionar rama feature a la rama main,
+      debes situarte en la rama main y luego escribir -> git merge feature
+    - Suele producir conflictos cuando hay diferencias entre las dos ramas, como por ejemplo modificar la misma linea de un mismo fichero
+
+
+/// Repositorios remotos ///
+* Listar repos -> git remote
+* Añadir repo remoto -> git remote add <nombre_como_queremos_referenciarlo> URL_Git
+* Renombrar remoto -> git remote rename <nombre_antiguo> <nombre_nuevo>
+* Borrar un remoto -> git remote rm <nombre_remote>
+* Bajar datos de un repo remoto -> git pull <repo_remoto>
+* Subir datos de un repo remoto -> git push <repo_remoto>

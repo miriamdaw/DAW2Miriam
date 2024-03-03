@@ -1,4 +1,0 @@
-DVI (Digital Visual Interface)
-
-- Se diferencia del VGA en que puede incluir señal digital además de analógica 
-- 24 pines -> 3 filas de 8

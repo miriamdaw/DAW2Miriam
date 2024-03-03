@@ -1,0 +1,13 @@
+* Clone: es clonar repositorios, descargarnos repositorio remoto a nuestro repositorio local.
+    - git clone [direccion del repo]
+
+* Fork: clonar repositorio a nuestra cuenta de Github, realizar un proyecto nuevo a partir de uno ya existente. Los cambios y
+        modificaciones se hacen en nuestro repositorio clonado, no en el original.
+
+* Pull request: cuando pedimos hacer un cambio en el repo original que hemos clonado, con nuestras modificaciones.
+
+* HEAD. hace referencia a la versión actual del directorio de trabajo. 
+    - Apunta a la versión de la rama actual
+    - Apunta al commit sobre el que trabajamos (se puede cambiar)
+    - Cada vez que hacemos commit, el HEAD avanza hacia ese commit
+

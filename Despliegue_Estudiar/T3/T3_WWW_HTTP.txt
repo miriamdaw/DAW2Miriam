@@ -1,0 +1,117 @@
+1- Servidores web
+- Dos tipos:
+    1. Estáticos: permiten localizar un recurso estático en el sistema de ficheros y servirlo al cliente
+        * Apache
+
+    2. Dinámicos: ejecutan código (servlet de java) a una petición de un cliente
+        * Tomcat
+
+
+2- URL, URN y URI
+- URL: La dirección física de un recurso.
+    - Incliye el servidor donde se almacena. 
+    - Es un tipo de URI. 
+    - Protocolo de HTTP
+    - POST cuerpo de mensaje
+    * Wikipedia
+- URN: Son fijos e invariantes y no indica la ubicación física de un recurso
+- URI: Permiten identificar un recurso y es URN + URL.
+
+
+3- HTTP
+- Es el protocolo de la capa Transporte en el modelo TCP/IP
+- Es el protocolo de la capa Aplicación en el modelo OSI
+- Es un protocolo sin estado -> servidor no guarda informacion cliente
+- Las peticiones son independientes
+- Cada transacción se compone de una solicitud y una respuesta
+- Si que tiene sesiones, el servidor se las pasa en forma de cookies
+
+    * Códigos de estado
+        - 1XX -> respuestas informativas
+        - 2XX -> conexión finalizada
+        - 3XX -> redirección
+        - 4XX -> error del cliente
+        - 5XX -> error del servidor
+
+
+    * Métodos
+        · Basados en la interfaz CRUD de bases de datos
+         - Create -> POST
+            · Envía cuerpo de mensaje
+            · Los parámetros no están en la URL
+
+         - Read -> GET
+            · Se usa para obtener información del servidor.
+            · Se invoca cuando introducimos URL en el navegador, pinchamos hiperenlace o enviamos formulario.
+            · Sólo envía URL; no envía cuerpo de mensaje
+
+         - Update -> PUT
+         - Delete -> DELETE
+
+        · Con lo cual deducimos que HTTP con sus métodos puede crear, leer, actualizar y eliminar recursos en el servidor.
+
+
+    * MIME: definen el tipo de un recurso y se compone de dos partes: tipo y subtipo (audio, video, imagen, texto)
+        - Image/gif, Image/png
+        - Text/plain, Text/html
+        - Application/javascript
+
+
+    * Tipos de conexiones
+        - Serie
+            - Cada solicitud establece y libera una conexión TCP con el servidor
+            - Distintos canales de TCP
+
+        - Persistente
+            - Queda establecida después de enviar una respuesta
+            - Permite varias transacciones sobre una misma conexión TCP 
+
+        En estas dos para que haya una peticion tiene que hacer respuesta de la otra.
+
+        - Paralelo
+            - Permite enviar distintas solicitudes sin haber recibido respuesta de la solicitud anterior
+
+    · Un navegador web puede mantener múltiples conexiones abiertas, por ejemplo, cuando tenemos varias pestañas abiertas
+      a sitios web distintos, cada una de estas pestaás establece conexiones HTTP distintas. Entonces, tenemos tantas conexiones como pestañas abiertas 
+
+
+
+    * Sesiones
+
+        - Protocolo HTTP es sin estado 
+        - Se pueden crear o recuperar si existen
+        - Almacenan cookies 
+
+
+    * Cachés
+        - Método que sirve para guardar recursos y servirlos directamente, sin necesidad de traerlos del servidor
+        - Si el recurso no está almacenado en caché se reenvía la solicitud, y el siguiente nivel devolverá el recurso con Etag o fecha
+        - La caché almacena el recurso guardando su URL, Etag y su fecha
+        - Un etag es un identificador para una versión específica de un recurso
+
+
+
+
+4- CDN
+- Una CDN es una red de distribución de contenidos. Se compone de un sistema distribuido de servidores que optimizan la distribución y acceso de contenidos a intenet. 
+- Su funcionamiento se basa en desplegar redes en ubicaciones estratégicas
+- Un ejemplo es Netflix: 
+    * La serie Berlin -> esta en los servidores de alemania, tiene su propia CDN. El servidor original netflix replica su contenido a 
+    otros servidores que forman parte de ese CDN
+
+
+
+5- REST 
+- Es una arquitectura que utiliza el protocolo HTTP.
+- Usa solo los métodos de HTTP -> GET, POS, PUT, DELETE
+- Idempotente siempre va a dar el mismo resultado, el resultado es independiente del numero de invocaciones
+ 
+
+
+
+
+
+
+
+
+

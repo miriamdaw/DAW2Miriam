@@ -4,17 +4,20 @@ Torre o pila
 Modelo OSI (capas) ->  open system interconnection
 --> 7 capas:
     1 - Física -> medio físico por el que se transmiten los datos
-    2 - Enlace de datos -> supervisa la capa física, realiza comunicación directa entre dos dispositivos contiguos -> Switch
+    2 - Enlace de datos -> supervisa la capa física, realiza comunicación 
+    directa entre dos dispositivos contiguos -> Switch
     
     trocitos
     
-    3 - Red -> más importante, direccionamiento, busca el mejor camino, enviar un paquete de emisión a recepción -> Router
+    3 - Red -> más importante, direccionamiento, busca el mejor camino, e
+    nviar un paquete de emisión a recepción -> Router
     4 - Transporte -> control de redes, flujo, congestión -> TCP y UCP.
 
     ¿Qué es lo primero que hace esta capa que van a hacer las demás? 
     Dividir el mensaje, fracciona. 
     Cada fracción se añade a la cabecera del protocolo que corresponde.
-    Trozos de información se llaman SEGMENTOS DE DATOS. Cuando bajan a la capa 3 se llaman PAQUETES. En el nivel 2 se llaman RAMAS.
+    Trozos de información se llaman SEGMENTOS DE DATOS. Cuando bajan a la capa 3 
+    se llaman PAQUETES. En el nivel 2 se llaman RAMAS.
 
     5 - SESION -> establecer comunicación directa entre emisor y receptor
     6 - Presentacion -> cómo se modifican los datos

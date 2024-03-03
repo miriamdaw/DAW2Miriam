@@ -1,2 +1,0 @@
-Intercomunicación de equipos de telecomunicaciones y datos.
-Permite las conexiones de redes Ethernet. RJ45.

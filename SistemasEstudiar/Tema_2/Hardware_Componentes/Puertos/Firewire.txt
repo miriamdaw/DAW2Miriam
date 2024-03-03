@@ -1,3 +1,0 @@
-Permite la conexión en tiempo real de varios dispositivos. 
-
-- 6 pines

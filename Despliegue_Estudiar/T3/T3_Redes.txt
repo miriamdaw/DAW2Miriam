@@ -1,0 +1,70 @@
+REDES
+
+Modelos de Frameworks de Redes
+
+1- TCP/IP --> 4 capas
+------
+1. Fisica
+2. Internet
+3. Transporte -> Dos protocolos:
+- TCP
+  - Orientado a la conexión, las establece y las finaliza. 
+  - Es fiable; maneja control de errores, flujo
+
+- UDP 
+  - No es orientado a conexión, ni las hay ni las establece
+  - No es fiable; no realiza control de errores
+  - Pero es más rápido que TCP
+  
+4. Aplicaciones
+
+
+2- OSI
+El modelo OSI funciona de la manera: 
+* El quipo que envía:
+- El mensaje baja por las capas
+* El equipo que recibe:
+- El mensaje va subiendo por las capas
+
+* 7 capas: 
+    1. Fisica
+    - Medio fisico por el que se transmiten los datos (la fibra óptica)
+
+    2. Enlace a datos --> trocitos
+    - Es la direccion mac, trabaja switches, control errores salto a salto -> enlace
+    - Supervisa la capa física, realiza comunicación directa entre dos dispositivos contiguos (switch)
+    
+    3. Red --> paquete 
+    - Son las direcciones ip, se encarga del enrutamiento (routers)
+    - Es la capa más importante pues se encarga del enrutamiento, busca el mejor camino para
+      enviar un paquete de emisión a recepción
+
+    4. Transporte --> segmento
+    - Control enlace extremo a extremo
+    - Protocolos TCP(conexion) y UDP(no conexion no fiable) 
+- TCP
+  - Orientado a la conexión, las establece y las finaliza. 
+  - Es fiable; maneja control de errores, flujo
+
+- UDP 
+  - No es orientado a conexión, ni las hay ni las establece
+  - No es fiable; no realiza control de errores
+  - Pero es más rápido que TCP
+  
+    5. Sesion
+    - Tener establecida la sesion
+    - Establecer comunicación directa entre emisor y receptor
+
+    6. Presentacion 
+    - Cómo se modifican los datos
+    - Presenta datos para la aplicación
+
+    7. Aplicaciones
+    - Interactua el usuario
+    - Lo que el usuario ve
+    - Protocolo HTTP
+    * Es un navegador web 
+
+
+
+
