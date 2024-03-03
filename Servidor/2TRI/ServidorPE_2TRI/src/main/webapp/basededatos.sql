@@ -37,7 +37,7 @@ CREATE TABLE `clientes` (
   `nombre` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL UNIQUE,
   `nacimiento` date NOT NULL,
-  `genero` enum('Masculino','Femenino','Otro') NOT NULL,
+  `genero` VARCHAR(255) NOT NULL,
   `canal` enum('Twitch','Youtube','No') NOT NULL,
   `horas` int(11) NOT NULL CHECK (horas > 0),
   PRIMARY KEY (`id`),
