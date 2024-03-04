@@ -1,0 +1,30 @@
+Mostrar historial de commits
+-> git log
+
+Reorganizar historia de los commits en una rama
+-> git rebase
+- Sirve para organizar commits de una rama con otra
+- Para cuando quieres fusionar feature y master
+- Te cambias a feature: tienes que estar en la rama que quieres reorganizar
+git checkout feature
+- Obtienes los ultimos cambios de master 
+git pull remoto master
+- Reorganizas commits 
+git rebase remoto/master
+- Si hay conflictos 
+git add.
+git rebase --continue
+- Fusionar ramas
+git checkout master
+git merge feature
+
+Modificar ultimo commit
+-> git commit ammend -m "mensaje"
+
+Eliminar commits
+-> git reset id_commit
+
+
+
+
+

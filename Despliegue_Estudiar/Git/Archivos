@@ -1,0 +1,27 @@
+Indicar archivos que se van a excluir
+-> git ignore fichero
+
+Añadir ficheros al commit 
+-> git add
+
+Borrar ficheros 
+-> git rm <file>
+
+Deshacer cambios locales en un archivo que aún no ha sido agregado al área de staging
+-> git checkout -- <archivo>
+
+Renombrar y mover ficheros 
+-> git mv <fichero_antiguo> <fichero_nuevo>
+
+Diferencias entre ficheros 
+-> git diff <file>
+
+Ver el estado de los archivos 
+-> git status
+
+    - Estados:
+        1. untracked -> ficheros que no están bajo el control de versiones
+        2. tracked -> ficheros que si están registrados en la versión, se han añadido con git add
+            - modified -> ficheros modificados no incluidos en el ultimo commit
+            - unmodified -> ficheros no modificados que siguen estando en el proximo commit
+            - staged -> ficheros modificados e incluidos en el ultimo commit

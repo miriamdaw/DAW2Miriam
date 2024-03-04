@@ -1,0 +1,6 @@
+Manejar opciones configuracion
+-> git config
+
+Configurar git con tus credenciales
+-> git config --global user.name "Miriam"
+-> git config --global user.email miriam@gmail.com

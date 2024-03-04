@@ -1,0 +1,22 @@
+Iniciar Git en un repositorio local
+-> git init
+
+Clonar repositorio remoto en local
+-> git clone url_repositorio_github.git
+
+Añadir un cambio a git
+-> git commit -m "mensaje"
+
+Añadir un repositorio remoto a local
+-> git remote add remoto url_repositorio_github.git
+
+Subir lo cambios, "empujar"
+-> git push remoto rama
+
+Fusionar cambios de remoto en mi local
+-> git pull remoto rama
+
+
+
+
+

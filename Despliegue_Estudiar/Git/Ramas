@@ -1,0 +1,25 @@
+Crear una rama nueva
+-> git branch ramaNueva
+
+Moverse a otra rama
+-> git checkout rama
+
+Crear rama nueva y moverse en el mismo comando
+-> git checkout -b ramaNueva
+
+Crear rama a partir del ultimo commit -> idsha
+-> git checkout ramaNueva 1234bdf
+
+Nueva rama con funcionalidad especifica
+-> git branch feature 
+
+Nueva rama en la que se trata un error
+-> git branch hotfix
+
+Cambiar de rama fichero
+-> git checkout main -- fichero.html
+
+Fusionar ramas
+-> git merge rama
+* Debo posicionarme en la rama que quiero mantener
+* Merge a la rama que voy a fusionar

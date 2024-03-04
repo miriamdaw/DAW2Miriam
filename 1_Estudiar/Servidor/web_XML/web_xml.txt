@@ -1,9 +1,0 @@
-Para cambiar el modo de acceder al proyecto desde el navegador
-mediante localhost, nos metemos en web.xml y cambiamos
-una línea:
-
-<url-pattern>/DiHola/</url-patter>
-
-De esta manera cuando entremos en http://localhost:8080/NombreProyecto
-No es necesario que nos acordemos del nombre del servlet, y podemos
-escribir /DiHola.
