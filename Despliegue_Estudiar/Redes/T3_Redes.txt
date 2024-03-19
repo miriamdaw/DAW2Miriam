@@ -21,7 +21,7 @@ Modelos de Frameworks de Redes
 
 2- OSI
 El modelo OSI funciona de la manera: 
-* El quipo que envía:
+* El equipo que envía:
 - El mensaje baja por las capas
 * El equipo que recibe:
 - El mensaje va subiendo por las capas
@@ -32,7 +32,8 @@ El modelo OSI funciona de la manera:
 
     2. Enlace a datos --> trocitos
     - Es la direccion mac, trabaja switches, control errores salto a salto -> enlace
-    - Supervisa la capa física, realiza comunicación directa entre dos dispositivos contiguos (switch)
+    - Supervisa la capa física, realiza comunicación directa entre dos dispositivos contiguos 
+    (switch)
     
     3. Red --> paquete 
     - Son las direcciones ip, se encarga del enrutamiento (routers)
@@ -45,7 +46,6 @@ El modelo OSI funciona de la manera:
 - TCP
   - Orientado a la conexión, las establece y las finaliza. 
   - Es fiable; maneja control de errores, flujo
-
 - UDP 
   - No es orientado a conexión, ni las hay ni las establece
   - No es fiable; no realiza control de errores

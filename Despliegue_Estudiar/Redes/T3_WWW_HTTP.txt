@@ -1,6 +1,7 @@
 1- Servidores web
 - Dos tipos:
-    1. Estáticos: permiten localizar un recurso estático en el sistema de ficheros y servirlo al cliente
+    1. Estáticos: permiten localizar un recurso estático en el sistema de ficheros y servirlo al
+     cliente
         * Apache
 
     2. Dinámicos: ejecutan código (servlet de java) a una petición de un cliente
@@ -19,8 +20,8 @@
 
 
 3- HTTP
-- Es el protocolo de la capa Transporte en el modelo TCP/IP
 - Es el protocolo de la capa Aplicación en el modelo OSI
+- Es el protocolo de la capa Aplicación en el modelo TCP/IP
 - Es un protocolo sin estado -> servidor no guarda informacion cliente
 - Las peticiones son independientes
 - Cada transacción se compone de una solicitud y una respuesta
@@ -42,7 +43,8 @@
 
          - Read -> GET
             · Se usa para obtener información del servidor.
-            · Se invoca cuando introducimos URL en el navegador, pinchamos hiperenlace o enviamos formulario.
+            · Se invoca cuando introducimos URL en el navegador, pinchamos hiperenlace o 
+            enviamos formulario.
             · Sólo envía URL; no envía cuerpo de mensaje
 
          - Update -> PUT
@@ -51,7 +53,8 @@
         · Con lo cual deducimos que HTTP con sus métodos puede crear, leer, actualizar y eliminar recursos en el servidor.
 
 
-    * MIME: definen el tipo de un recurso y se compone de dos partes: tipo y subtipo (audio, video, imagen, texto)
+    * MIME: definen el tipo de un recurso y se compone de dos partes: tipo y subtipo 
+    (audio, video, imagen, texto)
         - Image/gif, Image/png
         - Text/plain, Text/html
         - Application/javascript
@@ -69,10 +72,13 @@
         En estas dos para que haya una peticion tiene que hacer respuesta de la otra.
 
         - Paralelo
-            - Permite enviar distintas solicitudes sin haber recibido respuesta de la solicitud anterior
+            - Permite enviar distintas solicitudes sin haber recibido respuesta de la 
+            solicitud anterior
 
-    · Un navegador web puede mantener múltiples conexiones abiertas, por ejemplo, cuando tenemos varias pestañas abiertas
-      a sitios web distintos, cada una de estas pestaás establece conexiones HTTP distintas. Entonces, tenemos tantas conexiones como pestañas abiertas 
+    · Un navegador web puede mantener múltiples conexiones abiertas, por ejemplo, 
+    cuando tenemos varias pestañas abiertas
+      a sitios web distintos, cada una de estas pestañas establece conexiones HTTP distintas. 
+      Entonces, tenemos tantas conexiones como pestañas abiertas 
 
 
 
@@ -93,7 +99,8 @@
 
 
 4- CDN
-- Una CDN es una red de distribución de contenidos. Se compone de un sistema distribuido de servidores que optimizan la distribución y acceso de contenidos a intenet. 
+- Una CDN es una red de distribución de contenidos. Se compone de un sistema distribuido 
+de servidores que optimizan la distribución y acceso de contenidos a intenet. 
 - Su funcionamiento se basa en desplegar redes en ubicaciones estratégicas
 - Un ejemplo es Netflix: 
     * La serie Berlin -> esta en los servidores de alemania, tiene su propia CDN. El servidor original netflix replica su contenido a 
