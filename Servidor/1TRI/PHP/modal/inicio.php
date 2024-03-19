@@ -1,3 +1,13 @@
+<?php
+$incidenciasSinEmpezar = 1;
+
+$listadoCitas = array(
+    array('id_cliente' => 1, 'horaProgramada' => '09:00 AM'),
+    array('id_cliente' => 2, 'horaProgramada' => '10:30 AM')
+);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +40,7 @@
                                 <?php foreach ($listadoCitas as $cita) { ?>
                                     <tr>
                                         <td>
-                                            <?= getRazonSocial($cita['id_cliente']) ?>
+                                            a
                                         </td>
                                         <td>
                                             <?= $cita['horaProgramada'] ?>
