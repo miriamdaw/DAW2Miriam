@@ -53,3 +53,20 @@ Javascript funciones:
             $('#citas').modal('show');
         });
     </script>
+var citasEn10Min = "<?= count($listadoCitas) ?>";
+
+        console.log(citasEn10Min);
+        document.getElementById("citas").style.zIndex = "-1";
+
+        if (parseInt(citasEn10Min) === 1) {
+            console.log("entra");
+            $(window).on('load', function () {
+
+                var id_usuario = "<?php echo $idusuario; ?>";
+
+                if (parseInt(citasEn10Min) === 1) {
+                    document.getElementById("citas").style.zIndex = "1050";
+                    $('#citas').modal('show');
+                }
+
+            });
